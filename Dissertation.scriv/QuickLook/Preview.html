@@ -1,0 +1,592 @@
+<html>
+
+<head>
+<title>Dissertation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+	body {background-color: #bac0c7}
+    p.binderItem {margin: 10.0px 0.0px 0.0px 05.0px; font-family:Cochin, Times, Courier, Arial, serif; font-size:14.0px;}
+    .page {border: 1px solid #727272; background: #fff}
+    hr {
+      border-top: 1px dashed #000;
+      border-bottom: 0px solid #fff;
+      color: #fff;
+      background-color: #fff;
+      height: 0px;
+  </style>
+</head>
+
+<body>
+
+<table border="0" width="100%" cellspacing="3">
+<tr>
+<td>
+
+<table class="page" width="100%" cellspacing="10" cellpadding="2">
+<tr>
+<td valign="top">
+
+<ul>
+<li>
+<p class="binderItem"><strong>Meta-Data</strong><br/>Base Header Level: 2<br/>
+Latex Footer: Dissertation-footer<br/>
+Latex Input: Dissertation-header</p>
+</li>
+<li>
+<p class="binderItem"><strong>1 Introduction</strong><br/>#Introduction[intro-1]#</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>1.1 Motivation</strong><br/>##Motivation[motivation-11]##<br/>
+<br/>
+The trend in numerical weather prediction is toward the use of fine grid meshes capable of resolving atmospheric motions down to the turbulence scale. The ability to reproduce credible  small-scale spatial variability of meteorological fields is appealing to both operational and research environments. For instance, air pollution applications rely on accurate representation of the dispersive role of small-scale motions. Another example includes propagation of electr...</p>
+</li>
+<li>
+<p class="binderItem"><strong>1.2 Goals</strong><br/>##Goals[goals-12]##<br/>
+<br/>
+The goal of this study is to examine the current state of the art downscaling techniques for purposes of representing atmospheric turbulence. The most obvious and flexible solution is the use of the WRF model to examine the extent to which a mesoscale model is capable of producing accurate turbulence parameters . Next, the numerics of two LES codes are investigated by means of idealized CBL simulations for differing flow patterns (with and without shear) . In order to test i...</p>
+</li>
+<li>
+<p class="binderItem"><strong>1.3 Outline Of Remaining Chapters</strong><br/>##Outline of Remaining Chapters[outline-13]##<br/>
+<br/>
+Chapter [](#les-2) describes the OU-LES code, including its governing equations and subgrid closure scheme. Chapter [](#wrf-3) describes the WRF model, including its governing equations, surface and boundary layer parameterization schemes, and subgrid closure schemes. Chapter [](#mesoscale-4) details the WRF model’s performance when run in a traditional mesoscale setup by way of comparison with observational and nudged OU-LES data. Chapter [](#les-5...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>2 University of Oklahoma Large Eddy Simulation</strong><br/>#University of Oklahoma Large Eddy Simulation[les-2]#</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>2.1 Governing Equations</strong><br/>##Governing Equations[ge-21]##<br/>
+<br/>
+The OU-LES governing equations are described here, building upon those contained in [#Conzemius2004;] and [#Wilson2012a;]. The equations are derived from the general form of the Navier-Stokes equations (following <!--\citealt{Kundu}-->) for fluid in a rotating reference frame:<br/>
+<br/>
+<!--<br/>
+\be<br/>
+\rho \frac{Du_i}{Dt} = - \rho g \delta_{i3} - \pd{p}{x_i} + 2 \rho \Omega_k u_j \epsilon_{ijk} - \frac{2}{3}\pd{}{x_i}(\mu \nabla \cdot \vec{u}) + 2 \pd{}{x_j}(\mu S_{ij}) \mbox{ ,...</p>
+</li>
+<li>
+<p class="binderItem"><strong>2.2 Subgrid Closure</strong><br/>##Subgrid Closure[sg-close-22]##<br/>
+<br/>
+Subgrid closure follows [#Deardorff1980;] and is based on the balance of STKE, calculated at every model time step and defined as<br/>
+<br/>
+<!--  <br/>
+\be<br/>
+\underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}\pd{E}{t}}_{(I)}\\<br/>
++ \underbrace{\pd{\widetilde{u_i} E}{x_i}}_{(II)}\\<br/>
+= \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}2K_m\widetilde{S_{ij}} \widetilde{S_{ij}}}_{(III)} \\<br/>
+- \underbrace{\beta K_h \pd{\widetilde{\theta_v}}{x_3}}_{(IV)} \\<br/>
++ \underbrace{\pd{}{x_i}2K_m\pd...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>3 The Weather Research and Forecasting Model</strong><br/>#The Weather Research and Forecasting Model[wrf-3]#</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>3.1 Governing Equations</strong><br/>##Governing Equations[ge-31]##<br/>
+<br/>
+The WRF model’s governing equations are described here, building upon those contained in [#Skamarock;] and [#Lund2010;]. The equations are derived from the inviscid, compressible form of the Navier-Stokes equations. Those equations are recast into flux-form with conservative variables in Cartesian space, transformed to use a terrain-following vertical mass coordinate following [#Laprise;], modified to include moisture effects, extended to project onto the Earth’s ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.2 Microphysics</strong><br/>##Microphysics[mp-32]##<br/>
+<br/>
+The microphysics package includes explicitly resolved water vapor, cloud, and precipitation processes. In the WRF model, the microphysics scheme is employed at the end of each time-step as an adjustment process. This guarantees that the final saturation balance is accurate for the updated temperature and moisture fields. In this respect, the microphysics schemes do not provide tendencies of such atmospheric quantities.<br/>
+<br/>
+The WRF Single Moment 6-class (WSM6) mixed-phase sc...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.3 Atmospheric Radiation</strong><br/>##Atmospheric Radiation[ar-33]##<br/>
+<br/>
+Atmospheric radiation schemes account for atmospheric heating due to radiative flux divergence and surface downward longwave and shortwave radiation for the ground heat budget.  Every radiation scheme is a one-dimensional column model, where each column is treated independently and the associated fluxes correspond to those in infinitely horizontally uniform planes.  Longwave radiation includes infrared radiation absorbed and emitted by gases and surfaces. Upward...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.4 Land Surface Model</strong><br/>##Land-Surface Model[lsm-34]##<br/>
+<br/>
+Land-surface models (LSMs) use atmospheric information from the surface layer scheme, radiative forcing from the radiation scheme, and precipitation forcing from the microphysics and convective schemes, together with internal information on the land's state variables and surface properties, to provide heat and moisture fluxes over land and sea-ice points. These fluxes provide a lower boundary condition for vertical transport done in the PBL schemes, or in the vert...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.5 Surface Layer Schemes</strong><br/>##Surface Layer Schemes[surface-layer-35]##<br/>
+<br/>
+The surface layer schemes provide friction velocities and exchange coefficients that enable the calculation of surface heat and moisture fluxes by the land-surface model and surface stress in the planetary boundary layer (PBL) scheme. Over water, the surface fluxes and diagnostic fields are computed in the surface layer scheme itself. Each surface layer option is tied to a particular PBL scheme. The schemes provide no tendencies, rather only the stabi...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>3.5.1 MM5</strong><br/>###MM5[sl-mm5-351]###<br/>
+<br/>
+Relations between \\(\phi\\) functions and \\(\zeta\\) were experimentally estimated by [#Dyer;] for the three major stability regimes discussed in [#Zhang;]. The regimes are classified as: stable (\\(\mathrm{Ri} > 0.2\\)), damped mechanical turbulence (\\(0.2 > \mathrm{Ri} > 0\\)), and forced convection (\\(\mathrm{Ri} \leq 0\\)). Here, \\(\mathrm{Ri}\\) is the Richardson number, which is the ratio of buoyancy forces to inertial forces. For the stable regime, it assumed t...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.5.2 Janjic</strong><br/>###Janjic[sl-janjic-352]###<br/>
+<br/>
+This surface layer scheme is also based on [#MO;] similarity theory, with adjustments following [#Jan94,Jan96,Jan02;].  The scheme assumes that turbulent fluxes are constant with height and that boundary conditions are to be prescribed at two levels, \\(z_1\\) and \\(z_2\\).  After following a similar path described in the previous section, Janjic reaches a relation in the form<br/>
+<!--<br/>
+\be<br/>
+S_2 - S_1 = \left[\frac{F}{u_* \kappa}\right] \Phi_f, \label{equation324}<br/>
+\ee<br/>
+\no...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.5.3 MYNN</strong><br/>###MYNN[sl-mynn-353]###<br/>
+<br/>
+The Mellor-Yamada-Nakanishi-Niino (MYNN) surface layer scheme [#NN01, NN04, NN06] also makes use of the [#Dyer;] approximations given by Eqs. ([](#equation321)) and ([](#equation322)). Three major stability regimes are considered based on the bulk Richardson number, given by<br/>
+<!--<br/>
+\be<br/>
+Ri_B = \frac{g z_1 (\theta_1 - \theta_g)}{\theta_r (U^2_1 + V^2_1)} \mbox{ ,} <br/>
+\label{equation327}<br/>
+\ee<br/>
+\noindent<br/>
+--> where \\(\theta_g\\) is the skin potential temperature, \\(\theta_r\\) is...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.5.4 TEMF</strong><br/>###TEMF[sl-temf-354]###<br/>
+<br/>
+Similar to other surface layer schemes, the Total Energy-Mass Flux (TEMF; <!--\citealt{Angevine2010}-->) scheme specifies fluxes that act as the lower boundary condition in the WRF model. Generally, these schemes assume a constant flux layer in order to apply similarity theory. The TEMF scheme, however, considers that the first model level may comprise a relatively large fraction of a shallow boundary layer. Thus, such a circumstance would likely invalidate the assumptio...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>3.6 Planetary Boundary Layer Schemes</strong><br/>##Planetary Boundary Layer Schemes[pbl-26]##<br/>
+<br/>
+The PBL scheme is responsible for vertical sub-grid fluxes due to eddy transports in the whole <br/>
+atmospheric column, not just within the boundary layer. This means that explicit vertical diffusion<br/>
+is de-activated with the assumption that the PBL scheme will handle this process.  The most <br/>
+appropriate horizontal diffusion choices are those based on horizontal deformation or with a <br/>
+constant horizontal eddy diffusivity. The schemes are one-dimensional a...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>3.6.1 YSU</strong><br/>###YSU[pbl-ysu-361]###<br/>
+<br/>
+[#Hong06;] proposed a next generation PBL scheme to that in the Medium Range Forecast (MRF) model.  This scheme is called the YSU scheme, named so because of its development at Yonsei University.  Given are the algorithms for both mixed-layer diffusion and for free-atmosphere diffusion.<br/>
+<br/>
+For the mixed-layer (\\(z \leq h\\)), where \\(h=\\) the boundary layer depth, the turbulence diffusion equation for any prognostic variable, a, is given by<br/>
+<!--<br/>
+\bea<br/>
+\pd{a}{t} = \pd{}{z}...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.6.2 MYJ</strong><br/>###MYJ[pbl-myj-362]###<br/>
+<br/>
+[#Jan02;] implements a non-singular version of the [#MY82;] level 2.5 closure scheme. Problems have become apparent in the original version of the closure scheme which this scheme attempted to address.  One main problem was the singularity problem in a convective PBL with growing turbulence.<br/>
+<br/>
+The turbulence kinetic energy, TKE, production and dissipation term in the [#MY82;] scheme can be expressed as<br/>
+<!--<br/>
+\bea<br/>
+l\frac{d\left(\frac{1}{q}\right)}{dt} = \frac{\alpha\left(\fr...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.6.3 MYNN</strong><br/>###MYNN[pbl-mynn-363]###<br/>
+<br/>
+Similar to [#Jan02;],  [#NN01, NN04, NN06;] implement a local, non-singular version of the [#MY82;] level 2.5 closure scheme (note: a level 3 closure is available, but known numerical instabilities preclude its use). The scheme addresses singularity problem in a convective PBL with growing turbulence. In addition, the scheme attempts to improve the [#Jan02;] approach through a redefined master length scale. All coefficients of proportionality in the scheme are tuned fro...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.6.4 TEMF</strong><br/>###TEMF[pbl-temf-364]###<br/>
+<br/>
+The TEMF scheme was formulated with the goal of serving as an integrated boundary layer solution, with the ability to adequately parameterize atmospheric motions across a range of stability regimes. This study will focus on the convective approach as outlined by [#Angevine2010;]. For the convective boundary layer, mixing is accomplished through two mechanisms: eddy diffusivity and mass flux (with the procedure often referred to as EDMF). Unlike previous schemes, the edd...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>3.7 Subgrid Closure</strong><br/>##Subgrid Closure[sg-close-37]##<br/>
+<br/>
+As stated in Section ([](#pbl-26)), the PBL scheme in the WRF model is tasked to parameterize the vertical diffusion within a grid column. Subsequently, horizontal diffusion must be separately considered when a PBL scheme is implemented. When the WRF model is run for real-data cases, the recommended subgrid closure is a two-dimensional, first-order approach. If, however, the WRF model is run in LES mode (WRF-LES), the subgrid closure is responsible for diffusion...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>3.7.1 Two-Dimensional Mixing</strong><br/>###Two-Dimensional Mixing[twod-mix-371]###<br/>
+<br/>
+For purposes of real-data cases, when the WRF model employs a PBL scheme the preferred subgrid closure scheme is a first-order closure approach following that from [#Smag;]. This scheme was formulated for large-scale atmospheric flows, and therefore eddy viscosities are assumed proportional to horizontal deformation. For momentum, the horizontal eddy viscosity is defined as<br/>
+<!--<br/>
+\be<br/>
+K_{m_{h}}=C_s^2l^2[0.25(S_{11} - S_{22})^2 + S_{12}^2]^{\frac{1}{2}} \...</p>
+</li>
+<li>
+<p class="binderItem"><strong>3.7.2 Three-Dimensional Mixing copy</strong><br/>###Three-Dimensional Mixing[threed-mix-372]###<br/>
+<br/>
+The preferred subgrid closure for WRF-LES also follows [#Deardorff1980;]. Here, the eddy viscosities for momentum are computed using<br/>
+<!--<br/>
+\be<br/>
+K_{m_{h,v}} = C_kl_{h,v} \sqrt{E} \mbox{ ,} \label{equation373}<br/>
+\noindent<br/>
+\ee<br/>
+--> where \\(C_k = 0.12\\) is the Deardorff coefficient, \\(l\\) is the characteristic length scale, \\(E\\) is STKE, and subscripts \\(h\\) and \\(v\\) correspond to values in the horizontal and vertical, respectively.  The main di...</p>
+</li>
+</ul>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>4 Mesoscale Experiments</strong><br/>#Mesoscale Experiments[mesoscale-4]#<br/>
+<br/>
+Atmospheric models utilizing fine-scale grids with horizontal spacing of \\(1\\) to \\(4 \mbox{ }\kilo\metre\\) are becoming increasingly popular in both research and operational applications. However, adequate representation of atmospheric boundary layer flow features within the corresponding horizontal scale ranges poses a certain problem. These scales are often within the maximum energy-containing spectral intervals of boundary layer motions. As a result,...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>4.1 Experimental Design</strong><br/>##Experimental Design[ed-41]##</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>4.1.1 University of Oklahoma Large Eddy Simulation</strong><br/>###University of Oklahoma Large Eddy Simulations[les-411]###<br/>
+<br/>
+Large eddy simulations were run in a numerical domain of \\(51.1 \times 51.1 \times 4\\) \\(\kilo\metre^3\\) centered over the Lamont site, with horizontal spacing \\(\Delta x = \Delta y = 100\\) \\(\metre\\) and vertical spacing \\(\Delta z = 50\\) \\(\metre\\). The first model level was located at \\(25 \mbox {} \metre\\) AGL. Surface fluxes in the simulations were prescribed from the eddy correlation flux measurement system <!--(EC...</p>
+</li>
+<li>
+<p class="binderItem"><strong>4.1.2 The Weather Research and Forecasting Model</strong><br/>###The Weather Research and Forecasting Model[wrf-412]###<br/>
+<br/>
+The WRF model was run in two domains (all being centered at the Lamont site), with horizontal grid spacings of \\(1\\) and \\(4\\) \\(\kilo\metre\\). Both domains had the same \\(101\times101\\) horizontal grid with \\(41\\) vertical levels. The first model level was located at 8 \\(\metre\\) above ground level (AGL). All initial and lateral boundary conditions were provided from North American Regional Reanalysis <!--(NARR; \citealt{NAR...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>4.2 Verification Techniques</strong><br/>##Verification Techniques[vt-42]##<br/>
+<br/>
+In modeling studies, the matter of validating model results with data that represent the actual atmospheric state is a recurrent issue. One inherent problem of such a comparison is that model data for one grid cell represent the local atmospheric state as a statistical mean over the cell while observational data are usually collected at a single location arbitrarily positioned with respect to the model grid. In this sense, to compare single-point observations ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>4.3 Case 1: June 7, 2007</strong><br/>##Case 1: June 7, 2007[june7-43]##</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>4.3.1 Meteorological Conditions</strong><br/>###Meteorological Conditions[mc-431]###<br/>
+<br/>
+<!--<br/>
+\begin{figure}[H]<br/>
+     \begin{center}<br/>
+%<br/>
+        \subfigure[7 June 2007 12 UTC]{%<br/>
+            \label{figure402a}<br/>
+            \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20070607_12_composite}<br/>
+        }%<br/>
+        \subfigure[7 June 2007 16 UTC]{%<br/>
+           \label{figure402b}<br/>
+           \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20070607_16_composite}<br/>
+        }\\ %  ------- End of the first row ----------------------%<br/>
+     ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>4.3.2 Results</strong><br/>###Results[res-432]###<br/>
+<br/>
+Figure ([](#figure404)) illustrates the effects of changing grid spacing for potential temperature, water vapor mixing ratio, wind speed, and wind direction. Keeping in mind that WRF model values at 13 UTC represent a \\(12\\)-hour forecast due to the warm-start procedure, potential temperature and water vapor mixing ratio values were smaller than observational values for all schemes. As the day progressed, WRF model predictions for potential temperature continued to show...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>4.4 Case 2: September 27, 2008</strong><br/>##Case 2: September 27, 2008[sept27-44]##</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>4.4.1 Meteorological Conditions</strong><br/>###Synoptic Conditions[mc-441]###<br/>
+<br/>
+<!--<br/>
+\begin{figure}[H]<br/>
+     \begin{center}<br/>
+%<br/>
+        \subfigure[27 September 2008 12 UTC]{%<br/>
+            \label{figure403a}<br/>
+            \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20080927_12_composite}<br/>
+        }%<br/>
+        \subfigure[27 September 2008 16 UTC]{%<br/>
+           \label{figure403b}<br/>
+           \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20080927_16_composite}<br/>
+        }\\ %  ------- End of the first row ----------------------%...</p>
+</li>
+<li>
+<p class="binderItem"><strong>4.4.2 Results</strong><br/>###Results[res-442]###<br/>
+<br/>
+Figure ([](#figure412)) illustrates the effects of changing grid spacing for potential temperature, water vapor mixing ratio, wind speed, and wind direction. Potential temperature and moisture values were initially lower than observational and OU-LES data, similar to findings in the first considered CBL case. This may point to a tendency within the WRF model to systematically predict temperatures that are too low during overnight hours (e.g. stable conditions). For all sc...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>4.5 Case 3: October 26, 2008</strong><br/>##Case 3: October 26, 2008[oct26-45]##</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>4.5.1 Meteorological Conditions</strong><br/>###Meteorological Conditions[mc-451]###<br/>
+<br/>
+<!--<br/>
+\begin{figure}[H]<br/>
+     \begin{center}<br/>
+%<br/>
+        \subfigure[26 October 2008 12 UTC]{%<br/>
+            \label{figure405a}<br/>
+            \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20081026_12_composite}<br/>
+        }%<br/>
+        \subfigure[26 October 2008 16 UTC]{%<br/>
+           \label{figure405b}<br/>
+           \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20081026_16_composite}<br/>
+        }\\ %  ------- End of the first row ---------------------...</p>
+</li>
+<li>
+<p class="binderItem"><strong>4.5.2 Results</strong><br/>###Results[res-452]###<br/>
+<br/>
+Figure ([](#figure420)) illustrates the effects of changing grid spacing for potential temperature, water vapor mixing ratio, wind speed, and wind direction. Potential temperature and moisture values were initially lower than observational and OU-LES data, consistent with findings in the other studied CBL cases. or all schemes, the WRF model predicted values for potential temperature that were lower than observational and OU-LES data for the first half of the simulation p...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>4.6 Case 4: February 5, 2009</strong><br/>##Case 4: February 5, 2009[feb5-46]##</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>4.6.1 Meteorological Conditions</strong><br/>###Meteorological Conditions[mc-461]###<br/>
+<!--<br/>
+\begin{figure}[H]<br/>
+     \begin{center}<br/>
+%<br/>
+        \subfigure[5 February 2009 12 UTC]{%<br/>
+            \label{figure407a}<br/>
+            \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20090205_12_composite}<br/>
+        }%<br/>
+        \subfigure[5 February 2009 16 UTC]{%<br/>
+           \label{figure407b}<br/>
+           \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20090205_16_composite}<br/>
+        }\\ %  ------- End of the first row ----------------------...</p>
+</li>
+<li>
+<p class="binderItem"><strong>4.6.2 Results</strong><br/>###Results[res-462]###<br/>
+<br/>
+Figure ([](#figure428)) illustrates the effects of changing grid spacing for potential temperature, water vapor mixing ratio, wind speed, and wind direction. Potential temperature and moisture values were initially lower than observational and OU-LES data, similar to findings in other considered CBL cases. This may likely demonstrate that the WRF model SL/PBL parameterization schemes struggle under stable conditions. For all schemes, the WRF model predicted values for pot...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>4.7 Case 5: May 31, 2009</strong><br/>##Case 5: May 31, 2009[may31-47]##</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>4.7.1 Meteorological Conditions</strong><br/>###Meteorological Conditions[mc-471]###<br/>
+<br/>
+<!--<br/>
+\begin{figure}[H]<br/>
+     \begin{center}<br/>
+%<br/>
+        \subfigure[31 May 2009 12 UTC]{%<br/>
+            \label{figure409a}<br/>
+            \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20090531_12_composite}<br/>
+        }%<br/>
+        \subfigure[31 May 2009 16 UTC]{%<br/>
+           \label{figure409b}<br/>
+           \includegraphics[width=0.5\textwidth]{figures/chapter4/ruc_20090531_16_composite}<br/>
+        }\\ %  ------- End of the first row ----------------------%<br/>
+     ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>4.7.2 Results</strong><br/>###Results[res-472]###<br/>
+<br/>
+Figure ([](#figure436)) illustrates the effects of changing grid spacing for potential temperature, water vapor mixing ratio, wind speed, and wind direction. Unlike the previous four studied CBL cases, potential temperature values matched closely with those recorded by observations. However, moisture values remained comparatively low at the beginning of the simulation window versus observational and OU-LES data. Apparently, the employed PBL schemes in the WRF model still ...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>4.8 Discussion</strong><br/>##Discussion[dis-48]##<br/>
+<br/>
+Previous studies have suggested that, for scale ranges characteristic of CBL processes, the validity of commonly employed subgrid turbulence parameterization is questionable for model applications with grid spacing in the \\(1\\) to \\(4\\) \\(\kilo\metre\\) range. While this feature of model performance is not novel, the goal was to demonstrate and quantify implications of running the WRF model with such grid spacings for prediction of near-surface turbulent flow paramet...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>5 Idealized Large Eddy Simulation Experiments</strong><br/>#Idealized Large Eddy Simulation Experiments[les-5]#<br/>
+<br/>
+The WRF model has evolved toward a self-contained numerical weather prediction system, capable of modeling atmospheric motions ranging from global to microscales. The promise of such capability is appealing to both operational and research environments where accurate prediction of turbulence is increasingly desirable. However, the ability of the WRF model to adequately reproduce small-scale atmospheric motions in the range of scales on the or...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>5.1 Experimental Design</strong><br/>##Experimental Design[ed-51]##<br/>
+<br/>
+Identical <!--$10.24 \times 10.24 \times 2 \: \kilo\metre\cubed$--> numerical domains were used for runs with both code. Isotropic grid spacing was used, with <!--$\Delta x = \Delta y = \Delta z$--> being varied between <!--$20, 40,$--> and <!--$80\: \metre$-->. At the lower boundary, Monin-Obukhov flux-profile relationships were used [#MO, Dyer], Rayleigh damping was applied in the upper portion of the simulation domain, and lateral boundaries were periodic. Simu...</p>
+</li>
+<li>
+<p class="binderItem"><strong>5.2 Verification Techniques</strong><br/>##Verification Techniques[vt-52]##<br/>
+<br/>
+This study includes several velocity field statistics of interest. Data depicted in the horizontal plane were taken at the level of \\(z / z_i = 0.25\\), where \\(z\\) is the height above ground level (AGL) and \\(z_i\\) is the depth of the boundary layer. This height was chosen in order to eliminate direct anisotropic effects of the surface on the flow field while remaining in the general near-surface region. <br/>
+<br/>
+Horizontal slices of \\(u\\) and \\(w\\) perturb...</p>
+</li>
+<li>
+<p class="binderItem"><strong>5.3 Results</strong><br/>##Results[res-53]##<br/>
+<br/>
+Results for the evaluated fields described in Section [](#ed-51) are presented for both the shear-free and shear-driven CBL cases. Behavior was generally consistent across disparate grid spacings. Accordingly, results are only shown for the finest grid spacing simulations. All fields are shown for the final hour of simulation. Planar slices depict the instantaneous velocity field at the final moment of the simulations described in Section [](#ed-51). Histograms represent the...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>5.3.1 Resolved Fields</strong><br/>###Resolved Fields[resolve-531]###<br/>
+<br/>
+Instantaneous contours of perturbation \\(x\\)-component of velocity (\\(u\\))in the horizontal plane are shown in Fig. ([](#figure502)). Values for the shear-free case are located in the upper two panels, with OU-LES on the left and WRF-LES on the right. Both simulations appear visually similar, depicting random, evenly distributed velocity fields as expected in the absence of a mean wind. Further inspection reveals that WRF-LES is seemingly skewed toward bro...</p>
+</li>
+<li>
+<p class="binderItem"><strong>5.3.2 One-Dimensional Spectra</strong><br/>###One-Dimensional Spectra[spec1d-532]###<br/>
+<br/>
+For all spectral calculations, averaging  occurred in both space and time. At each model output time, spectra were calculated for every row in the direction of interest and subsequently averaged, representing the spatial mean. The resultant spatial means were then averaged over hourly increments, representing the temporal mean. The temporal- and spatial-averaged normalized one-dimensional spectral densities of \\(u\\) component of velocity are shown in ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>5.3.3 Two-Dimensional Spectra</strong><br/>###Two-Dimensional Spectra [spectra2d-533]###<br/>
+<br/>
+Further understanding of the one-dimensional spectra results may be gained from normalized two-dimensional spectral densities of \\(u\\) component of velocity shown in Fig. ([](#figure506)). Longitudinal direction is along \\(x\\) and transversal direction is along \\(y\\). In wavenumber space, these directions correspond to \\(k_1\\) and \\(k_2\\), respectively. Spectral scales are thus largest in the center of the spectral plot and decrease outwar...</p>
+</li>
+<li>
+<p class="binderItem"><strong>5.3.4 Additional Turbulence Statistics</strong><br/>###Additional Turbulence Statistics[turb-stats-534]###<br/>
+<br/>
+To ween additional insight into the behavior exhibited by velocity spectra, associated velocity turbulence statistics are shown in the subsequent section. Histograms of velocity components across the final hour of the simulation window are demonstrated in Fig. ([](#figure508)) Panels (a), (b), and (c) correspond to the perturbations (deviations from the average value) of \\(u\\), \\(v\\), and \\(w\\) components of velocity  for the shear-fr...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>5.4 Discussion</strong><br/>##Discussion[dis-54]##<br/>
+<br/>
+Idealized large eddy simulations of turbulent flow in the atmospheric convective boundary layer were conducted for differing flow types, shear-free and shear-driven. Differences in behavior were minor across disparate uniform grid spacings of \\(20 \metre\\) to \\(20 \metre\\). Subsequently, results were analyzed in depth only for the finest-scale (\\(20\metre\\)) simulations. Sample slices of instantaneous velocity fields were exposed for visual inspection. While a curso...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>6 Real-Data Large Eddy Simulation Experiments</strong><br/>#Real-Data Large Eddy Simulation Experiments[nudge-6]#<br/>
+<br/>
+It was shown in Chapter [](#mesoscale-4) that the WRF model, when run in a mesoscale configuration, is capable of predicting mean values of common near-surface meteorological fields that compare closely with observational data. However, upon further inspection of various turbulence parameters, it was demonstrated that the WRF model produces values that are often inconsistent with both observational data and output from a traditional LES cod...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>6.1 Experimental Design</strong><br/>##Experimental Design[ed-61]##<br/>
+</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>6.1.1 WRF-LES: Nested Configuration</strong><br/>###WRF-LES: Nested Configuration[nest-611]###<br/>
+<br/>
+As outlined out by [#Talbot2012;], it is an important component of this study to investigate the WRF model when used in LES mode for conditions representing realistic atmospheric scenarios:<br/>
+<!--<br/>
+\begin{quote}<br/>
+\OUsinglespace<br/>
+However, tests of the skill of WRF-LES in nested real- world simulations are still rare and are critically needed in view of the increasing and broadening use of the model. The challenges in performing such simulations are often ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>6.1.2 OU-LES: Nudged Configuration</strong><br/>###OU-LES: Nudged Configuration[nudge-611]###<br/>
+<br/>
+The LES approach is quite amenable to reproducing turbulent motions within the CBL. However, the technical implementations surrounding their use present issues when employed for realistic environmental forcings. As mentioned previously, lateral boundaries are assumed periodic, a condition rarely met in the atmosphere. Additionally, LES domains are generally disconnected from large-scale forcings and local terrain properties, which leaves predictions...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>6.2 Results: June 7, 2007</strong><br/>##Results: June 7, 2007[res-62]##<br/>
+<br/>
+The first case chosen for the real-data LES experiment corresponds to Case 1 (described in Section [](#june7-43)) in the mesoscale study. This day was chosen because conditions present are representative of the CBL type that is known to be confidently reproduced by the OU-LES code. The day was marked by a clear and dry CBL, with strong surface heating and moderate to strong winds. Throughout the course of the simulation period, a dryline passed through the comp...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>6.2.1 Basic Meteorological Fields</strong><br/>###Basic Meteorological Fields[basic-621]###<br/>
+<br/>
+Figure ([](#figure601)) illustrates a meteogram (timeline trace) of basic meteorological variables derived from WRF-LES output, OU-LES data, and measurements at the Lamont site. Compared with the observational data, the RN-LES values for potential temperature were too large for the first one-third of the simulation period. After this time, the predictions were largely consistent with the NN-LES values. Conversely, the WN-LES values matched more close...</p>
+</li>
+<li>
+<p class="binderItem"><strong>6.2.2 Resolved Fields</strong><br/>###Resolved Fields[resolve-622]###<br/>
+<br/>
+Instantaneous contours of perturbation \\(x\\)-component of velocity (\\(u\\))in the horizontal plane are shown in Fig. ([](#figure604)) for NN-LES (panel a), RN-LES (panel b), WN-LES (panel c), and WRF-LES (panel d). All three OU-LES solutions appear visually similar, depicting strong positive values resulting from the relatively strong mean wind. In the case of RN-LES data, however, those areas of increased velocity values are more intense than those from NN...</p>
+</li>
+<li>
+<p class="binderItem"><strong>6.2.3 One-Dimensional Spectra</strong><br/>###One-Dimensional Spectra[spec1d-623]###<br/>
+<br/>
+To recap, averaging took place in both space and time for all spectral calculations. At each model output time, spectra were calculated for every row in the direction of interest and subsequently averaged, representing the spatial mean. The resultant spatial means were then averaged over hourly increments, representing the temporal mean. The temporal- and spatial-averaged normalized one-dimensional spectral densities of \\(u\\) component of velocity are...</p>
+</li>
+<li>
+<p class="binderItem"><strong>6.2.4 Two-Dimensional Spectra</strong><br/>###Two-Dimensional Spectra [spectra2d-624]###<br/>
+<br/>
+Figure ([](#figure608)) depicts the normalized two-dimensional spectral densities of \\(u\\) component of velocity. Longitudinal direction is along \\(x\\) and transversal direction is along \\(y\\). In wavenumber space, these directions correspond to \\(k_1\\) and \\(k_2\\), respectively. Spectral scales are thus largest in the center of the spectral plot and decrease outward. Contours represent increasing values of spectral density toward the cent...</p>
+</li>
+<li>
+<p class="binderItem"><strong>6.2.5 Additional Turbulence Statistics</strong><br/>###Additional Turbulence Statistics[turb-stats-625]###<br/>
+<br/>
+Histograms of velocity components across the final hour of the simulation period are demonstrated in Fig. ([](#figure610)). Standard deviations of horizontal velocity are largest for RN-LES and WRF-LES configurations, while NN-LES and WN-LES values are the smallest. Skewness values for RN-LES and WRF-LES are both positive, indicating that a bulk of the values negative. However, kurtosis for WRF-LES is large and platykurtic, while for RN-LES...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>6.3 Results: October 26, 2008</strong><br/>##Results: October 26, 2008[res-63]##<br/>
+<br/>
+The second case chosen for the real-data LES experiments corresponds to Case 3 (described in Section [](#oct26-45)) in the mesoscale study. This day was selected because the prevailing conditions are also representative of the CBL type that is known to be confidently reproduced by the OU-LES code. The day was marked by a clear and dry CBL, with modest surface heating and strong winds. Throughout the course of the simulation period, a weak cold front progres...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>6.3.1 Basic Meteorological Fields</strong><br/>###Basic Meteorological Fields[basic-631]###<br/>
+<br/>
+Figure ([](#figure615)) illustrates a meteogram (timeline trace) of basic meteorological variables derived from WRF-LES output, OU-LES data, and measurements at the Lamont site. Compared with the observational data, the RN-LES values for potential temperature are once again too large for the first one-third of the simulation period. After this time, the predictions matched the semi-diurnal trend of the observational data, though values remained too l...</p>
+</li>
+<li>
+<p class="binderItem"><strong>6.3.2 Resolved Fields</strong><br/>###Resolved Fields[resolve-632]###<br/>
+<br/>
+Instantaneous contours of perturbation \\(x\\)-component of velocity (\\(u\\))in the horizontal plane are shown in Fig. ([](#figure618)) for NN-LES (panel a), RN-LES (panel b), WN-LES (panel c), and WRF-LES (panel d). All three OU-LES solutions appear visually similar, depicting intermittent velocity fields associated with the post-frontal environment present in the considered CBL case. However, data from the NN-LES configuration depicts a more patchy velocity...</p>
+</li>
+<li>
+<p class="binderItem"><strong>6.3.3 One-Dimensional Spectra</strong><br/>###One-Dimensional Spectra[spec1d-633]###<br/>
+<br/>
+The temporal- and spatial-averaged normalized one-dimensional spectral densities of \\(u\\) component of velocity are shown in Fig. ([](#figure620)). Once again,  averaging took place in both space and time for all spectral calculations. At each model output time, spectra were calculated for every row in the direction of interest and subsequently averaged, representing the spatial mean. The resultant spatial means were then averaged over hourly incremen...</p>
+</li>
+<li>
+<p class="binderItem"><strong>6.3.4 Two-Dimensional Spectra</strong><br/>###Two-Dimensional Spectra [spectra2d-634]###<br/>
+<br/>
+Figure ([](#figure622)) depicts the normalized two-dimensional spectral densities of \\(u\\) component of velocity. Longitudinal direction is along \\(x\\) and transversal direction is along \\(y\\). In wavenumber space, these directions correspond to \\(k_1\\) and \\(k_2\\), respectively. Spectral scales are thus largest in the center of the spectral plot and decrease outward. Contours represent increasing values of spectral density toward the cent...</p>
+</li>
+<li>
+<p class="binderItem"><strong>6.3.5 Additional Turbulence Statistics</strong><br/>###Additional Turbulence Statistics[turb-stats-635]###<br/>
+<br/>
+Standard deviations of horizontal velocity are primarily consistent between all considered schemes, with values generally not exceeding approximately \\(1\, \metre\reciprocal\second\\). Skewness values for all OU-LES configurations are small and negative, while that from WRF-LES is larger and positive. Accordingly, the bulk of the OU-LES based solutions are positive, while a larger portion of the WRF-LES domain is driving by negative values...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>6.4 Discussion</strong><br/>##Discussion[dis-64]##<br/>
+<br/>
+Large eddy simulations of turbulent flow were conducted for two cases (Cases 1 and 3, Section [](#mesoscale-4)) of a clear and dry CBL developing over the central plains of the United States and were compared with observational data. The first approach for this study was the use of WRF-LES. The examination of the WRF model’s capabilities in this function have thus far been limited. The importance of testing real-world applications of WRF-LES has been stated in recent publ...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>7 Summary and Conclusions</strong><br/>#Summary and Conclusions[summary-7]#</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>7.1 Final Remarks</strong><br/>##Final Remarks[remarks-71]##<br/>
+<br/>
+<br/>
+As the trend in numerical weather prediction continues toward finer and finer grid meshes, the ability to reproduce credible small-scale spatial variability of meteorological fields becomes increasingly appealing to both operational and research environments. For instance air pollution dispersion, wave propagation,  CBL dynamics, urban microclimates, thunderstorm initiation and maintenance, and the influence of land characteristics on exchanges between the atmosph...</p>
+</li>
+<li>
+<p class="binderItem"><strong>7.2 Future Research</strong><br/>##Future Research[future-72]##<br/>
+<br/>
+Moving forward, future research efforts should focus on the deficiencies laid out in the study in order to enable mesoscale numerical model codes to more accurately reproduce near-surface turbulence features across a broader range of spatial scales. One such effort may require a fundamental shift in the assumptions that drive the parameterization of CBL motions. This is especially true for the range of scales where it remains unclear as to whether flow features ar...</p>
+</li>
+</ul>
+</ul>
+
+</td>
+<td width="8">
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

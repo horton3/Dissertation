@@ -1,0 +1,60 @@
+\documentclass[letter,12pt,dissertation]{OUdissertation6}
+\usepackage{graphicx, subfigure} %allows .eps and .epsi graphics to be inserted
+\usepackage{epic} %allows use of latex graphics
+\usepackage{eepic} %allows use of latex graphics
+\usepackage{amssymb,amsmath}
+\usepackage{amsfonts}
+\usepackage[amssymb]{SIunits}
+\usepackage{multirow}
+\usepackage{psfrag}
+\usepackage{float}
+\usepackage{bar}
+\usepackage{rotating}
+\let\autoref\ref
+
+
+% Brian added this on July 15 2006 from suggestion of Di Jin:
+\usepackage[centerfoot]{pageno}
+\usepackage{natbib} %with amermeteorsoc.bst
+%% For AMS,citations should be of the form ``author year''  not ``author, year'':
+\bibpunct{(}{)}{;}{a}{}{,}
+
+\newcommand{\be}{\begin{equation}} %these definitions save typing
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\pd}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\pdd}[3]{\frac{\partial^{2}#1}{\partial#2 \partial#3}}
+\newcommand{\bse}{\begin{subequations}}
+\newcommand{\ese}{\end{subequations}}
+\def\bal#1\eal{\begin{align}#1\end{align}}%allows for shortcut to align
+\begin{document}
+\title{DOWNSCALING TECHNIQUES FOR RETRIEVAL OF NEAR-SURFACE METEOROLOGICAL FIELDS AND TURBULENCE PARAMETERS FROM ATMOSPHERIC NUMERICAL MODEL OUTPUTS}
+\author{JEREMY ALAN GIBBS}
+\depositdate{2012}
+\majorfield{SCHOOL OF METEOROLOGY}
+\memberone{Prof. Evgeni Fedorovich}
+\membertwo{Dr. Alexander van Eijk}
+\memberthree{Prof. Lance Leslie}
+%next two members are used in dissertation
+\memberfour{Prof. Xuguang Wang}
+\memberfive{Prof. Boris Apanasov}
+%%%%
+\begin{preface}
+\prefacesectionX{Dedication}
+Dedicate this to some people.
+
+\prefacesectionX{Acknowledgements}
+Acknowledge some people.
+%must leave a blank line next to avoid bug:
+
+\tableofcontents
+\listoftables
+\listoffigures
+\prefacesection{Abstract}
+The Weather Research and Forecasting (WRF) model has evolved toward a self- contained numerical weather prediction system, capable of modeling atmospheric motions ranging from global to microscales. The promise of such capability is appealing to both operational and research user communities for which accurate prediction of turbulence effects is increasingly desirable. Air pollution applications, for instance, rely on accurate representation of the dispersive role of small-scale atmospheric motions. On the other hand, many remote sensing applications depend on the accurate description of propagation of electromagnetic and acoustic waves in the turbulent atmosphere. The question of how best to adequately represent small-scale atmospheric motions in the range of scales of the order of 100 m and less based on numerical model output, remains a topic of debate.
+
+Several methods have been evaluated in the reported study with a goal to identify an optimal approach to reproduce realistic near-surface flow fields and turbulence parameters using the mesoscale numerical model output. The focus of the study was primarily on the daytime flow fields corresponding to the convective boundary layer (CBL) conditions. A straightforward application of the WRF model in a traditional mesoscale configuration was the first evaluated approach. The WRF model applied in the large eddy simulation (LES) mode was another evaluated model configuration. This WRF-LES approach is not, however, without its share of performance concerns, particularly with respect to reproducibility of the smallest resolvable scales of motion. Approaches were also explored that are based on using the outputs of mesoscale models (including the WRF model) to nudge high-resolution LES of boundary-layer flows to realistic mesoscale environments. For this purpose, the OU-LES code was employed. Historically, this code has proven to be adequate for the reproduction of idealized CBL flows, but its technical implementation limits applicability to real-world situations.
+
+Mean fields of meteorological quantities predicted by the WRF model in a mesoscale configuration generally compare favorably with observational and LES data. However, inspection of near-surface turbulence characteristics indicates that the model fails to adequately reproduce the spatial variability associated with atmospheric turbulence. Results from the WRF-LES indicate that the model tends to attribute more energy to larger-scale components of motion as compared to the conventional LES. Consequently, the WRF model fails to adequately reproduce spatial variability within sufficiently broad scale ranges. Spectra from the WRF model have narrower inertial subranges and point to over-dissipation on small scales of turbulent motion. Employment of the high-resolution OU-LES driven by the output of the WRF model run in the mesoscale-mode yielded the overall best results in terms of predicting near-surface turbulence parameters. This approach appears to be a best compromise in generating accurate bulk meteorological quantities and realistic turbulence statistics across a broad range of turbulence scales.
+\end{preface}

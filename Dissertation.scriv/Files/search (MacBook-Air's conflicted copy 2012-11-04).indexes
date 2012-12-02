@@ -1,0 +1,2022 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SearchIndexes Version="1.0">
+    <Documents>
+        <Document ID="102">
+            <Title>3.6.4 TEMF</Title>
+            <Text>###TEMF[pbl-temf-364]###
+
+</Text>
+        </Document>
+        <Document ID="11">
+            <Title>OU-LES Intro</Title>
+            <Text>## The University of Oklahoma Large-Eddy Simulation ##
+
+Blah blah the history of the model, etc some shit.</Text>
+        </Document>
+        <Document ID="98">
+            <Title>4.5 Discussion</Title>
+            <Text>##Discussion[dis-45]##</Text>
+        </Document>
+        <Document ID="110">
+            <Title>3.2 Microphysics</Title>
+            <Text>##Microphysics[mp-32]##
+
+The microphysics package includes explicitly resolved water vapor, cloud, and precipitation processes. In the WRF model, microphysics is employed at the end of each time-step as an adjustment process. This guarantees that the final saturation balance is accurate for the updated temperature and moisture fields. In this respect, the microphysics schemes do not provide tendencies of such atmospheric quantities.
+
+The WRF Single Moment 6-class (WSM6) mixed-phase scheme was used as the MP option. According to [#Skamarock;], as a general rule, grids with horizontal spacing of \\(10\kilo\metre\\) or less, where updrafts may be resolved, a mixed-phase scheme should be employed. Mixed-phase processes are those that result from the interaction of ice and water particles. An example of such a process is riming, which produces graupel or hail. The six considered classes include vapor, rain, snow, cloud ice, cloud water, and graupel. The WSM6 parameterization uses a diagnostic relation for ice number concentration based on ice mass content rather than temperature, unlike many other MP schemes. The freezing/melting processes are computed during the fall-term sub-steps to increase accuracy in the vertical heating profile of these processes. The order of the processes is also optimized to decrease the sensitivity of the scheme to the model time-step. Saturation adjustment in WSM6 follows [#Dud89;] and [#Hong98;] in separately treating ice and water processes. This differs directly with the[#Lin;] scheme, which handles them as a combined process. The efficiency and theoretical backgrounds of the WSM6 scheme provide adequate reasoning for its use as the MP scheme.</Text>
+        </Document>
+        <Document ID="55">
+            <Title>4.3.1 June 7, 2007</Title>
+            <Text>###June 7, 2007[june7-431]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{figures/chapter4/ruc_20070607_18_composite}
+\end{center}
+\caption{Synoptic conditions taken from RUC analyses for June 7, 2007 18UTC. Surface pressure 
+($\hecto\pascal$) is the contoured quantity, surface temperature ($\kelvin$) is the shaded 
+quantity, and surface winds and $850\hecto\pascal$ winds ($\metre\per\second$) are the blue 
+and black wind barbs, respectively. The black square represents the comparison domain, while the 
+black star depicts the location of the Lamont, Oklahoma ARM profiler site.}
+\label{figure401}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/chapter4/20070607_lmnsounding}
+\end{center}
+\caption{Atmospheric soundings at the LMN site for 7 June 2007 (DL case): (a) potential temperature, (b) water vapor mixing ratio, (c) u component of wind, and (d) y component of wind. Solid, dashed, and dotted lines correspond, respectively, to 1200, 1800, and 0000 (following day) UTC.}
+\label{figure402}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="12">
+            <Title>OU-LES Eqns</Title>
+            <Text>### Governing Equations ###
+
+Write about governing equations</Text>
+        </Document>
+        <Document ID="99">
+            <Title>3.6.1 YSU</Title>
+            <Text>###YSU[pbl-ysu-361]###
+
+[#Hong06;] proposed a next generation PBL scheme to that in the Medium Range Forecast (MRF) model.  This scheme is called the YSU scheme, named so because of its development at Yonsei University.  Given are the algorithms for both mixed-layer diffusion and for free-atmosphere diffusion.
+
+For the mixed-layer (\\(z \leq h\\)), where \\(h=\\) the boundary layer depth, the turbulence diffusion equation for any prognostic variable, a, is given by
+&lt;!--
+\bea
+\pd{a}{t} = \pd{}{z}\left[K_a\left(\pd{a}{z} - \gamma_a \right) - \overline{(w^{\prime}
+a^{\prime})}_h \left(\frac{z}{h} \right)^3 \right], \label{equation337}
+\eea
+\noindent
+--> where \\(K_a\\) is the associated eddy diffusivity, \\(\gamma_a\\) is the counter-gradient correction term, which incorporates the contribution of the large scale eddies to the total flux, and \\(\overline{(w^{\prime}a^{\prime})}_h\\) is the flux at the inversion layer.  This scheme is identical to the MRF scheme except that it now includes an asymptotic entrainment flux term at the inversion layer, \\(\overline{(w^{\prime}a^{\prime})}_h\left(\frac{z}{h} \right)^3\\).  In the MRF scheme, \\(h\\) was defined as the level at which boundary layer turbulent mixing diminishes.  The MRF scheme implicitly parameterized these entrainment processes by raising \\(h\\) above the minimum flux level.  The YSU scheme,however, explicitly treats the entrainment processes through the second term in (\ref{equation337}).  Thus, in the YSU scheme, \\(h\\) is defined as the level in which minimum flux exists at the inversion level.
+
+The momentum diffusivity coefficient is given by
+&lt;!--
+\bea
+K_m = \kappa w_s z\left(1 - \frac{z}{h}\right)^p, \label{equation338}
+\eea
+\noindent
+--> where \\(p\\) is the profile shape exponent, taken as 2, \\(\kappa\\) is the &lt;!--von K\'{a}rm\’{a}n--> constant, \\(z\\) is the height above the surface, \\(h\\) is the depth of the boundary layer, and \\(w_s\\) is the mixed layer velocity scale.  The counter-gradient term, \\(\gamma_a\\), is taken as
+&lt;!--
+\be
+\gamma_a = b\frac{\overline{(w^{\prime}a^{\prime})}_0}{w_{s0}h},\label{equation339}
+\ee
+\noindent
+--> where \\(\overline{(w^{\prime}a^{\prime})}_0\\) is the corresponding surface flux, \\(b\\) is a coefficient of proportionality, and \\(w_{s0}h\\) is the mixed-layer velocity scale defined as the velocity of \\(w_s\\) in (\ref{equation338}) at \\(z=0.5h\\).
+
+To ensure compatibility between the surface layer top and bottom of the boundary layer, the YSU scheme employs the same [#Dyer;] functions as employed in the MM5 similarity theory.  The entrainment flux is taken to be \\(-0.15\\) times the surface flux of buoyancy.  Given this buoyancy flux at the inversion layer, the flux at the inversion layer for prognostic variables is proportional to the jump of each variable across the inversion layer.  Thus, the fluxes are a function of the entrainment rate.  Again, \\(h\\) is determined as the first neutral level by checking the stability between the lowest model level and levels above.  \\(K_m\\) is ultimately found with \\(h\\), \\(w_{s0}\\), the entrainment fluxes, \\(\mathrm{Pr}\\), and the counter-gradient correction term.
+
+In the free atmosphere, YSU utilizes a local diffusion scheme, or the so-called local-K approach. Local-K theory is a method for parameterizing the effects of turbulent mixing based on how small eddies will mix quantities along a local gradient of the transported quantity. The YSU scheme also defines an entrainment zone in which penetration of the entrainment flux above \\(h\\) is considered along with the local-K approach.  Above this entrainment zone, the local-K method is considered alone.
+
+Momentum and mass fluxes within the entrainment zone are defined as function of \\(\delta^{-1}\\), where \\(\delta\\) is the entrainment zone depth.  This depth can be approximated by
+&lt;!--
+\be
+\frac{\delta}{h} = d_1 + d_2\mathrm{Ri}^{-1}, \label{equation340}
+\ee
+-->
+where constant are set as \\(d_1=0.2\\) and \\(d_2=0.5\\). [#Hong06;] showed that the scheme is independent of \\(\delta\\).
+
+After the entrainment diffusivities are calculated, the diffusivities from local-K theory are computed using the gradient Richardson number, \\(\mathrm{Ri}\\), which is a function of momentum and mass fluxes.  The computed \\(\mathrm{Ri}\\) is bounded to \\(-100\\) to prevent unrealistically unstable regimes. Stability functions are found for both unstable and stable regimes, expressed in terms of \\(\mathrm{Ri}\\).  Once the local-K theory diffusivities are calculated, the total diffusivities for the entrainment zone is found by taking the geometric mean of \\(K_{ent}\\), the entrainment diffusivities and \\({K_{loc}}\\), the local-K diffusivities.  Above the entrainment zone, only the local-K theory applies, or in other words, \\(K=K_{loc}\\).  A small background diffusion is introduced (\\(.001\\) times the vertical grid length) so that the vertical eddy diffusivity, \\(K_v\\), is bounded by this and \\(1000\metre^2 \second^{-1}\\).  Now the diffusion equations for all prognostic variables are solved by an implicit numerical method.</Text>
+        </Document>
+        <Document ID="56">
+            <Title>4.3.2 September 27, 2008</Title>
+            <Text>###September 27, 2008[sept27-432]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{figures/chapter4/ruc_20080927_18_composite}
+\end{center}
+\caption{As in Fig. \ref{figure401}, but for 27 September 2008.}
+\label{figure403}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/chapter4/20080927_lmnsounding}
+\end{center}
+\caption{As in Fig. \ref{figure402}, but for 27 September 2008.}
+\label{figure404}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="103">
+            <Title>3.5.1 MM5</Title>
+            <Text>###MM5[sl-mm5-351]###
+
+Relations between \\(\phi\\) functions and \\(\zeta\\) were experimentally estimated by [#Dyer;] for the three major stability regimes discussed in [#Zhang;]. The regimes are classified as: stable (\\(\mathrm{Ri} > 0.2\\)), damped mechanical turbulence (\\(0.2 > \mathrm{Ri} > 0\\)), and forced convection (\\(\mathrm{Ri} \leq 0\\)). Here, \\(\mathrm{Ri}\\) is the Richardson number, which is the ratio of buoyancy forces to inertial forces. For the stable regime, it assumed that no turbulence exists. Subsequently, based on this premise, the damped mechanical regime is described as stable in nature and the forced convection regime is considered to be unstable.
+
+For unstable conditions (\\(\zeta &lt; 0\\)), when the gradient Richardson number is approximated as \\(\mathrm{Ri} = \zeta\\), the \\(\phi\\) functions are given by
+&lt;!--
+\bse \label{equation321}
+\bal
+\phi_m &amp;= \left[1 - 16\zeta\right]^{-\frac{1}{4}} \mbox{\quad and} \label{equation321a} \\
+\phi_h &amp;= \left[1 - 16\zeta\right]^{-\frac{1}{2}} \mbox{ .} \label{equation321b}
+\eal
+\ese
+-->
+
+For stable conditions (\\(\zeta > 0\\)), with \\(\frac{\mathrm{Ri}}{1-5\mathrm{Ri}} = \zeta\\),
+&lt;!--
+\bse \label{equation322}
+\bal
+\phi_m &amp;= 1 + 5\zeta \mbox{\quad and} \label{equation322a}\\
+\phi_h &amp;= 1 + 5\zeta \mbox{ .} \label{equation322b}
+\eal
+\ese
+-->
+
+Fluxes can then be found using the ``flux-gradient relationship" as described in Section ([](#surface-layer-35)). Since gradients are defined and the profiles are approximated by the [#Dyer;] functions, SL turbulence velocity and temperature scales can be prescribed following Eq. ([](#equation317)). Once the surface layer scales are known, turbulent fluxes of heat and momentum are calculated according to Eq. ([](#equation318)).
+
+[#Paulson;] found that the relationships given by [#Dyer;] performed better compared with those from either a log-linear approximation or those from [#Pan63;]. The reasoning for this conclusion is that the Dyer approximation sets \\(\alpha = 1/\phi_m\\), where \\(\alpha = K_h/K_m\\) is the inverse turbulent Prandtl number, while other calculations assumed \\(\alpha\\) to be unity. Here \\(K_h\\) and \\(K_m\\) refer the heat and momentum eddy diffusivities, respectively. The Dyer and Panofsky formulations faired similarly in wind profiles, but the Dyer formulation produced more realistic temperature profiles. This is a direct result of Dyer allowing \\(\alpha\\) to vary as a function of stability.
+
+For water surfaces, surface roughness height must be separately considered from that over land, in which \\(z_0\\) is defined from the land use category. With small capillary waves, the surface may be considered smooth and the Reynolds number is approximated as \\(\mathrm{Re} = z_0 u_*/\nu \ll 1 \simeq 0.1 \\).  Here, \\(\nu\\) represents the kinematic molecular viscosity. The water surface is considered fully rough when \\(\mathrm{Re} \gg 1\\). Here, the MM5 surface layer scheme implements a Charnock relation, which links the roughness length to friction velocity over water points:
+&lt;!--
+\be
+z_0 = \frac{\alpha_c u_*^2}{g} \mbox{ ,} \label{equation323}
+\ee
+\noindent
+--> where \\(\alpha_c = 0.14\\) is the Charnock constant.
+ 
+No thermal roughness length parameterization is included to address the flux consistency dilemma detailed in ([](#surface-layer-35)). A convective velocity accounting for the free convection regime following [#Beljaars;] is used to ensure non-vanishing surface fluxes of heat and moisture. This is needed because under free convection conditions, surface stresses approach zero and thusly so do surface fluxes. The convective velocity is simply a correction term added to the velocity, which guarantees a non-zero surface stress. The MM5 SL parameterization must be implemented juxtaposed with the Yonsei University (YSU) PBL scheme.</Text>
+        </Document>
+        <Document ID="13">
+            <Title>OU-LES Turb</Title>
+            <Text>### Turbulence Closure ###
+
+Write about Deardorff (1980) closure.</Text>
+        </Document>
+        <Document ID="111">
+            <Title>3.3 Atmospheric Radiation</Title>
+            <Text>##Atmospheric Radiation[ar-33]##
+
+Atmospheric radiation schemes account for atmospheric heating due to radiative flux divergence and surface downward longwave and shortwave radiation for the ground heat budget.  Every radiation scheme is a one-dimensional column model, where each column is treated independently and the associated fluxes correspond to those in infinitely horizontally uniform planes.  Longwave radiation includes infrared radiation absorbed and emitted by gases and surfaces. Upward longwave radiation flux from the ground is determined by the surface emissivity that in turn depends on land use type, as well as the ground temperature.  Shortwave radiation includes visible and surrounding wavelengths that make up the solar spectrum.  In this regard, the only source of shortwave radiation is the sun.  However, processes include absorption, reflection, and scattering in the atmosphere and at surfaces.  For shortwave radiation, the upward flux is the reflection due to surface albedo.  Within the atmosphere the radiation responds to model-predicted cloud and water vapor distributions, as well as specified carbon dioxide, ozone, and trace gas concentrations.  Atmospheric radiation schemes provide potential temperature tendencies.
+
+The shortwave radiation scheme used was the [#Dud89;] parameterization. Originally in The Pennsylvania State University (PSU) 5th-Generation Mesoscale Model (MM5), the scheme has simple downward integration of solar flux, accounting for clear-air scattering, water vapor absorption, and cloud albedo and absorption.
+
+The longwave radiation scheme employed was the rapid radiative transfer model (RRTM) [#RRTM;]. Taken from MM5, RRTM is a spectral-band scheme using the correlated-k method.  The scheme utilizes pre-set tables to accurately represent longwave processes due to water vapor, ozone, carbon dioxide, and trace gases, as well as accounting for cloud optical depth.
+</Text>
+        </Document>
+        <Document ID="57">
+            <Title>4.3.3 October 26, 2008</Title>
+            <Text>###October 26, 2008[oct26-433]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{figures/chapter4/ruc_20081026_18_composite}
+\end{center}
+\caption{As in Fig. \ref{figure401}, but for 26 October 2008.}
+\label{figure405}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/chapter4/20081026_lmnsounding}
+\end{center}
+\caption{As in Fig. \ref{figure402}, but for 26 October 2008.}
+\label{figure406}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="80">
+            <Title>Untitled</Title>
+        </Document>
+        <Document ID="14">
+            <Title>OU-LES Time</Title>
+            <Text>### Time Discritization ###
+
+Write about discritization here.</Text>
+        </Document>
+        <Document ID="104">
+            <Title>3.5.2 Janjic</Title>
+            <Text>###Janjic[sl-janjic-352]###
+
+This surface layer scheme is also based on [#MO;] similarity theory, with adjustments following [#Jan94,Jan96,Jan02;].  The scheme assumes that turbulent fluxes are constant with height and that boundary conditions are to be prescribed at two levels, \\(z_1\\) and \\(z_2\\).  After following a similar path described in the previous section, Janjic reaches a relation in the form
+&lt;!--
+\be
+S_2 - S_1 = \left[\frac{F}{u_* \kappa}\right] \Phi_f, \label{equation324}
+\ee
+\noindent
+--> where \\(S_{1,2}\\) are prognostic variables at height \\(z_{1,2}\\), \\(F\\) is the corresponding kinematic flux, \\(\kappa\\) is &lt;!--von K\'{a}rm\’{a}n--> constant, and \\(\Phi_f\\) is a function comprised of integral and stability functions.  As an example, if \\(S=u\\), and \\(F=\overline{w^{\prime}u^{\prime}}\\), from Eq. ([](#equation324))
+&lt;!--
+\bse \label{equation325}
+\bal
+u_2 - u_1 &amp;= \left[\frac{\overline{w^{\prime}u^{\prime}}}{u_* \kappa}\right]\Phi_m \mbox{ .}
+\eal
+\ese
+\noindent
+--> The turbulence velocity scale, \\(u_*\\), is often approximated as \\((-\overline{w^{'}u^{'}}^\frac{1}{2})\\), which leads to 
+&lt;!--
+\bse
+\bal
+u_2 - u_1 &amp;= \left(\frac{u_*}{\kappa}\right) \Phi_m. \label{equation326}
+\eal
+\ese
+-->
+
+If \\(z_1\\), \\(z_2\\), \\(u_1\\), \\(u_2\\), and the Obukhov length \\(L\\) are known, both \\(u_*\\) and \\(\overline{w^{\prime}u^{\prime}}\\) can be found.  The issue is that \\(L\\) is generally unknown along with the fact that Eq. ([](#equation324)) is highly implicit.  Accordingly, \\(L\\) is often times approximated as a function of \\(\mathrm{Ri_b}\\), the bulk Richardson number, which approximates \\(\mathrm{Ri}\\) by estimating local gradients through finite differences of meteorological variables across layers. An iterative approach is then employed to solve for the bulk exchange coefficients in which Janjic claims convergence with no more than three iterations, as a general rule.  Over land however, the scheme replaced \\(\Phi_f\\) stability functions with those from [#Dyer;] and [#Paulson;]. Under stable conditions, \\(\overline{w^{'}\theta_v^{'}}\\) becomes very large and negative, meaning that \\(L\\) goes towards zero. An upper limit is placed on \\(\zeta\\) to ensure that in such cases, surface fluxes are non-vanishing. At the unstable regime, the [#Beljaars;] correction is applied to prevent the singularity in the case of an unstable surface layer with vanishing winds.  In this case, \\(L\\) goes to zero due to the vanishing winds. The correction prevents such behavior by converting a fraction of the surface buoyancy flux to kinetic energy of the near-surface winds.  
+
+As stated previously, appreciation of the similarity theory requires specification of upper and lower boundary limits, \\(\zeta = z/L\\) and \\(\zeta_0 = z_0/L\\). The upper limit is taken at the first model level. It is assumed that the considered flow variables follow a logarithmic form as the lower boundary is approached and take their lower boundary values at the roughness height \\(z_0\\).
+
+The Janjic version of similarity theory states that the processes near the surface are not that straightforward.  Within the thin layer of air next to the surface there is not enough space for turbulent eddies to develop such that molecular transport dominates.  In reality, this molecular transport can significantly affect the surface fluxes and thusly the PBL evolution.  To account for this, an implicit viscous sub-layer following [#Zilit;] is employed over land and an explicit viscous sub-layer is implemented according to [#Jan94;] over water.
+
+The [#Zilit;] method defines different roughness heights for different variables, possibly dependent on flow regimes.  The basic concept in this method is to relate the roughness height for momentum to the roughness height for mass.  For example, the equation for potential temperature in the SL may be given by \\(\theta(z) = \theta_0 + f(z_0)\\).  The problem is that in this case, \\(\theta_0\\) is not necessarily the surface value of potential temperature, but rather an integration constant.  Thus the need to relate the two roughness heights.  This method improves the surface flux representation not accounted for in the previous methods.
+
+Over water, the [#Jan94;] method explicitly defines a viscous sub-layer.  This method assumes that there are two distinct layers: a thin viscous sub-layer where vertical transports are only defined by molecular diffusion, and a turbulent layer on top of the sub-layer where vertical transports are only defined by turbulent fluxes.  The method also assumes that the fluxes are continuous across these layers.  A set of equations used to compute the height of the viscous sub-layer, along with fluxes at the sub-layer interface, allow for the lower boundary conditions to be taken at the computed heights as a weighted mean of the values at the surface and at the upper boundary.  This viscous sub-layer over water is assumed to operate in three distinct regimes: smooth and transitional, rough, and rough with spray.  When the Reynolds number reaches a prescribed threshold, the flow ceases to be smooth and the rough regime is entered. Here, the viscous sub-layer is turned off for momentum, but is left for moisture and heat.  When the Reynolds number reaches another prescribed level, the regime is rough with spray and the whole viscous sub-layer collapses.  In this regime, spray and breaking waves are assumed to provide a much more efficient method of exchange of heat and moisture between the water and air than could be accomplished from molecular diffusion alone. This surface layer scheme must run in conjunction with the Mellor-Yamada (Janjic) PBL scheme.</Text>
+        </Document>
+        <Document ID="58">
+            <Title>4.3.4 February 5, 2009</Title>
+            <Text>###February 5, 2009[feb5-434]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{figures/chapter4/ruc_20090205_18_composite}
+\end{center}
+\caption{As in Fig. \ref{figure401}, but for 5 February 2009.}
+\label{figure407}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/chapter4/20090205_lmnsounding}
+\end{center}
+\caption{As in Fig. \ref{figure402}, but for 5 February 2009.}
+\label{figure408}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="81">
+            <Title>Untitled</Title>
+        </Document>
+        <Document ID="15">
+            <Title>OU-LES Space</Title>
+            <Text>### Spatial Discritization ###
+
+Write about spatial discritization here.</Text>
+        </Document>
+        <Document ID="112">
+            <Title>3.4 Land Surface Model</Title>
+            <Text>##Land-Surface Model[lsm-34]##
+
+Land-surface models (LSMs) use atmospheric information from the SL scheme, radiative forcing from the radiation scheme, and precipitation forcing from the microphysics and convective schemes, together with internal information on the land's state variables and surface properties, to provide heat and moisture fluxes over land and sea-ice points. These fluxes provide a lower boundary condition for vertical transport done in the PBL schemes, or in the vertical diffusion scheme in which a PBL option is not employed, such as in LES mode. LSMs offer various degrees of sophistication in dealing with thermal and moisture fluxes in multiple soil layers and also may handle vegetation, root, and canopy effects along with snow-cover prediction. There is no horizontal interaction between neighboring points, so the LSM may be considered a one-dimensional column model. The LSM provides no tendencies, but does update the land's state variables which include the ground (skin) temperature, soil temperature profile, soil moisture profile, snow cover, and canopy properties.
+
+The Noah LSM is the successor to the OSU LSM described in [#ChenDud;]. The LSM was developed by both the National Center for Environmental Prediction (NCEP) and the National Center for Atmospheric Research (NCAR) and is almost identical to NCEP's operational North American Model (NAM). It was designed to be mutually beneficial to research and operational objectives. Noah is a 4-layer soil temperature and moisture model with canopy moisture and snow cover prediction. It includes root zone, evapotranspiration, soil drainage, and runoff, taking into account vegetation categories, monthly vegetation fraction, and soil texture. The scheme provides sensible and latent heat fluxes to the PBL scheme. Noah LSM improves upon the OSU LSM urban treatment and now considers surface emission properties. The sophistication of the Noah LSM as compared to the other LSM schemes made it an ideal candidate for the experiments contained in this study.</Text>
+        </Document>
+        <Document ID="59">
+            <Title>4.3.5 May 31, 2009</Title>
+            <Text>###May 31, 2009[may31-435]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{figures/chapter4/ruc_20090531_18_composite}
+\end{center}
+\caption{As in Fig. \ref{figure401}, but for 31 May 2009.}
+\label{figure409}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/chapter4/20090531_lmnsounding}
+\end{center}
+\caption{As in Fig. \ref{figure402}, but for 31 May 2009.}
+\label{figure410}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="82">
+            <Title>Untitled</Title>
+        </Document>
+        <Document ID="16">
+            <Title>WRF Intro</Title>
+            <Text>## The Weather Research and Forecasting Model ##
+
+Blah blah the history of the model, etc some shit.</Text>
+        </Document>
+        <Document ID="105">
+            <Title>3.5.3 MYNN</Title>
+            <Text>###MYNN[sl-mynn-353]###
+
+The Mellor-Yamada-Nakanishi-Niino (MYNN) surface layer scheme [#NN01, NN04, NN06] also makes use of the [#Dyer;] approximations given by Eqs. ([](#equation321)) and ([](#equation322)). Three major stability regimes are considered based on the bulk Richardson number, given by
+&lt;!--
+\be
+Ri_B = \frac{g z_1 (\theta_1 - \theta_g)}{\theta_r (U^2_1 + V^2_1)} \mbox{ ,} 
+\label{equation327}
+\ee
+\noindent
+--> where \\(\theta_g\\) is the skin potential temperature, \\(\theta_r\\) is a surface layer reference potential temperature, and \\(()_1\\) terms refer to atmospheric variables at the lowest explicit model level. The classifications are categorized exactly as described in Section [](#sl-mm5-351).
+
+The procedure to calculate \\(\zeta\\) follows that of [#Li2010;]. For unstable conditions (\\(Ri_B &lt; 0\\)):
+&lt;!--
+\bal
+\zeta  =&amp;  \mbox{ } a_{u11}\alpha Ri_B^2 \nonumber \\
+&amp;+ \left[\left(b_{u11}\beta + b_{u12}\right) \alpha^2 + \left(b_{u21}\beta + b_{u22}\right)\alpha + \left(b_{u31}\beta^2 + b_{u32}\beta + b_{u33}\right)\right] Ri_B \mbox{ ,}\label{equation328}
+\eal
+\noindent
+--> where \\(\alpha = \ln(z/z_o)\\), \\(\beta = \ln(z_o/z_{oh})\\), and the coefficients \\(a_{u11} = 0.0450\\), \\(b_{u11} = 0.0030\\), \\(b_{u12} = 0.0059\\), \\(b_{u21} = -0.0828\\), \\(b_{u22} = 0.8845\\), \\(b_{u31} = 0.1739\\), \\(b_{u32} = -0.9213\\), and \\(b_{u33} = -0.1057\\). 
+
+For damped mechanical turbulence (\\(Ri_B &lt; 0\\)):
+&lt;!--
+\bal
+\zeta =&amp; \mbox{ } \left[\left(a_{w11}\beta + a_{w12}\right) \alpha + \left(a_{w21}\beta + a_{w22}\right)\right] Ri_B^2 \nonumber\\ &amp;+ \left[\left(b_{w11}\beta + b_{w12}\right)\alpha + \left(b_{w21}\beta + b_{w22}\right)\right] Ri_B  \mbox{ ,}\label{equation329}
+\eal
+\noindent
+--> where  \\(a_{w11} = 0.5378\\), \\(a_{w12} = -0.4399\\), \\(a_{w21} = -4.901\\), \\(a_{w22} = 52.50\\), \\(b_{w11} = -0.0539\\), \\(b_{w12} = 1.540\\), \\(b_{w21} = -0.6690\\), and \\(b_{w22} = -3.282\\). 
+
+Finally, for stable conditions (\\(Ri_B &lt; 0\\)):
+&lt;!--
+\be
+\zeta = \left(a_{s11}\alpha + a_{s21}\right)Ri_B + b_{s11}\alpha b_{s21}\beta + b_{s22} \mbox{ ,} \label{equation330}
+\ee
+\noindent
+--> where \\(a_{s11} = 0.7529\\), \\(a_{s21} = 14.94\\), \\(b_{s11} = 0.1569\\), \\(b_{s21} = -0.3091\\), \\(b_{s22} = -1.303\\).
+
+The thermal and moisture roughness lengths over land are calculated following that from [#Zilit;]:
+&lt;!--
+\be
+z_T = z_q = z_o \exp \left(-\kappa C_z \sqrt{Re}\right) \mbox{ ,} \label{equation331}
+\ee
+\noindent
+--> where \\(\kappa = 0.4\\) is &lt;!--von K\'{a}rm\’{a}n--> constant and \\(C_z = 0.1\\) is the Zilitinkevich constant. Similarly, thermal and moisture roughness lengths are calculated over water following that from [#Fairall2003;]:
+&lt;!--
+\be
+z_T = z_q = \min \left(1.1\times10^{-4}, 5.5\times10^{-5} Re^{-0.6}\right) \mbox{.} \label{332}
+\ee
+\noindent
+--> Similar to the MM5 scheme, a convective velocity accounting for the free convection regime following [#Beljaars;] is used. In addition, a lower limit is placed on the turbulence velocity scale. Both are invoked in order to ensure non-vanishing surface fluxes of heat and moisture. 
+
+
+
+</Text>
+        </Document>
+        <Document ID="83">
+            <Title>Untitled</Title>
+        </Document>
+        <Document ID="17">
+            <Title>WRF Eqns</Title>
+            <Text>### Governing Equations ###
+
+Write about governing equations</Text>
+        </Document>
+        <Document ID="40">
+            <Title>3.5 October 26, 2008</Title>
+        </Document>
+        <Document ID="84">
+            <Title>Untitled</Title>
+        </Document>
+        <Document ID="106">
+            <Title>3.5.4 TEMF</Title>
+            <Text>###TEMF[sl-temf-354]###
+
+Similar to other surface layer schemes, the Total Energy-Mass Flux (TEMF; &lt;!--\citealt{Angevine2010}-->) scheme specifies fluxes that act as the lower boundary condition in the WRF model. Generally, these schemes assume a constant flux layer in order to apply similarity theory. The TEMF scheme, however, considers that the first model level may comprise a relatively large fraction of a shallow boundary layer. Thus, such a circumstance would likely invalidating the assumption that of a constant flux layer. Alternatively, the scheme calculates the lowest-level flux by linearly interpolating between the surface and the second model level. 
+
+The stability functions are parameterized using empirical data [#MS2007] and are cast in terms of the non-dimensional stress and heat flux,respectively, as 
+&lt;!--
+\bse \label{equation333}
+\bal
+f_{\tau} &amp;= 0.17\left[0.25 + 0.75\left(1 + 4R_i\right)^{-1}\right] \mbox{ and} \label{equation333a} \\
+f_{\theta} &amp;= -0.145\left(1+4Ri\right)^{-1} \label{equation333b}
+\eal
+\ese
+-->
+
+These functions are subsequently used to compute the flux-profile relationships on the TEMF computational grid, as depicted in Fig. ([](#figure301)).
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/chapter3/temfgrid}
+\end{center}
+\caption{The computational grid used in the TEMF scheme: $z_t$ represents full model levels, $z_m$ represents mass levels, and $M$ is the total number of mass levels. Adapted from \citet{Angevine2010}. }
+\label{figure301}
+\end{figure}
+-->
+
+Thermodynamic variables, \\(c = \theta\\) and \\(q\\), are solved using the following relation:
+&lt;!--
+\be
+c(1) = c(2) + \overline{w^{\prime}c^{\prime}}(1) \frac{z_t(1)}{\ln\left(\frac{z_m(2)}{z_{ot}}\right)} \frac{f_{\theta}(0)}{f_{\theta}(Ri)} \frac{Pr(0)}{l(1)w_m} \mbox{ ,} \label{equation 334}
+\ee
+\noindent
+--> where \\(l\\) is the stability-dependent length scale and \\(w_m\\) is the mixed velocity scale, defined as 
+&lt;!--
+\be
+w_m = \left[\frac{1}{5} \left(w_*^3 + 5 u_*^3 \right)\right]^{\frac{1}{3}} \mbox{ .} \label{equation335}
+\ee
+\noindent
+--> Here, \\(w_* = \left[\left(g/\theta_v\right)z_i \overline{w^{\prime}\theta_v^{\prime}}\right]^{\frac{1}{3}}\\) is the convective velocity scale. The friction velocity is defined through logarithmic interpolation and stability correction as
+&lt;!--
+\be
+u_* = \frac{\sqrt{U(2)^2 + V(2)^2}}{z_t(1)\ln\left(\frac{z_m(2)}{z_{ot}}\right)} \frac{f_{\tau}(Ri)}{f_{\tau}(0)} l(1) \mbox{ .}
+\label{equation336}
+\ee
+-->
+</Text>
+        </Document>
+        <Document ID="18">
+            <Title>WRF Turb</Title>
+            <Text>### Turbulence Closure ###
+
+Write about Deardorff (1980) closure.</Text>
+        </Document>
+        <Document ID="41">
+            <Title>3.6 February 5, 2009</Title>
+        </Document>
+        <Document ID="85">
+            <Title>6.3.1 June 7, 2007</Title>
+            <Text>###June 7, 2007[june7-631]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/meteogram_phys_nudge40m_20070607}
+\end{center}
+\caption{Evolution of (a) potential temperature (black lines) and water vapor mixing ratio (gray lines) and (b) wind speed (black lines) and wind direction (gray lines) predicted by the WRF model with different parameterization schemes for 7 June 2007. Observational (SMOS) and OU-LES data are also shown for comparison.}
+\label{figure513}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/ust_tst_phys_nudge40m_20070607}
+\end{center}
+\caption{Evolution of the (a) friction velocity $u_*$ and (b) temperature scale $\theta_*$ predicted by the WRF model with different parameterization schemes for 7 June 2007. Observational data (ECOR and CO2FLX) and OU-LES data are also shown for comparison.}
+\label{figure514}
+\end{figure}
+-->
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/pblh_phi_phys_nudge40m_20070607}
+\end{center}
+\caption{Evolution of (a) $z_i$ and (b) stability parameter $-\frac{z_i}{L}$ predicted by the WRF model with different parameterization schemes for 7 June 2007. Observational (LMN, ECOR, and CO2FLX) and OU-LES data are also shown (for unstable conditions only).}
+\label{figure515}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="19">
+            <Title>WRF Space</Title>
+            <Text>### Spatial Discritization ###
+
+Write about spatial discritization here.</Text>
+        </Document>
+        <Document ID="42">
+            <Title>3.7 May 31, 2009</Title>
+        </Document>
+        <Document ID="86">
+            <Title>6.3.2 September 27, 2008</Title>
+            <Text>###September 27, 2008[sept27-632]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/meteogram_phys_nudge40m_20080927}
+\end{center}
+\caption{As in Fig. \ref{figure513}, but for 27 September 2008.}
+\label{figure516}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/ust_tst_phys_nudge40m_20080927}
+\end{center}
+\caption{As in Fig. \ref{figure514}, but for 27 September 2008.}
+\label{figure517}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/pblh_phi_phys_nudge40m_20080927}
+\end{center}
+\caption{As in Fig. \ref{figure515}, but for 27 September 2008.}
+\label{figure518}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="107">
+            <Title>3.7.1 Two-Dimensional Mixing</Title>
+            <Text>###Two-Dimensional Mixing[twod-mix-371]###
+
+In this option, \\(K_h\\) is determined from the horizontal deformation using a [#Smag;]
+first-order closure approach.  According to this formulation, the eddy viscosity is defined and
+discretized as
+&lt;!--
+\be
+K_h=C_s^2l^2[0.25(D_{11}-D_{22})^2 + \overline{D_{12}^2}^{xy}]^{\frac{1}{2}}, \label{75}
+\ee
+-->
+where \\(D_{11}\\) and \\(D_{22}\\) are deformtion tensors, the length scale \\(l=(\Delta x \Delta y)
+^{\frac{1}{2}}\\), and \\(C_s\\) is a constant with a typical value of \\(C_s = 0.25\\).  For scalar
+mixing, the eddy viscosity is divided by the turbulent Prandtl number that typically has a value
+of \\(\frac{1}{3}\\) [#Deardorff].  The only implementation of this scheme that makes sense is
+alongside a PBL parameterization scheme.
+</Text>
+        </Document>
+        <Document ID="43">
+            <Title>3.2 Verification Techniques</Title>
+        </Document>
+        <Document ID="87">
+            <Title>6.3.3 October 26, 2008</Title>
+            <Text>###October 26, 2008[oct26-633]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/meteogram_phys_nudge40m_20081026}
+\end{center}
+\caption{As in Fig. \ref{figure513}, but for 26 October 2008.}
+\label{figure519}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/ust_tst_phys_nudge40m_20081026}
+\end{center}
+\caption{As in Fig. \ref{figure514}, but for 26 October 2008.}
+\label{figure520}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/pblh_phi_phys_nudge40m_20081026}
+\end{center}
+\caption{As in Fig. \ref{figure515}, but for 26 October 2008.}
+\label{figure521}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="44">
+            <Title>4.1.1 The Weather Research and Forecasting Model</Title>
+            <Text>###The Weather Research and Forecasting Model[wrf-411]###</Text>
+        </Document>
+        <Document ID="108">
+            <Title>3.7.2 Three-Dimensional Mixing copy</Title>
+            <Text>###Three-Dimensional Mixing[threed-mix-372]###
+
+Here, the eddy viscosities are computed using
+&lt;!--
+\be
+K_{h,v} = C_kl_{h,v} \sqrt{e}
+\ee
+-->
+
+where \\(e\\) is the TKE (a prognostic variable in this scheme), \\(C_k\\) is a constant (typically \\(0.15 
+&lt; C_k &lt; 0.25\\)), and \\(l\\) is a length scale.  The prognostic equation governing the evolution of TKE,
+\\(e\\) is
+&lt;!--
+\bea
+\partial(\mu_de)+(\vec{\nabla}\cdot\vec{V_e})_\eta  = \mu_d(shear\ production\ \label{77}\\
++\ buoyancy\ +\ dissipation).\nonumber
+\eea
+-->
+The time derivative and transports terms in (\ref{77}) are integrated in the same manner
+as other scalars.  The sink and source terms for \\(e\\) are given as, for shear production
+&lt;!--
+\bea
+shear\ production=K_hD_{11}^2+K_hD_{22}^2+K_vD_{33}^2 \label{78}\\
++ K_h\overline{D_{12}^2}^{xy}+K_v\overline{D_{13}^2}^{x\eta}+\overline{K_vD_{23}^2}^{y\eta},
+\nonumber
+\eea
+-->
+&lt;!--
+\bea
+buoyancy=-K_vN^2,\label{79}
+\eea
+-->
+where N is calculated as in (\ref{turb_3dsmag}), and
+&lt;!--
+\bea
+dissipation=-\frac{Ce^{\frac{3}{2}}}{l}.\label{710}
+\eea
+-->
+where \\(C\\) is a constant based on mixing length.
+
+This scheme follows with the three-dimensional Smagorinsky approach in that it is only employed
+when no PBL scheme is used, or in the so-called LES mode.
+</Text>
+        </Document>
+        <Document ID="88">
+            <Title>6.3.4 February 5, 2009</Title>
+            <Text>###February 5, 2009[feb5-634]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/meteogram_phys_nudge40m_20090205}
+\end{center}
+\caption{As in Fig. \ref{figure513}, but for 05 February 2009.}
+\label{figure522}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/ust_tst_phys_nudge40m_20090205}
+\end{center}
+\caption{As in Fig. \ref{figure514}, but for 05 February 2009.}
+\label{figure523}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/pblh_phi_phys_nudge40m_20090205}
+\end{center}
+\caption{As in Fig. \ref{figure515}, but for 05 February 2009.}
+\label{figure524}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="45">
+            <Title>4.1.2 University of Oklahoma Large Eddy Simulation</Title>
+            <Text>###University of Oklahoma Large Eddy Simulations[les-412]###</Text>
+        </Document>
+        <Document ID="89">
+            <Title>6.3.5 May 31, 2009</Title>
+            <Text>###May 31, 2009[may31-635]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/meteogram_phys_nudge40m_20090531}
+\end{center}
+\caption{As in Fig. \ref{figure513}, but for 31 May 2009.}
+\label{figure525}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/ust_tst_phys_nudge40m_20090531}
+\end{center}
+\caption{As in Fig. \ref{figure514}, but for 31 May 2009.}
+\label{figure526}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter6/pblh_phi_phys_nudge40m_20090531}
+\end{center}
+\caption{As in Fig. \ref{figure515}, but for 31 May 2009.}
+\label{figure527}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="46">
+            <Title>1 Introduction</Title>
+            <Text>#Introduction[intro-1]#</Text>
+        </Document>
+        <Document ID="109">
+            <Title>3.5 Additional Physics Schemes</Title>
+        </Document>
+        <Document ID="47">
+            <Title>3 The Weather Research and Forecasting Model</Title>
+            <Text>#The Weather Research and Forecasting Model[wrf-3]#</Text>
+        </Document>
+        <Document ID="70">
+            <Title>5.3.1 Resolved Fields</Title>
+            <Text>###Resolved Fields[resolve-531]###
+
+Instantaneous contours of perturbation \\(x\\)-component of velocity (\\(u\\))in the horizontal plane are shown in [](#figure502). Values for the shear-free case are located in the upper two panels, with OU-LES on the left and WRF-LES on the right. Both simulations appear visually similar, depicting random, evenly distributed velocity fields as expected in the absence of a mean wind. Further inspection reveals that WRF-LES is seemingly skewed toward broad areas of larger horizontal velocity values, with less variation in between. Results from the shear-driven case are shown in the bottom two panels. As expected, strong, positive values dominate as a result of the imposed mean wind. Visually speaking, both fields look similar at a cursory glance, however, it is apparent that OU-LES contains stronger peak gusty winds, but seemingly exhibits a high concentration around the mean. The result is lower variation in the plane. Conversely, the WRF-LES fields are structurally broader in the horizontal, with larger variability across the plane.
+
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/u_slice}
+\end{center}
+\caption{Horizontal slice of \textit{u}-component velocity at level $\frac{z}{z_i} = 0.25$ during the final hour of the simulation window.}
+\label{figure502}
+\end{figure}
+-->
+
+Similarly, instantaneous contours of \\(z\\)-component of velocity (\\(w\\)) in the horizontal plane are shown in [](#figure503). Values for the shear-free case are shown in the upper two panels. As expected, both simulations depict similar cell-type convective structures. At first glance, the fields appear nearly indistinguishable. Further inspection, however, reveals that the WRF-LES produces broader, less-organized structures. Results from the shear-driven case are shown in the lower two panels. Both simulations produce similar roll-like structures that are expected in a CBL with a strong wind shear. While both again appear visually congruent, the WRF-LES fields contain slightly broader, more organized, elongated streaks as compared to those in OU-LES output. Overall, the WRF-LES fields show less variability across the plane.
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/w_slice}
+\end{center}
+\caption{Horizontal slice of \textit{w}-component velocity at level $\frac{z}{z_i} = 0.25$ during the final hour of the simulation window.}
+\label{figure503}
+\end{figure}
+-->
+
+As noted previously ([](#ed-51)), simple visual comparisons, while certainly useful, are potentially misleading when used as a sole means of validation. The discussed cases highlight the importance of an investigation of the underlying turbulence dynamics to ascertain the source and relative importance of subtle differences in velocity patterns. For instance, one may ask why does OU-LES generate more structurally organized turbulence in a shear-free environment compared to WRF-LES, yet the reverse is true for a shear-driven environment? 
+</Text>
+        </Document>
+        <Document ID="71">
+            <Title>5.3.2 One-Dimensional Spectra</Title>
+            <Text>###One-Dimensional Spectra[spec1d-532]###
+
+For all spectral calculations, averaging  occurred in both space and time. At each model output time, spectra were calculated for every row in the direction of interest and subsequently averaged, representing the spatial mean. The resultant spatial means were then averaged over hourly increments, representing the temporal mean. The temporal- and spatial-averaged normalized one-dimensional spectral densities of \\(u\\) component of velocity are shown in [](#figure504). The top panels are from the shear-free case and the bottom panels are from the shear-driven case. The left panels represents spectra calculated in the x-direction, while the right panels are calculated along the y-direction. For  \\(u\\) component, x (with \\(k_1 = \frac{2\pi}{x}\\)) is therefore the longitudinal direction and y (with \\(k_2 = \frac{2\pi}{y}\\)) is the transverse direction. 
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/spectra1D_u}
+\end{center}
+\caption{Normalized one-dimensional spectral density of \textit{u} component of velocity in the longitudinal ($k_1$) and transverse ($k_2$) directions at level $\frac{z}{z_i}=0.25$. Top panels correspond to the shear-free case; bottom panels correspond to the shear-driven case.}
+\label{figure504}
+\end{figure}
+-->
+
+Examination of \\(u\\)-component spectra in the shear-free case highlights key differences between considered models. Firstly, one may notice that WRF-LES spectra contain more energy in larger scales compared to OU-LES spectra. Secondly, energy drops off at a faster rate at larger scales in WRF-LES spectra than in OU-LES spectra. The drop-off point in WRF-LES data is consistent with values discussed in [#Skamarock04;], which were found to lie between in the range from \\(5\\) to \\(8 \Delta h\\), where \\(\Delta h\\) is the horizontal grid spacing. As a result, the WRF-LES spectra exhibit a slightly narrower inertial subrange than the OU-LES spectrum. One may also notice that the spectral behavior is similar for the longitudinal and transverse directions. This is expected since there is no driving wind to directionally affect the simulated turbulence.
+
+In the shear-driven case, a similar behavior is observed. While the energy from WRF-LES data drops off at a scale consistent with that from the shear-free case, the rate of decline matches closely that from OU-LES. Note that for WRF-LES spectrum, the drop-off point is closer to that in OU-LES spectrum in the longitudinal direction as compared to the transverse direction. Since roll structures are primarily oriented in the along-wind direction, this means that WRF-LES more poorly reproduces small-scale variations in the cross-roll direction as compared to variations in the mean flow direction.
+
+The normalized one-dimensional spectral densities of \\(w\\)-component velocity are shown in [](#figure505). Again, the top (bottom) panels are from the shear-free (shear-driven). The left (right) panels represent \\(k_1\\) (\\(k_2\\)) spectra calculated in the \\(x\\)-direction (\\(y\\)-direction). In this case, both directions are transverse directions in relation to \\(w\\) component of velocity.
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/spectra1D_w}
+\end{center}
+\caption{Normalized one-dimensional spectral density of \textit{w} component of velocity in the longitudinal ($k_1$) and transverse ($k_2$) directions at level $\frac{z}{z_i}=0.25$. Top panels correspond to the shear-free case; bottom panels correspond to the shear-driven case.}
+\label{figure505}
+\end{figure}
+-->
+
+When comparing \\(w\\) component spectra in the shear-free case, WRF-LES attributes more energy to larger scales and predicts earlier and faster dissipation compared to OU-LES. The inertial subrange in \\(w\\) spectrum is noticeably wider than in the \\(u\\) spectrum. The reason for this disparity is unknown, but it may perhaps originate the WRF model’s acoustic damping filters. That is to say, it is possible that those filters are preferentially more aggressive in the horizontal than in the vertical. Behavior is similar in both directions, as expected, since there are no shear-induced directional effects. 
+
+Perhaps surprisingly, spectra curves from both simulation approaches are nearly identical in the along-roll direction for the shear-driven case. Meanwhile, WRF-LES once again predicts energy dissipation to start at larger scales than OU-LES, though the spectral slopes are nearly identical. The disparity between spectra in \\(k_1\\) and \\(k_2\\) are likely a result of the importance of mean shear influence. This is illustrated by the markedly wider inertial subrange evident in the \\(k_2\\)-direction spectrum. In either case, the marked out differences between spectral densities support distinctions of structural features shown in Figure [](#figure503) and discussed in [](#resolve-531).
+
+Initial implications that arise from analyses of the one-dimensional velocity spectra are two-fold. First, the WRF model spectra consistently deviate from the theoretical energy cascade slope at lower-frequency wave number values than OU-LES spectra do. This suggests that spectral dynamics as reproduced by WRF-LES are questionable. This also means that WRF-LES has a lower effective resolution than OU-LES. Second, the relative (in terms of grid-cell size factor) location of the deviation point is consistent with results from previous studies [](#Skamarock04). The extent of the enhanced spectral damping is also dependent on the dominant flow type. Namely, the wave number value that WRF-LES spectra deviate from the theoretical energy cascade slope is different between the shear-free and shear-driven cases. This lends credence to the idea that effects internal to the WRF model numerics are, at least, partially to blame. </Text>
+        </Document>
+        <Document ID="48">
+            <Title>2.1 The Weather Research and Forecasting Model</Title>
+            <Text>##The Weather Research and Forecasting Model[wrf-21]##</Text>
+        </Document>
+        <Document ID="49">
+            <Title>2 University of Oklahoma Large Eddy Simulation</Title>
+            <Text>#University of Oklahoma Large Eddy Simulation[les-2]#
+</Text>
+        </Document>
+        <Document ID="72">
+            <Title>5.3.3 Two-Dimensional Spectra</Title>
+            <Text>###Two-Dimensional Spectra [spectra2d-533]###
+
+Further understanding of the one-dimensional spectra results may be gained from normalized two-dimensional spectral densities of \\(u\\) component of velocity shown in [](#figure506). Longitudinal direction is along \\(x\\) and transversal direction is along \\(y\\). In wavenumber space, these directions correspond to \\(k_1\\) and \\(k_2\\), respectively. Spectral scales are thus largest in the center of the spectral plot and decrease outward. Contours represent increasing values of spectral density toward the center. Upper (lower) panels represent data from the shear-free (shear-driven) case. Left (right) panels depict data calculated from OU-LES (WRF-LES) outputs.
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/spectra2D_u}
+\end{center}
+\caption{Normalized two-dimensional spectral density of \textit{u} component of velocity at level $\frac{z}{z_i}=0.25$. Top panels correspond to the shear-free case; bottom panels correspond to the shear-driven case.}
+\label{figure506}
+\end{figure}
+-->
+
+In the shear-free case, the spectra are elongated in the transverse direction. This is consistent with turbulence theory, which states that the ratio of longitudinal to transverse spectra in the inertial subrange is larger than one [#TenLum1972] (for isotropic turbulence, this ratio is approximately equal to \\(4/3\\)).  Compared to OU-LES, it is evident that WRF-LES produces a two-dimensional spectral field that is compressed toward larger scales with a sharp drop-off at high wavenumbers. These effects are equally present along both the longitudinal and transverse spectral directions. Such behavior corresponds to that exhibited by the one-dimensional spectral density curves for the \\(u\\) component.
+
+In the shear-driven case, contours of spectral density from OU-LES are starkly different from the spectral density calculated from WRF-LES. The WRF-LES spectrum is again compressed toward larger scales, although the effect is not as prominent as in the shear-free case. Contours are elongated in the transverse directions, which is again consistent with turbulence theory predictions. Note, however, that in OU-LES the contours are stretched in the transverse direction at high-frequencies. That feature is not found in WRF-LES data. To interpret this particular small-scale spectral feature, consider the velocity field structure for this case. This field is composed of roll-like structures that are mainly oriented in the along-wind direction. That means variations in velocity should theoretically be smaller in the along-roll direction as opposed to the cross-roll direction. The stretched portions in OU-LES spectrum apparently depict shear-induced anisotropic effects on small scales. Those effects are not present in the WRF-LES data, implying that the WRF model is inadequately resolving high-frequency turbulence features across the mean wind direction. These directionally-dependent inconsistencies match those present in the one-dimensional spectral density of \\(u\\) component (see [](#figure504)).
+
+Normalized two-dimensional spectral densities are also shown for \\(w\\) velocity component in [](#figure507). Again, the top (bottom) panels are from the shear-free (shear-driven). The left (right) panels represent spectra calculated from OU-LES (WRF-LES) data. In this case, both \\(x\\) (\\(k_1\\)) and \\(y\\) (\\(k_2\\)) directions are both transverse directions in relation to the \\(w\\) component. 
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/spectra2D_w}
+\end{center}
+\caption{Normalized two-dimensional spectral density of \textit{w} component of velocity at level $\frac{z}{z_i}=0.25$. Top panels correspond to the shear-free case; bottom panels correspond to the shear-driven case.}
+\label{figure507}
+\end{figure}
+-->
+
+Immediately evident in the shear-free case is the practically circular nature of the spectral contours. This is again consistent with theory since both the \\(x\\) and \\(y\\) directions are transverse directions in this case, meaning their ratios of inertial-subrange spectra along those directions should approximately equal unity (it should exactly equal unity for isotropic turbulence). The spectral field produced by WRF-LES is compressed toward larger scales with a sharper drop-off at high wavenumbers, although the effect is less pronounced than for \\(u\\)-component spectrum. This behavior matches the one that was found in the one-dimensional \\(w\\)-component spectral density.
+
+Two-dimensional spectral contours for the shear-driven case are skewed in the \\(k_2\\) direction. This would be consistent with the flow field in which more energy is concentrated in the along-wind oriented roll structures. Similar to feature seen in the \\(u\\) component spectrum ([](#figure506)), contours at high-frequency modes are stretched in the \\(k_2\\) direction. Apparently, like in the case of horizontal velocity spectrum, the stretched portions in OU-LES spectrum depict small-scale, shear-induced anisotropic features.
+
+For the one-dimensional spectral densities, it seemed apparent ([](#spec1d-532)) that the WRF model has a lower effective resolution than OU-LES and that the potential cause of this is the excessive high-wavenumber damping by the fully-compressible dynamics numerical solver in the WRF model. The two-dimensional spectra provide additional insights into the circumstances behind such behavior. For the shear-free CBL, numerical dissipation occurs equally in all directions. More importantly, that dissipation is coincident with an accumulation of energy at large scales. It is not clear, however, what causes such accumulation, whether by unphysical upscale growth, numerical filters, or something else entirely. This leaves the possibility that even if small-scale motions are not of meteorological importance, their inadequate representation might indirectly affect those scales that are of principle interest. In the shear-driven case, small-scale smoothing is still present, although it is slightly less-pronounced than in the shear-free counterpart. Turbulence appears to be mostly affected by damping in the across mean-wind direction. Upscale accumulations of energy, although, are not as readily evident. The cause of this disparate behavior between flow regimes is not clear, although numerical filters used in the WRF model may serve as a potential culprit.</Text>
+        </Document>
+        <Document ID="73">
+            <Title>5.3.4 Additional Turbulence Statistics</Title>
+            <Text>###Additional Turbulence Statistics[turb-stats-534]###
+
+To ween additional insight into the behavior exhibited by velocity spectra, associated velocity turbulence statistics are shown in the subsequent section. Histograms of velocity components across the final hour of the simulation window are demonstrated in [](#figure508). Panels (a), (b), and (c) correspond to the perturbations (deviations from the average value) of \\(u\\), \\(v\\), and \\(w\\) components of velocity  for the shear-free case. Panels (d), (e), and (f) display histograms of these velocity components for the shear-driven case.
+
+For a finite population of size \\(N\\), the \\(n^{th}\\)-moment is defined as
+
+&lt;!--
+\be
+\mu_n = \frac{1}{N} \sum_{i=1}^{N} \left( x_i - \widetilde{x} \right)  \mbox{ ,}
+\label{moment}
+\ee
+\noindent--> where \\(\widetilde{x}\\) is the population mean. Using this definition, we can subsequently define standard deviation, skewness, and kurtosis. Standard deviation is used to measure the variance within a population from the mean value and is given by
+&lt;!--
+\be
+\sigma = \sqrt{\mu_2} \mbox{ .}
+\label{stddev}
+\ee
+\noindent--> Skewness measures the asymmetry of a population distribution about the mean and is defined as
+
+&lt;!--
+\be
+S = \frac{\mu_3}{\sigma^3} \mbox{ .}
+\label{skewness}
+\ee
+\noindent--> A negative (positive) value for skewness is illustrated by a longer left (right) tail on the distribution curve, with the bulk of the values being concentrated on the right (left). Kurtosis measures the peakedness of a population distribution about the mean and is given by 
+
+&lt;!--
+\be
+K = \frac{\mu_4}{\sigma^4} - 3 \mbox{ ,}
+\label{skewness}
+\ee
+\noindent--> where the subtraction is to meant to assign a value of zero to the normal distribution. Large (small) values of kurtosis mean that more variance results from infrequent extreme (frequent modest) deviations from the mean. In terms of meteorology, these deviations can be thought of as a measure of gustiness. Distributions with a positive (negative) value of kurtosis are referred to as leptokurtic (platykurtic) and have shapes denoted by a higher (lower) peak around the mean and shorter (longer) tails as compared to the normal distribution. Corresponding values of standard deviation (\\(\sigma\\)), skewness (\\(S\\)), and kurtosis (\\(K\\)) are given in the plots.
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/velocity_distribution}
+\end{center}
+\caption{Velocity histograms over the final hour of the simulation window at level $\frac{z}{z_i}=0.25$. Top panels correspond to the shear-free case; bottom panels correspond to the shear-driven case.}
+\label{figure508}
+\end{figure}
+-->
+
+In the shear-free case, horizontal velocity from WRF-LES has a larger standard deviation than its counterpart from OU-LES, similar skewness, and much larger positive kurtosis. The skewness values are small for both approaches, but indicate more values are positive than negative. The disparity in kurtosis reveals that OU-LES nearly evenly distributes horizontal velocity about the mean, with departures arising from frequent and modest deviations form the mean. Oppositely, the noticeable leptokurtic nature of the horizontal velocity distribution from WRF-LES indicates a more acute peak near the mean with long and fat tails as compared, e.g., to a Gaussian distribution. This means data are largely concentrated around the mean as a result of reduced variations within the velocity field. While variations across the horizontal fields are smaller for the WRF model as compared with OU-LES, when such variations do exist they are more likely to come from infrequent and extreme deviations from the mean. In other words, horizontal velocity in WRF-LES exhibits an increased gustiness. Such behavior is exhibited in [](#figure502) and may demonstrate the large-scale energy accumulation observed in [](#figure504).
+
+Vertical velocity standard deviations are identical for both simulation codes, with similar positive skewness values, which are typical for the \\(w\\) field in a CBL [#LeMone1990]. Data produced by OU-LES has a greater negative kurtosis. The more platykurtic nature of the OU-LES velocity distribution means a flatter peak around the mean as compared to a Gaussian distribution. This points to larger variability of the vertical velocity field in OU-LES. Apparently, WRF-LES again produces less variable velocity fields with values more centered around the mean, although in the case of \\(w\\) distribution, the effect is less pronounced than that observed for the horizontal velocity. Such behavior was already illustrated in [](#figure503) and in spectral density fields (Figs. [](#figure504) and [](#figure505)).
+
+ In the shear-driven case, horizontal velocity distributions in OU-LES produce a higher standard deviation and similar skewness as compared with WRF-LES data. OU-LES also indicate a small positive kurtosis versus a larger negative kurtosis in WRF-LES. Accordingly, horizontal velocity fields are more variable and values are less concentrated around the mean in WRF-LES (as also reflected in [](#figure502)). Additionally, the variability is more attributed to infrequent and extreme departures from the mean. Meanwhile, vertical velocity in WRF-LES has a larger standard deviation, a larger positive skewness, and larger positive kurtosis. This means that, as compared with OU-LES, WRF-LES data has a broader and less variable vertical velocity field, but also one that is associated with infrequent and intense departures from the mean. While the degree of variability differs between WRF-LES horizontal and vertical velocity fields, each are indicative of larger gustiness than is evident in OU-LES data. These statistics may explain why WRF-LES reproduces elongated, broader, and more intense velocity structures associated with roll-like motions, whereas OU-LES fields display more variability in the transverse direction with respect to rolls aligned with the mean wind (Figs. [](#figure502) and [](#figure505)).
+
+In [](#figure509), upper (lower) panels illustrate vertical profiles of velocity variances in the shear-free (shear-driven) case. For both horizontal and vertical velocities at the level of CBL quarter-depth in the shear-free case, WRF-LES exhibits larger variances. This is consistent with the distributions shown in [](#figure508), where WRF-LES tends toward more contrasted structural features of the velocity field. At the level of CBL quarter-depth in the shear-driven case, however, OU-LES produces larger variances for \\(u\\) component of wind, with values for the \\(v\\) component nearly identical. Again, this is consistent with the horizontal slices of velocity (Figs. [](#figure502) and [](#figure503)) and the associated velocity distributions ([](#figure508)), where WRF-LES show broader areas of large mean wind and shorter tails representing small-scale motions. All this points to WRF-LES having weaker variability across the mean wind.
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/velocity_variance}
+\end{center}
+\caption{Hourly mean normalized velocity variance taken during the final hour of the simulation window. Top panels correspond to the shear-free case; bottom panels correspond to the shear-driven case.}
+\label{figure509}
+\end{figure}
+-->
+
+Vertical profiles of turbulence kinetic energy for both cases are shown in [](#figure510). As expected from the velocity distributions and profiles of variances, WRF-LES produces greater energy than does OU-LES throughout the depth of the CBL. This appears in agreement with the correlation that WRF-LES is extracting too much energy from smaller scales. An accompanying upscale accumulation of energy is evident by the broad, less organized CBL structures in the shear-free case. Oppositely, in the shear-driven CBL, OU-LES produces larger turbulence kinetic energy than does WRF-LES. This is in line with the velocity distributions and variances for that case (Figs. [](#figure508) and [](#figure509)). 
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/tke}
+\end{center}
+\caption{Hourly mean normalized turbulence kinetic energy taken during the final hour of the simulation window. Dashed-dotted lines represent subgrid values; dashed lines represent resolved values; solid lines represent total values. The left panel corresponds to the shear-free case; the right panel corresponds to the shear-driven case.}
+\label{figure510}
+\end{figure}
+-->
+
+For the shear-driven case, the features of the TKE profile may be used to explain the spectral density behavior. The distribution of velocity from WRF-LES results in smaller variances, which in turn reduces TKE. Accordingly, TKE is less influential than the strong, shear-induced profiles of velocity. That near-surface shear is maintained in WRF-LES by inadequate vertical momentum flux, shown in [](#figure511). It is evident that OU-LES is more effectively mixing momentum toward the surface than is WRF-LES. Thus, the combined existence of strong shear and weak TKE dictate that energy is not properly extracted from the system.
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/stress13}
+\end{center}
+\caption{Hourly mean normalized vertical turbulent momentum flux taken during the final hour of the simulation window. Dashed-dotted lines represent subgrid values; dashed lines represent resolved values; solid lines represent total values. The left panel corresponds to the shear-free case; the right panel corresponds to the shear-driven case.}
+\label{figure511}
+\end{figure}
+-->
+
+The end result is a velocity field with similar structure, only stronger in magnitude throughout the depth of the CBL, as compared with OU-LES. A normalized vertical profile of velocity, shown in [](#figure512), bears this out. Accordingly, the WRF-LES velocity fields tend toward broader, elongated structures that lack small-scale, anisotropic effects in the across-roll direction.
+
+&lt;!--
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/velocity}
+\end{center}
+\caption{Hourly mean normalized \textit{u}-component velocity profile taken during the final hour of the simulation window.}
+\label{figure512}
+\end{figure}
+-->
+</Text>
+        </Document>
+        <Document ID="30">
+            <Title>3.7 Subgrid Closure</Title>
+            <Text>##Subgrid Closure[sg-close-37]##
+
+As stated in section ([](#pbl-25)), the PBL scheme handles the vertical diffusion when implemented,
+meaning horizontal diffusion must be considered. If no PBL scheme is selected, the WRF model 
+provides three turbulent mixing options to handle vertical diffusion in addition to horizontal diffusion.  If a 
+PBL scheme is used, there are two offered solutions for horizontal diffusion alone.</Text>
+        </Document>
+        <Document ID="74">
+            <Title>5.4 Discussion</Title>
+            <Text>##Discussion[dis-54]##
+
+Idealized large eddy simulations of turbulent flow in the atmospheric convective boundary layer were conducted for differing flow types, shear-free and shear-driven. Differences in behavior were minor across disparate uniform grid spacings of \\(20 \metre\\) to \\(20 \metre\\). Subsequently, results were analyzed in depth only for the finest-scale (\\(20\metre\\)) simulations. Sample slices of instantaneous velocity fields were exposed for visual inspection. While a cursory glance might have yielded the opinion that model solutions were largely the same, a closer inspection determined that subtle differences did exist. Accordingly, a deeper look at the underlying energetics was conducted to ascertain possible reasons for those differences. While not a traditional validation measure, spectral density was chosen to evaluate each simulation approach. This was done for several reasons. Firstly, there is a lack of verification data at the motion scales of interest for this study. Secondly, spectra can indicate whether a particular simulation produces the expected spectral behavior of flow statistics as predicted by theory, which in turn elucidates whether the simulation reproduces features consistent with realistic atmospheric dynamics. Finally, spectra allow the diagnostics of numerics and assessment of its effective resolution. Statistical distributions, variances, turbulence kinetic energy, and momentum fluxes were also examined to add further understanding of the turbulence dynamics.
+
+In the shear-free case, one-dimensional \\(u\\)-component spectral density indicated that the WRF-LES velocity field contained more energy at larger scales and a drop off from the expected energy cascade slope happened at a larger scale and at a higher rate than for OU-LES. For \\(w\\)-component spectral density, the same behavior was observed, although the energy at low-frequency modes were more comparable between OU-LES and WRF-LES spectra. Two-dimensional spectral density illustrated that each simulation produced inertial-subrange energy spectra generally consistent with turbulence theory prediction. However, two-dimensional WRF-LES spectra exhibited the enhanced numerical dissipation, subsequent upscale growth, and pointed to a coarser effective resolution.  
+
+In the shear-driven case, upscale energy accumulation was largely nonexistent except for the \\(w\\)-component field. For one-dimensional \\(u\\)-component spectral density, energy again dropped off at a larger scale in the WRF-LES field, although the rate of decline was nearly identical to OU-LES fields. The same was true for one-dimensional \\(w\\)-component spectral density, except that energy cascade matched almost exactly in the \\(k_1\\)-direction. Two-dimensional spectral densities highlighted differences in energy signatures associated with the presence of shear. Spectral contours became compressed in the \\(k_1\\) direction in both models, consistent with the onset of streaks oriented along the mean flow. However, OU-LES data produced stretched contours at high-frequency modes, a feature that was absent in WRF-LES data. Given the physical structure of the velocity field, this indicated that OU-LES produced larger small-scale variability in the direction across the mean wind. This prompted a conclusion that WRF-LES failed to reproduce small-scale, shear-induced anisotropic effects.
+
+Additional statistical analysis was conducted to further aid understanding of the spectra results. Histograms of \\(u\\) velocity component in the shear-free case demonstrated that WRF-LES produced greater positive kurtosis than did OU-LES, yielding less variations and tighter grouping around the mean. For \\(w\\) component of velocity, WRF-LES produced a smaller negative kurtosis, once again indicating a less-variable flow field with closer concentration around the mean. This points to the large-scale kinetic energy concentration and sharper drop toward small scales in WRF-LES velocity fields in support of the spectral energy data.
+
+In the shear-driven case, distributions of \\(u\\) velocity component in OU-LES pointed to horizontal velocity fields more variable and less concentrated around the mean than in WRF-LES. For vertical velocity \\(w\\), OU-LES data produced smaller positive kurtosis than WRF-LES. Subsequently, WRF-LES fields included elongated, broader, and more intense velocity structures associated with roll-like motions. Conversely, OU-LES fields contained more variability across the mean wind.
+
+Vertical profiles of velocity variance and turbulence kinetic energy were consistent with these statistical distribution results. Both illustrated that WRF-LES extracted too much energy from small scales in the shear-free case, potentially leading to the observed upscale accumulation of energy throughout the CBL. In the shear-driven case, WRF-LES velocity fields indicated that turbulence kinetic energy was inhibited.  Near-surface mean shear in WRF-LES was maintained by inadequate vertical momentum flux, indicating that OU-LES more effectively mixed momentum toward the surface. Subsequently, WRF-LES produced a velocity field with similar structure to the OU-LES field, but stronger in magnitude throughout the depth of the CBL.
+
+The question then arises as to why such behavior was specifically characteristic of WRF-LES since the setup between simulations was fairly consistent. Given that one main difference between each approach is that WRF-LES works with compressible dynamics equations while OU-LES deals with incompressible equations, one could argue that the three filters requisite to the time-splitting procedure in the WRF model are at least partially to blame. While, [#Skamarock92;] note that these filters should only influence the smallest scales, concessions are made that larger scales could also be affected. The filters are mentioned as a possible source of error in [#Skamarock04;], but with the justification that the impacted scales were not of “meteorological interest.” While that might be true for mesoscale applications of the WRF model, the same is apparently not true for LES applications. This excessive damping of small-scale motion can have a negative effect in air pollution applications, where the dispersive role of small-scale motion may be very important, or in wave propagation applications, where the structure-function parameter will not be right if small-scale motions are affected by numerical dissipation.
+
+Why was upscale accumulation of energy only found in the shear-free case? A potential reason for such behavior may lie in fifth-order advection scheme used in WRF-LES. As indicated in [#Wicker02;], odd-ordered advection schemes are equivalent to the next even-order approximation plus a dissipation term proportional to the Courant number. In the case of a strong mean wind, the implicit dissipation associated with horizontal advection has a larger effect than the time-split numerical filters that target only small-scales. Accordingly, most scales of motion are damped, not only small scales, as is the case in the shear-free CBL flow.
+
+While the exact reasons for enhanced numerical dissipation and potential upscale energy transfer in the WRF model will require further study, the fact that they exist is problematic for WRF-LES applications. For real world cases, higher-order advection schemes are desirable given the push for increased spatial accuracy. However,  their associated dissipation may prove to be a complication. Additionally, specified lateral boundaries must be used in real-word WRF model applications in lieu of periodic lateral boundaries. The inclusion of specified lateral boundaries introduces errors associated with eddy-deficient areas that extend into a large portion of the inflow region of the model domain [#Moeng07]. These problems are likely due to poor representation of interactions between subgrid-scale motion handled by STKE and three-dimensional resolved LES fields. Another concern related to WRF model  filters is their reduction of effective resolution. In such a case, the reliability of motion scales important to particular applications is called into question. These required tradeoffs may limit the applicability of the WRF model in certain real-data LES applications.</Text>
+        </Document>
+        <Document ID="31">
+            <Title>2.2 University of Oklahoma Large Eddy Simulation</Title>
+        </Document>
+        <Document ID="75">
+            <Title>6 Hybrid-Nudging Experiments</Title>
+            <Text>#Hybrid-Nudging Experiments[nudge-6]#</Text>
+        </Document>
+        <Document ID="32">
+            <Title>2.1 Governing Equations</Title>
+            <Text>##Governing Equations[ge-21]##
+
+The OU-LES governing equations are described here, building upon those contained in [#Conzemius2004;] and [#Wilson2012;]. The equations are derived from the general form of the Navier-Stokes equations (following &lt;!--\citealt{Kundu}-->) for fluid in a rotating reference frame:
+
+&lt;!--
+\be
+\rho \frac{Du_i}{Dt} = - \rho g \delta_{i3} - \pd{p}{x_i} + 2 \rho \Omega_k u_j \epsilon_{ijk} - \frac{2}{3}\pd{}{x_i}(\mu \nabla \cdot \vec{u}) + 2 \pd{}{x_j}(\mu S_{ij}) \mbox{ ,}
+\label{equation201}
+\ee
+
+\be
+\frac{1}{\rho} \frac{D\rho}{Dt} + \pd{u_i}{x_i} = 0 \mbox{ ,}
+\label{equation202}
+\ee
+-->
+&lt;!--\noindent--> where \\(\rho\\) is fluid density, \\(g\\) is the acceleration due to gravity, \\(\delta_{i3}\\) is the Kronecker delta, \\(p\\) is fluid pressure, \\(\Omega_k\\) is the vertical component of Earth’s angular velocity, \\(\epsilon_{ijk}\\) is Levi-Civita’s permutation tensor, \\(\mu\\) is dynamic viscosity, and \\(S_{ij} = \frac{1}{2}\left(\pd{u_i}{x_j} + \pd{u_j}{x_i}\right)\\) is the strain rate tensor.
+
+To simply the equations, the Boussinesq approximation is applied, such that the continuity equation is replaced by the incompressibility condition (\\(\nabla \cdot \vec{u} = 0\\)), density is assumed constant \\(\rho_o\\), except when coupled with gravitational acceleration, and the fluid’s viscosity, thermal diffusivity, and specific heat are assumed constant. Dividing by constant density, excluding Coriolis terms, specifically those involving vertical velocity in the horizontal equations of motion and all terms in the vertical equation of motion, and defining the Coriolis parameter as \\(f = 2 \left|\vec{\Omega}\right|\sin (\theta)\\), the equations are further reduced to the following form:
+
+&lt;!--
+\be
+\pd{u_i}{t} = -\pd{u_i u_j}{x_j} - \frac{\rho}{\rho_o} g \delta_{i3} - \frac{1}{\rho_o} \pd{p}{x_i} + f u_j \epsilon_{ij3} + 2 \nu \pd{S_{ij}}{x_j} \mbox{ ,}
+\label{equation203}
+\ee
+-->
+&lt;!--\noindent--> where \\(\nu = \frac{\mu}{\rho_o}\\) is the kinematic viscosity. When considering the vertical equation of motion, the third and fourth terms in [](#equation203) are expressed  as functions of reference pressure and density, \\(p_r\\) and \\(\rho_r\\), respectively, yielding:
+
+&lt;!--
+\be
+- \frac{1}{\rho_o} \pd{p}{z} - \frac{\rho}{\rho_o} g = - \frac{1}{\rho_o} \pd{p - p_r}{z} - \frac{1}{\rho_o} \pd{p_r}{z} -  \frac{\rho - \rho_r}{\rho_o} g - \frac{\rho_r}{\rho_o} g \mbox{ .}
+\label{equation204}
+\ee
+-->
+&lt;!--\noindent--> Recalling that hydrostatic and geostrophic balances are defined, respectively, as
+
+&lt;!--
+\bse \label{equation205}
+\bal
+\pd{p_r}{z} &amp;= -\rho_r g \mbox{ ,} \label{equation205a}\\
+u_{g,j} &amp;= \epsilon_{ij3} \frac{1}{\rho_o f} \pd{p_r}{x_i}  \label{equation205b} \mbox{ ,}
+\eal
+\ese
+-->
+&lt;!--\noindent--> defining mechanical pressure as
+&lt;!--
+\be
+\pi = \frac{p - p_r}{\rho_o} \mbox{ ,}
+\label{equation206}
+\ee
+-->
+&lt;!--\noindent--> and applying the following approximation
+
+&lt;!--
+\be
+-\frac{\rho - \rho_r}{\rho_o} \approx \frac{(\theta_v - \theta_{vr})}{\theta_{vo}} \mbox{ ,}
+\label{equation207}
+\ee
+-->
+&lt;!--\noindent--> where \\(\theta_v\\) is virtual potential temperature, \\(\theta_{vr}\\) the associated reference value, and \\(\theta_o\\) the associated constant value, the final form of the equations are given by
+
+&lt;!-- 
+\be
+\pd{u_i}{t} = -\pd{u_i u_j}{x_j} + g \frac{(\theta_v - \theta_{vr})}{\theta_{vo}} \delta_{i3} - \pd{\pi}{x_i} + f(u_j - u_{g,j}) \epsilon_{ij3} + 2 \nu \pd{S_{ij}}{x_j} \mbox{ .}
+\label{equation208}
+\ee
+-->
+
+The large eddy simulation approach lacks proper resolution to explicitly solve this system of equations, meaning ([](#equation208)) must be filtered. In other words, the terms must be represented as a sum of resolvable and subfilter-scale components. For purposes of a discretized numerical grid, the resolvable terms correspond to values at each computational node, while subfilter-scale terms represent unknown quantities.  Accordingly, a box filter consistent with grid spacing is applied because it provides the simplest interpretation in physical space and is computed implicitly. The filter has the following form in one dimension:
+
+&lt;!--
+\be
+\widetilde{u_i}(x) = \int_{-\infty}^{\infty} u_i(x^{\prime}) B_{\Delta x} (x - x^{\prime}) dx^{\prime} \mbox{ ,}
+\label{equation209}
+\ee
+-->
+&lt;!--\noindent--> where the tilde denotes filtered terms, \\(Delta z\\) is grid spacing, and \\(B_{\Delta x}\\) is the filter function, defined as
+
+&lt;!--
+\be
+B_{\Delta x} = 
+\begin{cases}
+ \frac{1}{\Delta x},&amp; \text{if } x - \frac{\Delta x}{2}  \leq x^{\prime} \leq x + \frac{\Delta x}{2}\\
+ 0,              &amp; \text{otherwise}
+\end{cases}
+\mbox{ .}
+\label{equation210}
+\ee
+-->
+&lt;!--\noindent--> For purposes of OU-LES, filters are uniform in space, allowing filtering and differentiation to commute. Subsequently, the filtered form of the mass conservation equation is
+
+&lt;!--
+\be
+\widetilde{\pd{u_i}{x_i}} = \pd{\widetilde{u_i}}{x_i} = 0 \mbox{ ,}
+\label{equation211}
+\ee
+-->
+&lt;!--\noindent--> and the filtered equations of motion are
+
+&lt;!--
+\be
+\pd{\widetilde{u_i}}{t} = - \pd{\widetilde{u_i u_j}}{x_j} + g \frac{\widetilde{\theta_v} - \theta_{vr}}{\theta_{vo}} \delta_{i3} + \\ 
+f(\widetilde{u_j} - u_{g,j})\epsilon_{ij3} + \pd{}{x_j} \left[\nu\left( \pd{\widetilde{u_i}}{x_j} + \frac{\widetilde{u_j}}{x_i} \right) \right] \mbox{ .}
+\label{equation212}
+\ee
+-->
+
+The nonlinear term on the right hand side of ([](#equation212)) poses a problem because it is a filtered product of two unfiltered variables. In order to alleviate the problem, the filtered product is divided into a product of filtered variables and a subgrid stress term, taking the form \\(\widetilde{u_i u_j} = \widetilde{u_i} \widetilde{u_j} - \tau_{ij}\\). Here, \\(\tau_{ij} = -\frac{2}{3} E \delta_{ij} + \sigma_{ij}\\) is the subgrid stress tensor, where \\(E = \frac{1}{2}(\widetilde{u_i u_j} - \widetilde{u_i} \widetilde{u_j}\\)) is the subgrid turbulence kinetic energy (STKE) and \\(\sigma_{ij}\\) is the subgrid deviatoric stress tensor. Noting that \\(E\\) is analogous to pressure, it is grouped with the mechanical pressure term in ([](#equation212})) to redefine pressure as \\(\Pi = \widetilde{\pi} + \frac{2}{3}E\\). Furthermore, the subgrid deviatoric stress tensor is assumed to take the form \\(\sigma_{ij} = K_m \left( \pd{\widetilde{u_i}}{x_j} + \pd{\widetilde{u_j}}{x_i} \right)\\), where \\(K_m\\) is the subgrid momentum exchange coefficient. The result is the filtered LES momentum equations:
+
+&lt;!--
+\bea
+\pd{\widetilde{u_i}}{t} = -\pd{\widetilde{u_i}\widetilde{u_j}}{x_j} + g \frac{(\widetilde{\theta_v} - \theta_{vr})}{\theta_{vo}}\delta_{i3} - \pd{\Pi}{x_i}+ f(\widetilde{u_j} - u_{g,j})\epsilon_{ij3} 
+\nonumber \\ + \pd{}{x_j} \left[(K_m + \nu) \left( \pd{\widetilde{u_i}}{x_j} + \frac{\widetilde{u_j}}{x_i} \right) \right] \mbox{ .}
+\label{equation213}
+\eea
+-->
+&lt;!--\noindent--> Although practically speaking, \\(K_m \gg \nu\\), the viscosity is retained for modeling small-scale flows. The derivation of the thermodynamic equation is left to the reader but follows a similar procedure. The result is the filtered LES thermodynamic equation:
+
+&lt;!--
+\be
+\pd{\widetilde{\theta_v}}{t} = - \pd{\widetilde{u_i}\widetilde{\theta_v}}{x_i} + \pd{}{x_i} \left[ (K_h + \nu_h) \pd{\widetilde{\theta_v}}{x_i} \right] \mbox{ ,}
+\label{equation214}
+\ee
+-->
+&lt;!--\noindent--> where \\(K_h\\) and \\(\nu_h\\) are the subgrid exchange coefficient for heat and the thermal diffusivity, respectively. The subgrid exchange coefficients, \\(K_m\\) and \\(K_h\\), are the lone terms that must be parameterized in order to close ([](#equation213)) and ([](#equation214)).</Text>
+        </Document>
+        <Document ID="76">
+            <Title>6.1 Experimental Design</Title>
+            <Text>##Experimental Design[ed-61]##</Text>
+        </Document>
+        <Document ID="33">
+            <Title>2.1.2 Surface Layer Schemes</Title>
+            <Text># Models #
+
+Write brief introduction to models here.</Text>
+        </Document>
+        <Document ID="77">
+            <Title>6.2 Verification Techniques</Title>
+            <Text>##Verification Techniques[vt-62]##</Text>
+        </Document>
+        <Document ID="34">
+            <Title>2.1.3 Planetary Boundary Layer Schemes</Title>
+            <Text># Models #
+
+Write brief introduction to models here.</Text>
+        </Document>
+        <Document ID="78">
+            <Title>6.3 Results</Title>
+            <Text>##Results[res-63]##</Text>
+        </Document>
+        <Document ID="35">
+            <Title>2.2 Subgrid Closure</Title>
+            <Text>##Subgrid Closure[sg-close-22]##
+
+Subgrid closure follows [#Deardorff1980;] and is based on the balance of STKE, calculated at every model time step and defined as
+
+&lt;!--  
+\be
+\underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}\pd{E}{t}}_{(I)}\\
++ \underbrace{\pd{\widetilde{u_i} E}{x_i}}_{(II)}\\
+= \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}2K_m\widetilde{S_{ij}} \widetilde{S_{ij}}}_{(III)} \\
+- \underbrace{\beta K_h \pd{\widetilde{\theta_v}}{x_3}}_{(IV)} \\
++ \underbrace{\pd{}{x_i}2K_m\pd{E}{x_i}}_{(V)}\\
+- \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}\epsilon}_{(VI)} \mbox{ ,}
+\label{equation215}
+\ee
+\noindent
+--> where \\(\beta\\) is the buoyancy parameter and \\(\epsilon\\) is dissipation.
+
+In Deardorff’s equation, (I) is the local rate of change in STKE, (II) is the advection of STKE by the resolved flow, (III) is shear production of STKE, (IV) is buoyancy production or destruction of STKE, (V) is the distribution of STKE through pressure and turbulent motions, and (VI) is the STKE dissipation rate.
+
+The subgrid exchange coefficients are modeled as 
+
+&lt;!--
+\bse \label{equation216}
+\bal
+K_m &amp;=C_k l \sqrt{E} \mbox{ ,} \\
+K_h &amp;= \left( 1 + \frac{2l}{\Delta} \right)K_m \mbox{ ,}
+\eal
+\ese
+\noindent
+--> where \\(C_k = 0.12\\) is the Deardorff coefficient, \\(l\\) is the characteristic length scale, and \\(\Delta\\) is grid spacing. Stratification effects are considered when relating the length scale with grid cell size:
+
+&lt;!--
+\be
+l = 
+\begin{cases}
+ \Delta, &amp; \text{unstable conditions}\\
+\mathrm{min}\left[\Delta,0.5\frac{\sqrt{E}}{N}\right],  &amp; \text{stable conditions}
+\end{cases}
+\label{equation217}
+\mbox{ ,}
+\ee
+\noindent
+--> where \\(N\\) is the Brunt-V&lt;!--\”{a}-->is&lt;!--\”{a}-->l&lt;!--\”{a}--> frequency.
+
+Finally, the STKE dissipation rate is defined as
+
+&lt;!-- 
+\be
+\epsilon =C_e \frac{E^{\frac{3}{2}}}{l} \mbox{ ,}
+\label{equation218}
+\ee
+\noindent
+--> where \\(C_e\\) is the Deardorff dissipation parameter, given by
+
+&lt;!--
+\be
+C_e = f_c \left(0.19+0.51\frac{l}{\Delta}\right) \mbox{ .}
+\label{equation219}
+\ee
+\noindent
+--> Here, \\(f_c\\) is a correction factor that accounts for wall effects according to:
+
+&lt;!--
+\be
+f_c = 1 + \frac{2}{\left(\frac{z_w}{\Delta z_w} + 1.5\right)^2 - 3.3} \mbox{ ,}
+\label{equation220}
+\ee
+\noindent
+--> where \\(z_w\\) is the distance from the wall and \\(\Delta z_w\\) is the vertical extent of the first computational grid point nearest the wall. With the implementation of the Deardorff closure, the OU-LES code represents a complete and closed set of LES equations.
+
+</Text>
+        </Document>
+        <Document ID="79">
+            <Title>6.4 Discussion</Title>
+            <Text>##Discussion[dis-64]##</Text>
+        </Document>
+        <Document ID="36">
+            <Title>Untitled</Title>
+        </Document>
+        <Document ID="60">
+            <Title>4.4 Results</Title>
+            <Text>##Results[res-44]##
+
+Hello Hello
+</Text>
+        </Document>
+        <Document ID="37">
+            <Title>3.1 Experimental Design</Title>
+        </Document>
+        <Document ID="61">
+            <Title>4.4.1 June 7, 2007</Title>
+            <Text>###June 7, 2007[june7-441]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_grid_20070607}
+\end{center}
+\caption{Evolution of (top) potential temperature (black lines) and water vapor mixing ratio (gray lines) and (bottom) wind speed (black lines) and wind direction(gray lines) predicted by the WRF model with (left to right) different parameterization schemes and different grid spacings (denoted by the number after the scheme label in the keys) for 7 June 2007. Observational (SMOS) and OU-LES data are also shown for comparison.}
+\label{figure411}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_grid_20070607}
+\end{center}
+\caption{Evolution of (top) friction velocity $u_*$ and (bottom) temperature scale $\theta_*$ predicted by the WRF model with (left to right) different parameterization schemes and different grid spacings (denoted by the number after the scheme label in the keys) for 7 June 2007. Observational (ECOR and CO2FLX) and OU-LES data are also shown for comparison.}
+\label{figure412}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_phys_20070607}
+\end{center}
+\caption{Evolution of (a) potential temperature (black lines) and water vapor mixing ratio (gray lines) and (b) wind speed (black lines) and wind direction (gray lines) predicted by the WRF model with different parameterization schemes for 7 June 2007. Observational (SMOS) and OU-LES data are also shown for comparison.}
+\label{figure413}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/shf_lhf_phys_20070607}
+\end{center}
+\caption{Evolution of the near-surface (a) sensible, (b) latent, and (c) total heat fluxes predicted by the WRF model with different parameterization schemes for 7 June 2007. Observational data (ECOR and CO2FLX) are also shown for comparison.}
+\label{figure414}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_phys_20070607}
+\end{center}
+\caption{Evolution of the (a) friction velocity $u_*$ and (b) temperature scale $\theta_*$ predicted by the WRF model with different parameterization schemes for 7 June 2007. Observational data (ECOR and CO2FLX) and OU-LES data are also shown for comparison.}
+\label{figure415}
+\end{figure}
+-->
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/pblh_phi_phys_20070607}
+\end{center}
+\caption{Evolution of (a) $z_i$ and (b) stability parameter $-\frac{z_i}{L}$ predicted by the WRF model with different parameterization schemes for 7 June 2007. Observational (LMN, ECOR, and CO2FLX) and OU-LES data are also shown (for unstable conditions only).}
+\label{figure416}
+\end{figure}
+--></Text>
+        </Document>
+        <Document ID="38">
+            <Title>3.3 June 7, 2007</Title>
+        </Document>
+        <Document ID="62">
+            <Title>4.4.2 September 27, 2008</Title>
+            <Text>###September 27, 2008[sept27-442]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_grid_20080927}
+\end{center}
+\caption{As in Fig. \ref{figure411}, but for 27 September 2008.}
+\label{figure417}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_grid_20080927}
+\end{center}
+\caption{As in Fig. \ref{figure412}, but for 27 September 2008.}
+\label{figure418}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_phys_20080927}
+\end{center}
+\caption{As in Fig. \ref{figure413}, but for 27 September 2008.}
+\label{figure419}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/shf_lhf_phys_20080927}
+\end{center}
+\caption{As in Fig. \ref{figure414}, but for 27 September 2008.}
+\label{figure420}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_phys_20080927}
+\end{center}
+\caption{As in Fig. \ref{figure415}, but for 27 September 2008.}
+\label{figure421}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/pblh_phi_phys_20080927}
+\end{center}
+\caption{As in Fig. \ref{figure416}, but for 27 September 2008.}
+\label{figure422}
+\end{figure}
+-->
+</Text>
+        </Document>
+        <Document ID="39">
+            <Title>3.4 September 27, 2008</Title>
+        </Document>
+        <Document ID="63">
+            <Title>4.4.3 October 26, 2008</Title>
+            <Text>###October 26, 2008[oct26-443]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_grid_20081026}
+\end{center}
+\caption{As in Fig. \ref{figure411}, but for 26 October 2008.}
+\label{figure423}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_grid_20081026}
+\end{center}
+\caption{As in Fig. \ref{figure412}, but for 26 October 2008.}
+\label{figure424}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_phys_20081026}
+\end{center}
+\caption{As in Fig. \ref{figure413}, but for 26 October 2008.}
+\label{figure425}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/shf_lhf_phys_20081026}
+\end{center}
+\caption{As in Fig. \ref{figure414}, but for 26 October 2008.}
+\label{figure426}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_phys_20081026}
+\end{center}
+\caption{As in Fig. \ref{figure415}, but for 26 October 2008.}
+\label{figure427}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/pblh_phi_phys_20081026}
+\end{center}
+\caption{As in Fig. \ref{figure416}, but for 26 October 2008.}
+\label{figure428}
+\end{figure}
+-->
+</Text>
+        </Document>
+        <Document ID="20">
+            <Title>WRF Time</Title>
+            <Text>### Time Discritization ###
+
+Write about discritization here.</Text>
+        </Document>
+        <Document ID="64">
+            <Title>4.4.4 February 5, 2009</Title>
+            <Text>###February 5, 2009[feb5-444]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_grid_20090205}
+\end{center}
+\caption{As in Fig. \ref{figure411}, but for 5 February 2009.}
+\label{figure429}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_grid_20090205}
+\end{center}
+\caption{As in Fig. \ref{figure412}, but for 5 February 2009.}
+\label{figure430}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_phys_20090205}
+\end{center}
+\caption{As in Fig. \ref{figure413}, but for 5 February 2009.}
+\label{figure431}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/shf_lhf_phys_20090205}
+\end{center}
+\caption{As in Fig. \ref{figure414}, but for 5 February 2009.}
+\label{figure432}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_phys_20090205}
+\end{center}
+\caption{As in Fig. \ref{figure415}, but for 5 February 2009.}
+\label{figure433}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/pblh_phi_phys_20090205}
+\end{center}
+\caption{As in Fig. \ref{figure416}, but for 5 February 2009.}
+\label{figure434}
+\end{figure}
+-->
+</Text>
+        </Document>
+        <Document ID="21">
+            <Title>2 Model Descriptions</Title>
+        </Document>
+        <Document ID="65">
+            <Title>4.4.5 May 31, 2009</Title>
+            <Text>###May 31, 2009[may31-445]###
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_grid_20090531}
+\end{center}
+\caption{As in Fig. \ref{figure411}, but for 31 May 2009.}
+\label{figure435}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_grid_20090531}
+\end{center}
+\caption{As in Fig. \ref{figure412}, but for 31 May 2009.}
+\label{figure436}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/meteogram_phys_20090531}
+\end{center}
+\caption{As in Fig. \ref{figure413}, but for 31 May 2009.}
+\label{figure437}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/shf_lhf_phys_20090531}
+\end{center}
+\caption{As in Fig. \ref{figure414}, but for 31 May 2009.}
+\label{figure438}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/ust_tst_phys_20090531}
+\end{center}
+\caption{As in Fig. \ref{figure415}, but for 31 May 2009.}
+\label{figure439}
+\end{figure}
+-->
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter4/pblh_phi_phys_20090531}
+\end{center}
+\caption{As in Fig. \ref{figure416}, but for 31 May 2009.}
+\label{figure440}
+\end{figure}
+-->
+</Text>
+        </Document>
+        <Document ID="22">
+            <Title>3.1 Governing Equations</Title>
+            <Text>##Governing Equations[ge-31]##
+
+The Weather Research and Forecasting (hereafter WRF) model’s governing equations are described here, building upon those contained in [#Skamarock;] and [#Lund2010;]. The equations are derived from the inviscid, compressible form of the Navier-Stokes equations. Those equations are recast into flux-form with conservative variables in Cartesian space, transformed to use a terrain-following vertical mass coordinate following [#Laprise;], modified to include moisture effects, extended to project onto the Earth’s spherical surface (not discussed here), and finally rewritten in perturbation form.
+
+For this study, WRF model version 3.4.1 was employed using the Advanced Research WRF (ARW) dynamical solver. The ARW core solves moist equations, but couples prognostic variables to dry-air mass in order to maintain the mass conservation equation for dry air, thus avoiding the inclusion of source terms. The vertical \\(\eta\\)-coordinate used in the ARW core is defined with respect to dry air as:
+
+&lt;!--
+\be
+\eta = \frac{(p_{dh} - p_{dht})}{(p_{dhs} - p_{dht})} \mbox { .}
+\label{equation301}
+\ee
+\noindent
+--> Here, \\(p_{dh}\\) is the hydrostatic pressure of the dry atmosphere at any considered model level, while \\(p_{dhs}\\) and \\(p_{dht}\\) represent the hydrostatic pressure of dry air at the surface and top boundary, respectively. The \\(\eta\\)-coordinate ranges from unity at the surface to zero at the upper bounds of the model domain, and is thusly considered a normalized, terrain-following pressure coordinate. The denominator in ([](#equation301)), \\(\mu_d(x,y) = p_{dhs} - p_{dht}\\), is the mass of dry air per unit area of a given column in the computational domain and is used to cast variables in flux form:
+&lt;!--
+\bse \label{equation302}
+\bal
+\vec{V} &amp;= \mu_d \vec{v} = (U,V,W) \mbox{ ,} \label{equation302a} \\
+\Omega &amp;= \mu_d \dot{\eta} \mbox{ ,} \label{equation302b} \\
+\Theta &amp;= \mu_d \theta \mbox{ ,} \label{equation302c} \\
+Q_m &amp;= \mu_d q_m \mbox{ ,} \label{equation302d}
+\eal
+\ese
+\noindent
+--> In ([](#equation302)), \\(\vec{v} = (u,v,w)\\) are the covariant velocity components in Cartesian space, \\(\dot{\eta} = \pd{\eta}{t}\\) is the contravariant vertical velocity in \\(\eta\\)-coordinate space, \\(\theta\\) is covariant potential temperature, and \\(q_m\\) is covariant mixing ratio for any of the considered moisture sources (water vapor, rain, clouds, ice, etc.). Additional variables include specific volume for dry air (\\( \alpha_d = \rho_d^{-1}\\)), specific volume of the full parcel (\\(\alpha = \alpha_d[1 + q_v + q_r + q_c + q_i + \ldots]^{-1}\\)), pressure (\\(p\\)), and geopotential height (\\(\phi = gz\\)), all of which are non-conservative. 
+
+The flux-form Euler equations are written using these defined variables:
+&lt;!--
+\bea
+\left(\pd{\vec{V}_h}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h \otimes \vec{v}_h\right) + \pd{\Omega \vec{v}_h}{\eta} + \mu_d \alpha \nabla_{\eta}p + \hat{\alpha} \pd{p}{\eta} \nabla_{\eta}\phi &amp;= F_H \label{equation303}\\
+\left(\pd{W}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h w\right) + \pd{\Omega w}{\eta} - g\left(\hat{\alpha}\pd{p}{\eta} - \mu_d \right) &amp;= F_W \label{equation304} \\
+\left(\pd{\Theta}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h\theta\right) + \pd{\Omega \theta}{\eta} &amp;= F_{\Theta} \label{equation305} \\
+\left(\pd{Q_m}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h q_m\right) + \pd{\Omega q_m}{\eta} &amp;= F_{Q_m} \label{equation306} \\
+\left(\pd{\mu_d}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h\right) + \pd{\Omega}{\eta} = 0 \label{equation307} \\
+\left(\pd{\phi}{t}\right)_{\eta} + \mu_d^{-1} \left[ \left( \vec{V}_h \cdot \nabla_{\eta} \phi \right) + \Omega \pd{\phi}{\eta} - gW\right] = 0 \label{equation308}
+\eea
+\noindent
+--> where subscript \\(h\\) denotes horizontal components of the respective vectors, subscript \\(\eta\\) denotes the vertical coordinate held constant during the respective vector operation, \\(\hat{\alpha} = \frac{\alpha}{\alpha_d}\\) acts as a modifier based on density effects associated with moisture, and \\(F_*\\) are catch-all forcing terms that encompass the combined effects from spherical projection techniques, Coriolis, model physics, and turbulent transport. Additionally, diagnostic relations are defined for dry specific volume and full pressure as
+&lt;!--
+\bse \label{equation309}
+\bal
+\alpha_d &amp;= -\mu_d^{-1} \left( \pd{\phi}{\eta} \right) \mbox{ ,} \label{equation309a} \\
+p &amp;= p_o \left( \frac{R_d \theta_m}{p_o \alpha_d}\right)^{\gamma} \mbox{ ,} \label{equation309b}
+\eal
+\ese
+\noindent--> where \\(R_d\\) is the universal gas constant for dry air, \\(\gamma = 1.4\\) is the ratio of atmospheric heat capacities at constant pressure and constant volume, and \\(\theta_m \approx \theta \left(1 + 1.61 q_v\right)\\) is full potential temperature. 
+
+In order to reduce truncation errors in the horizontal pressure gradient and numerical errors associated with the vertical pressure gradient and buoyancy calculations, the flux-form equations are recast into perturbation form. Variables are redefined in terms of their departure (denoted by primes) from their hydrostatically-balanced reference state (denoted by bars), which are strictly functions of \\(\overline{z}\\). For this state, \\(u_d = \overline{u_d} - u_d^{\prime}\\), \\(\alpha_d = \overline{\alpha_d} - \alpha_d^{\prime}\\), \\(\phi = \overline{\phi} - \phi^{\prime}\\), and \\(p = \overline{p} - p^{\prime}\\). However, given that \\(\eta\\)-coordinate surfaces are not perfectly horizontal, the reference profiles are functions of (\\(x,y,\eta\\)). Following substitution of the mean and perturbation quantities, the reference state (\\(\overline{\alpha} \nabla_{\eta}\overline{p} = \nabla_{\eta} \overline{\phi}\\)) is subtracted. The momentum equations ([](#equation303])) and ([](#equation304)) become
+
+&lt;!--
+\bea
+\left(\pd{\vec{V}_h}{t}\right)_{\eta} + \left( \nabla_{\eta} \cdot \vec{V}_h \otimes \vec{v}_h\right) + \pd{\Omega \vec{v}_h}{\eta} \nonumber 
++ \hat{\alpha}  \left[ \vphantom{\pd{p^{\prime}}{\eta}}\mu_d \nabla_{\eta} \phi^{\prime} + \mu_d \alpha_d \nabla_{\eta} p^{\prime} \right.\\+ \left.\mu_d \alpha_d^{\prime} \nabla_{\eta} \overline{p} + \left( \nabla_{\eta} \phi\right) \left(\pd{p^{\prime}}{\eta} - \mu_d^{\prime} \right) \right] &amp;= F_H \mbox{ ,} \label{equation310}\\
+\left(\pd{W}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h w\right) + \pd{\Omega w}{\eta} - g\hat{\alpha}\left(\pd{p^{\prime}}{\eta} - \overline{\mu_d}q_{m}\right) + g\mu_d^{\prime} &amp;= F_W \mbox{ .}\label{equation311}
+\eea
+\noindent --> Similarly, the mass conservation equation ([](#equation307)) and geopotential equation ([](#equation308)) become
+
+&lt;!--
+\bea
+\left(\pd{\mu^{\prime}_d}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h\right) + \pd{\Omega}{\eta} = 0 \mbox{ ,} \label{equation312} \\
+\left(\pd{\phi^{\prime}}{t}\right)_{\eta} + \mu_d^{-1} \left[ \left( \vec{V}_h \cdot \nabla_{\eta} \phi \right) + \Omega \pd{\phi}{\eta} - gW\right] = 0 \mbox{ ,}\label{equation313}
+\eea
+\noindent
+--> The conservation equations for potential temperature ([](#equation305)) and scalars ([](#equation306)) remain unchanged. Finally, the hydrostatic relation ([](#equation309a)) is redefined as
+
+&lt;!--
+\be
+\pd{\phi^{\prime}}{\eta} = -\overline{\mu_d} \alpha^{\prime}_d - \alpha_d \mu^{\prime}_d \mbox{ .} \label{equation314}
+\ee
+-->
+
+The equation of state ([](#equation309b)) is non-linear and cannot be recast in perturbation form without approximation. Accordingly, ([](#equation309b)), together with ([](#equation310)) - ([](#equation313)) and  ([](#equation305)) - ([](#equation306)) form the fully compressible governing equations that are solved in the ARW dynamical core.
+
+
+</Text>
+        </Document>
+        <Document ID="66">
+            <Title>5 Idealized Large Eddy Simulation Experiments</Title>
+            <Text>#Idealized Large Eddy Simulation Experiments[les-5]#
+
+The Weather Research and Forecasting (WRF) model [#Skamarock] has evolved toward a self-contained numerical weather prediction system, capable of modeling atmospheric motions ranging from global to microscales. The promise of such capability is appealing to both operational and research environments where accurate prediction of turbulence is increasingly desirable. However, the ability of the WRF model to adequately reproduce small-scale atmospheric motions in the range of scales on the order of 100 &lt;!--$\metre$ --> and smaller remains questionable.
+
+In this study, turbulent flow in the atmospheric convective boundary layer (CBL) is reproduced using a conventional large eddy simulation code (OU-LES;  &lt;!-- \citealt{Feddy04a, Feddy04b}-->) and the WRF model applied in an LES mode (WRF-LES). The simulations use almost identical numerical grids and are initialized with the same idealized vertical profiles of velocity, temperature, and moisture. The respective CBL forcings were set equal and held constant across the entire &lt;!--$12\mbox{-}\hour$--> simulation. The effects of CBL flow types (with and without shear) and of varying grid spacing (20, 40, and 80 m) were investigated.
+
+Descriptions of simulation setups and  an overview of the evaluated statistics are presented in [](#ed-51).  In [](#res-53), horizontal slices of velocity fields are presented to enable comparison of CBL flow patterns obtained with each simulation method. In addition, numerous traditional turbulence statistics are shown in order to examine the sensitivities to numerics employed by each method. Finally, one- and two-dimensional velocity spectra are shown as a means to provide a broader understanding of how turbulence is reproduced in both models. The implications of these results are discussed in [](#dis-54).</Text>
+        </Document>
+        <Document ID="23">
+            <Title>Conclusions</Title>
+            <Text># Conclusions #</Text>
+        </Document>
+        <Document ID="67">
+            <Title>5.1 Experimental Design</Title>
+            <Text>##Experimental Design[ed-51]##
+
+The OU-LES code deals with the Navier-Stokes equations of motion in the Boussinesq approximation. The equations are integrated using a third-order Runge-Kutta scheme, with horizontal advection performed using a second-order, centered, finite-difference scheme. Subgrid turbulence kinetic energy (STKE) closure is realized after [#Deardorff1980;].
+
+The WRF-LES solves the fully-compressible, flux form of the Navier-Stokes equations. Due to compressibility, acoustic and other high-frequency modes arise in the simulations. In order to maintain stability while keeping a feasible integration time-step, the equations are integrated using a time-split version of the third-order Runge-Kutta scheme [#Wicker98, Wicker02]. This procedure introduces three additional filters in order to maintain numerical stability of the code: three-dimensional divergence damping, vertically-integrated horizontal divergence damping, and semi-implicit acoustic step off-centering [#Skamarock]. Horizontal advection is accomplished with a fifth-order, upwind-biased, finite-difference scheme. The WRF-LES employs a nearly identical Deardorff STKE scheme to that of OU-LES.
+
+&lt;!--
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figures/chapter5/ideal_input_soundings}
+\end{center}
+\caption{Idealized profiles of temperature and moisture used to initialize all simulations.}
+\label{figure501}
+\end{figure}
+-->
+
+Identical &lt;!--$10.24 \times 10.24 \times 2 \: \kilo\metre\cubed$--> numerical domains were used for runs with both code. Isotropic grid spacing was used, with &lt;!--$\Delta x = \Delta y = \Delta z$--> being varied between &lt;!--$20, 40,$--> and &lt;!--$80\: \metre$-->. At the lower boundary, Monin-Obukhov flux-profile relationships were used [#MO, Dyer], Rayleigh damping was applied in the upper portion of the simulation domain, and lateral boundaries were periodic. Simulations were initialized with the same idealized profiles of temperature and moisture, depicted in [](#figure501). These profiles are packaged with the WRF model’s idealized LES test simulation case. In addition to grid spacing, differing flow types (with and without mean wind) were investigated. The shear-free case was initialized with zero wind, while the shear-driven case was initialized with a spatially-uniform, geostrophically-balanced &lt;!--$u$-->-component velocity of &lt;!--$10 \: \metre\reciprocal\second$-->. Surface kinematic heat and moisture fluxes were set equal to &lt;!-- $0.12 \: \kelvin \metre\reciprocal\second$--> and &lt;!--$5\times \power{10}{-5} \: \metre\reciprocal\second$-->, respectively, and held constant during the entire &lt;!--$12\mbox{-}$-->hour  simulation period.
+
+</Text>
+        </Document>
+        <Document ID="90">
+            <Title>7 Applications</Title>
+            <Text>#Applications[applications-7]#</Text>
+        </Document>
+        <Document ID="24">
+            <Title>Acknowledgements</Title>
+            <Text>Remember to acknowledge the following:
+
+Lou Wicker for sending me the Mesinger 1977 paper
+Dr. Fedor Mesinger for sending me manuscript and describing his work.
+OSCER (Neeman, Brandon George) for reserving me 1200 processors over a week, working with me to get runs completed.
+Chris Wilson for many helpful discussions
+Mark Laufersweiler for many "off the ledge" talks
+Marcia, Celia, Becky, Nancy for helping me always
+Jimi Dudhia for several helpful email conversations
+
+Larissa, duh
+Hines family
+Gibbs family
+Friends/colleagues</Text>
+        </Document>
+        <Document ID="68">
+            <Title>5.2 Verification Techniques</Title>
+            <Text>##Verification Techniques[vt-52]##
+
+This study includes several velocity field statistics of interest. Data depicted in the horizontal plane were taken at the level of \\(z / z_i = 0.25\\), where \\(z\\) is the height above ground level (AGL) and \\(z_i\\) is the depth of the boundary layer. This height was chosen in order to eliminate direct anisotropic effects of the surface on the flow field while remaining in the general near-surface region. 
+
+Horizontal slices of \\(u\\) and \\(w\\) perturbation velocity fields (\\(\widetilde{u^{\prime}}, \widetilde{w^{\prime}}\\)) are presented as instantaneous snapshots at each model’s final time step in order to display turbulent structure that would otherwise be smoothed by averaging. The tilde denotes the resolved (grid-scale) value of each respective velocity component. The distributions and associated statistics of those turbulent fluctuations were calculated by sampling data across both the horizontal plane and at every minute across the simulation’s final hour. Vertical profiles of normalized velocity variance (\\( \widetilde{u_i^{\prime}}^2  / w_*^2\\)) are provided to illustrate the dispersion of the flow field around its mean.  Here, \\(w_*= (Bz_i)^{\frac{1}{3}}\\) is the normalizing convective velocity scale, originally suggested by [#Deardorff1970;], with \\(B\\) being vertical turbulence buoyancy flux, denoted as:
+&lt;!--
+\be
+B = \frac{g}{\theta_o} \widetilde{w^{\prime}\theta_v^{\prime}} \mbox{ ,}
+\ee
+\noindent--> 
+where \\(g\\) is the acceleration due to gravity, \\(\theta_o\\) is a constant potential temperature reference value, and  \\(\widetilde{w^{\prime}\theta_v^{\prime}}\\) is the kinematic virtual heat flux. Normalized profiles of turbulence kinetic energy (\\(0.5[\widetilde{u^{\prime}}^2 + \widetilde{v^{\prime}}^2 + \widetilde{w^{\prime}}^2] / w_*^2\\)) are used as a means to highlight the mean kinetic energy per unit mass associated with turbulent eddies and as a proxy for wind shear. For the sheared case, a normalized profile of kinematic vertical momentum flux (\\( \widetilde{w^{\prime}u^{\prime}} / w_*^2\\)) illustrates the vertical transport of horizontal momentum by the turbulent velocity component along the direction of the mean wind. Also for the shear-driven case, a normalized vertical profile of velocity (\\(\widetilde{u^{\prime}} / w_*^2\\)) is shown to demonstrate the mean CBL structure. Finally, normalized one- and two-dimensional spectral density (\\(kP_{u_i} / w_*^2\\)) curves are presented to investigate the energy distributions of the flow fields across scales. Here, \\(k\\) is the wavenumber and \\(P_{u_i}\\) is the spectral density of each respective flow component. One-dimensional spectral density was calculated in both \\(k_1\\) and \\(k_2\\) directions, following the one-sided, auto-spectral method described in [#KaiserFeddy;]. Two-dimensional spectral density was calculated by applying the planar Fourier transform, as outlined in [#KellyWyngaard2006;]. Except for the simple horizontal slices, statistics were calculated at every grid point, averaged in space, then averaged temporally over a one hour period.
+
+These statistics are used to gain insight into how each code reproduces turbulence in both the shear-free and shear-driven CBLs investigated in this study. Horizontal slices allow quick inspection of the spatial structure of velocity fields. As will be shown in [](#res-53), visually similar comparisons of bulk fields can be misleading when surmising each method’s performance. Thus, exploring higher-order statistics is of vital importance. As noted by [#Skamarock04;], who used turbulence kinetic energy spectra to evaluate mesoscale numerical weather prediction models, velocity spectra analysis proves an appealing choice for several reasons despite not being a traditional model validation measure. Firstly, there is a glaring lack of verification data on the scales of interest in this study. Secondly, spectra can indicate whether a model produces the expected energy distribution across scales as predicted by theory. That, in turn, indicates whether a model reproduces flow features consistent with current understanding of turbulence dynamics. Finally, spectra allow deeper insight into model numerics and assessment of effective model resolution. Distributions, variances, turbulence kinetic energy, and momentum fluxes can be investigated complementary to spectra in order to further understand the behavior exhibited in spectral fields.</Text>
+        </Document>
+        <Document ID="91">
+            <Title>7.1 Alternate Domains</Title>
+            <Text>##Alternate Domains[alt-domain-71]##</Text>
+        </Document>
+        <Document ID="3">
+            <Title>Untitled</Title>
+        </Document>
+        <Document ID="25">
+            <Title>1.2 Goals</Title>
+            <Text>##Goals[goals-12]##
+
+Goals to go here
+</Text>
+        </Document>
+        <Document ID="4">
+            <Title>Meta-Data</Title>
+            <Text>Base Header Level: 2
+Latex Footer: Dissertation-footer
+Latex Input: Dissertation-header</Text>
+        </Document>
+        <Document ID="69">
+            <Title>5.3 Results</Title>
+            <Text>##Results[res-53]##
+
+Results for the evaluated fields described in [](#ed-51) are presented for both the shear-free and shear-driven CBL cases. Behavior was generally consistent across disparate grid spacings. Accordingly, results are only shown for the finest grid spacing simulations. All fields are shown for the final hour of simulation. Planar slices depict the instantaneous velocity field at the final moment of the simulations described in [](#ed-51). Histograms represent the distribution of instantaneous velocity over the last hour of simulation. Remaining statistics are temporal averages across the final hour. Horizontal fields shown refer to the CBL quarter-depth level. This level was chosen to minimize the effects of near-surface anisotropy on turbulence fields because the STKE closure used in this study is known to poorly reproduce such effects.</Text>
+        </Document>
+        <Document ID="92">
+            <Title>7.1.1 Synoptic Conditions</Title>
+            <Text>###Synoptic Conditions[syn-711]###</Text>
+        </Document>
+        <Document ID="26">
+            <Title>1.3 Outline Of Remaining Chapters</Title>
+            <Text>##Outline of Remaining Chapters[outline-13]##
+
+Chapter [](#les-2) describes the University of Oklahoma large eddy simulation code, including its governing equations and subgrid closure scheme. Chapter [](#wrf-3) described the Weather Research and Forecasting model, including its governing equations, surface and boundary layer parameterization schemes, and subgrid closure schemes. Chapter [](#mesoscale-4) details the WRF model’s performance when run in a traditional mesoscale setup by way of comparison with observational and OU-LES data. Chapter[](#les-5) details the WRF model’s performance when run in large eddy simulation mode by comparing output with OU-LES data for idealized experiments. Chapter [](#nudge-6) investigates a hybrid-nudging approach in which the WRF model acts to downscale regional meteorological data and in turn provide input sounding for OU-LES data through the subsequent output fields. Applicability of the findings are investigated in Chapter [](#applications-7). Finally, the overarching implications are discussed and summarized in Chapter [](#summary-8).
+</Text>
+        </Document>
+        <Document ID="5">
+            <Title>1 Introduction</Title>
+        </Document>
+        <Document ID="93">
+            <Title>7.1.2 Results</Title>
+            <Text>###Results[res-712]###</Text>
+        </Document>
+        <Document ID="6">
+            <Title>3 Mesoscale Experiments</Title>
+        </Document>
+        <Document ID="27">
+            <Title>3.5 Surface Layer Schemes</Title>
+            <Text>##Surface Layer Schemes[surface-layer-35]##
+
+The surface layer schemes provide friction velocities and exchange coefficients that enable the calculation of surface heat and moisture fluxes by the land-surface model and surface stress in the planetary boundary layer (PBL) scheme. Over water, the surface fluxes and diagnostic fields are computed in the surface layer scheme itself. Each surface layer option is tied to a particular PBL scheme. The schemes provide no tendencies, rather only the stability-dependent information about the surface layer for the land-surface models and PBL schemes.
+
+This study implemented four surface layer parameterization options contained in the latest release of the WRF model, including the MM5, Janjic, MYNN, and TEMF schemes. The WRF model, as in most typical atmospheric models, implements surface-layer similarity theory to characterize the flux-profile relationships. [#MO;] hypothesized that in the atmospheric surface layer flow, where the considered level is greater than that of the so-called roughness length \\(z_0\\), the vertical gradients of Reynolds-averaged meteorological fields \\(U\\), \\(\theta\\), \\(q\\), and their associated turbulence moments are universal functions of a dimensionless height \\(\zeta=z/L\\) when normalized by the corresponding surface-layer turbulence scales and length scale \\(L\\). Here \\(U\\) represents velocity (\\(\metre\reciprocal\second\\)), \\(\theta\\) is potential temperature (\\(\kelvin\\)), and \\(q\\) is water vapor mixing ratio (\\(\gram\reciprocal\kilogram\\)). The turbulence scales are given by
+
+&lt;!--
+\bse \label{equation315}
+\bal
+u_* &amp;= (\overline{w^{'}u^{'}}^2 + \overline{w^{'}v^{'}}^2)^{\frac{1}{4}} \mbox{ ,} \label{equation315a} \\
+\theta_* &amp;= \frac{-\overline{w^{'}\theta^{'}}}{u_*} \mbox{ , \quad and} \label{equation315b}\\
+q_* &amp;= \frac{-\overline{w^{'}q^{'}}}{u_*} \mbox{ ,} \label{equation315c}
+\eal
+\ese
+\noindent
+--> with the Obukhov stability length scale given by
+&lt;!--
+\bse \label{equation316}
+\bal
+L &amp;= -\frac{\theta_r(\overline{w^{'}u^{'}}^2 + \overline{w^{'}v^{'}}^2)^{\frac{3}{4}}}{g \kappa \overline{w^{'}\theta_v^{'}}} \mbox{ ,} 
+\eal
+\ese
+\noindent
+-->
+where \\(\theta_r\\) designates some reference temperature, \\(g\\) is gravity, \\(\kappa\\) is &lt;!--von K\'{a}rm\'{a}n's--> constant. Additionally, \\(u^{'},v^{'}\\), and \\(w^{'}\\) represent perturbations of the \\(x\\)-component, \\(y\\)-component, and \\(z\\)-component of velocity, \\(\theta^{'}\\) and \\(\theta_v^{'}\\) are the perturbations of potential and virtual potential temperature, respectively, and \\(q^{'}\\) represents the perturbation of water vapor mixing ratio. Accordingly, \\(\overline{w^{'}u^{'}}\\) and \\(\overline{w^{'}v^{'}}\\) are kinematic momentum fluxes, \\(\overline{w^{'}\theta{'}}\\) and \\(\overline{w^{'}\theta_v^{'}}\\) are kinematic heat and virtual heat fluxes, and \\(\overline{w^{'}q^{'}}\\) is the kinematic moisture flux. Reynolds averaging is denoted by \\(\overline{()}\\). \\(L\\) is assumed constant throughout the surface layer since surface-layer turbulent momentum and heat fluxes are assumed constant with height. For a neutrally stratified surface layer, \\(L\\) goes to infinity, the sign of \\(L\\) is undefined, and the integral flux-gradient relation follows the logarithmic profile law. In the stably stratified surface layer, with no turbulent shear stress, \\(L\\) tends to zero. If there exists non-zero turbulent shear stress, \\(L\\) is positive. For the unstably stratified surface layer with non-zero turbulent shear stress, \\(L\\) is negative. Following the Monin-Obukhov similarity theory, profiles are defined for heat and momentum, respectively, for the non-neutral atmospheric surface layer as
+ &lt;!--
+\bse \label{equation317}
+\bal
+\frac{\kappa z}{u_*} \pd{U}{z} &amp;= \phi_m\left(\zeta \right) \mbox{ ,} \label{equation317a}\\
+\frac{\kappa z}{\theta_*} \pd{\theta}{z} &amp;= \phi_h\left(\zeta \right) \mbox{ , \quad and} \label{equation317b}\\ 
+\frac{\kappa z}{q_*} \pd{q}{z} &amp;= \phi_q\left(\zeta \right) \mbox{ .} \label{equation317c} 
+\eal
+\ese
+\noindent
+--> Here, \\(\phi_m\\), \\(\phi_h\\), and \\(\phi_q\\) are empirically derived universal functions of dimensionless height \\(\zeta\\). It is often assumed that \\(\phi_h\\) and \\(\phi_q\\) are equivalent.
+
+Next, kinematic fluxes of momentum, heat, and moisture are defined in terms of the turbulence scales (\\(u_*\\), \\(\theta_*\\), and \\(q_*\\) respectively) as 
+&lt;!--
+\bse \label{equation318}
+\bal
+F_m &amp;= -u_*^2 \mbox{ ,}\label{equation318a} \\
+F_h &amp;= -u_*\theta_* \mbox{ , \quad and} \label{equation318b}\\
+F_q &amp;= -u_*q_* \mbox{ .} \label{equation318c}
+\eal
+\ese
+\noindent
+-->
+
+Finally, the kinematic fluxes are described in terms of state variables by integrating Eq. ([](#equation317)) from the roughness height \\(z_0\\) to height \\(z\\) and combining with Eq. ([](#equation318)). These relationships are given by
+&lt;!--
+\bse \label{equation319}
+\bal
+U &amp;= \frac{u_*}{\kappa}\left[\ln\left({\frac{z}{z_0}}\right) - \psi_m\left(\zeta,\zeta_0 \right)\right] \mbox{\quad and} \label{equation319a}\\
+(\theta - \theta_0) &amp;= \frac{\theta_*}{\kappa}\left[\ln\left({\frac{z}{z_0}}\right) - \psi_h\left(\zeta,\zeta_0\right)\right] \label{equation319b} \mbox{ ,}\\
+(q - q_0) &amp;= \frac{q_*}{\kappa}\left[\ln\left({\frac{z}{z_0}}\right) - \psi_h\left(\zeta,\zeta_0\right)\right] \label{equation319c} \mbox{ ,}
+\eal
+\ese
+\noindent
+--> where \\(\zeta_0 = z_0/L\\). Additionally, \\(\theta_0\\) and \\(q_0\\) are the potential temperature and moisture values at the roughness height \\(z_0\\). \\(\psi_m\\) and \\(\psi_h\\) are stability correction functions given by
+&lt;!--
+\bse \label{equation320}
+\bal 
+\psi_m &amp;= \int_{\zeta_0}^{\zeta} \frac{1 - \phi_m(\zeta^{'})}{\zeta^{'}} d\zeta^{'} \mbox{ ,} \label{equation320a} \\ 
+\psi_h &amp;= \int_{\zeta_0}^{\zeta} \frac{1 - \phi_h(\zeta^{'})}{\zeta^{'}} d\zeta^{'} \mbox{ .} \label{equation320b}
+\eal
+\ese
+-->
+
+Similarity theory, however, is not perfect in representing the flux-profile relationship. The main quandary is that potential temperature and moisture values at roughness height \\(z_0\\) are not generally known in numerical models. Alternatively, \\(\theta_0\\) and \\(q_0\\) are approximated by the surface skin potential temperature (\\(\theta_g\\)) and moisture (\\(q_g\\))values. Consequently, momentum flux is defined from the gradient down to the roughness height \\(z_0\\), while heat and moisture fluxes are defined from the gradient down to the surface. This results in an inconsistency between fluxes. This inconsistency is exacerbated on the extreme ends of the meteorological spectrum. For instance, under very stable or very unstable conditions, \\(\theta_g\\) and \\(\theta_0\\) can differ by a large margin. Another problem of similarity theory lies in the need to solve the complex stability correction functions. Each SL scheme in the WRF model attempts to alleviate at least one of these dilemmas, if not both.</Text>
+        </Document>
+        <Document ID="50">
+            <Title>4 Mesoscale Experiments</Title>
+            <Text>#Mesoscale Experiments[mesoscale-4]#
+
+Describe conditions here
+
+Blah blah</Text>
+        </Document>
+        <Document ID="7">
+            <Title>OU-LES</Title>
+        </Document>
+        <Document ID="94">
+            <Title>7.2 Implications</Title>
+            <Text>##Implications[implications-72]##</Text>
+        </Document>
+        <Document ID="100">
+            <Title>3.6.2 MYJ</Title>
+            <Text>###MYJ[pbl-myj-362]###
+
+[#Jan02;] implements a non-singular version of the [#MY82;] level 2.5 closure scheme. Problems have become apparent in the original version of the closure scheme which this scheme attempted to address.  One main problem was the singularity problem in a convective PBL with growing turbulence.
+
+The turbulence kinetic energy, TKE, production and dissipation term in the [#MY82;] scheme can be expressed as
+&lt;!--
+\bea
+l\frac{d\left(\frac{1}{q}\right)}{dt} = \frac{\alpha\left(\frac{l}{q}\right)^4 +
+\beta\left(\frac{l}{q}\right)^2}{\gamma\left(\frac{l}{q}\right)^4 +
+\delta\left(\frac{l}{q}\right)^2 + 1} - \frac{1}{B_1},\label{equation341}
+\eea
+\noindent
+--> where \\(l\\) is the master length scale, \\(q\\) is the square-root of twice the TKE, and \\(B_1\\) is a constant.  The coefficients denoted by Greek letters only depend on buoyancy and shear of large scale flow.  In the case of growing turbulence in a convective PBL, Eq. ([](#equation341)) has a singularity for
+&lt;!--
+\be
+\gamma\left(\frac{l}{q}\right)^4 + \delta\left(\frac{l}{q}\right)^2 + 1 = 0. \label{equation342}
+\ee
+-->
+Solving Eq. ([](#equation342)) yields the criterion for avoiding the singularity, given by
+&lt;!--
+\be
+l&lt;\sqrt{\frac{1}{p_1}}q, \label{equation343}
+\ee
+\noindent
+--> where \\(p_1\\) is the relevant root from Eq. ([](#equation342)).
+
+In the stable regime, an upper limit is imposed on \\(l\\) which states that the ratio \\(\overline{ww}/\text{TKE}\\) cannot be smaller than that corresponding to the regime of vanishing turbulence.  This requirement leads to
+&lt;!--
+\be
+l&lt;\sqrt{\frac{1}{t_1}}q, \label{equation344}
+\ee
+\noindent
+--> where \\(t_1\\) is the relevant root of the bi-quadratic equation.  Combining Eqs. ([](#equation343)) and ([](#equation344)) yields a unified criterion defined for the entire stability range, given by
+&lt;!--
+\be
+l&lt;f(B,S)q. \label{equation345}
+\ee
+\noindent
+--> Note that in Eq. ([](#equation345)), \\(f\\) is a function of buoyancy and shear parameters \\(B\\) and \\(S\\), depending only on large scale flow.
+
+When implemented, \\(l\\) is first computed from diagnostic equations and then is adjusted to satisfy Eq. ([](#equation345)). Once the master length scale is determined, the contribution of production and dissipation are added to the TKE.  This is done iteratively with convergence reached after approximately two iterations.  The diffusion coefficients are computed using the updated TKE, but without re-computation of \\(l\\).  The vertical diffusion of TKE is taken after the computation of the turbulent exchange coefficients.  Due to the linearization of the production/dissipation equation and the iterative nature, roughly the same parameters determine the TKE production/dissipation and vertical diffusion of the large scale variables.  The fast convergence of solving the TKE equation makes this a non-issue. The boundary layer depth is defined as the lowest model level above the surface at which the equilibrium turbulent energy becomes negative, or in other words, as the height of the lowest model level at which TKE approaches its prescribed lower bound.</Text>
+        </Document>
+        <Document ID="51">
+            <Title>4.1 Experimental Design</Title>
+            <Text>##Experimental Design[ed-41]##</Text>
+        </Document>
+        <Document ID="28">
+            <Title>2.1 The WRF Model</Title>
+        </Document>
+        <Document ID="8">
+            <Title>Summary/Discussion</Title>
+        </Document>
+        <Document ID="9">
+            <Title>Ideas</Title>
+            <Text>Write ideas here
+
+General idea: People want near-surface turbulence statistics that are reliable and realistic in a reasonable sense. Cheapest tool and easiest to use is the WRF model. Turns out that compared with an LES code, it just doesn’t cut it when compared with measurements - beholden to pitfalls in parameterization schemes, some often tweaked for specific locations/cases. Okay, but WRF can be run in a large eddy simulation mode. Problems with real-data implementation because of the need for specified boundaries. Where to get data that high resolution? Also, when used as an interior domain in a nested simulation, there are eddy-deficient regions and questionable statistics due to scale interactions and subgrid closures between resolutions. In idealized setting, model numerics associated compressible code and high-accuracy advection schemes cause problems on small scale. More accurate tool to describe turbulence is OU-LES, however, it assumes periodic domains and has no informations about larger driving system. So optimal solution is the best of both worlds. WRF model is used to downscale large-scale data to 1-4km spatial resolution and sub-1s temporal resolution. That data is then used as a guiding force for OU-LES to obtain high resolution turbulence statistics while not running away from large scale solution. WRF better than RUC because RUC is coarser in time and space. 
+
+
+From Talbot, et al. (2012)
+
+	.	1)  Increased resolution improves the ability of WRF to capture surface variability, which facilitates compar- ison with measurements and thus improves model validation. It also allows the model to capture hetero- geneous surface fluxes of importance in hydrometeo- rological applications. But, increased resolution does not seem to result in improvements in regionally aver- aged simulation outputs or in bulk ABL properties. 
+	.	2)  The mesoscale horizontal turbulence closure has little effect on the results analyzed and presented in this study. WRF recommends the 2D Smagorinsky, and we found in results not shown here that the 2D Smagorinsky seems to generate mesoscale features that appear more realistic than the TKE1.5 model. This insensitivity is related to the fact that the most important turbulent fluxes, in the vertical direction, are controlled by the diffusivities provided by the ABL scheme. Here we used the YSU PBL scheme and refer the reader to Shin and Hong (2011) for a comparison of different schemes. 
+	.	3)  TheLESSGSmodelhadarelativelysmallimpacton our results: this is due to the fact the two models im- plemented in the WRF version that we tested are both eddy-viscosity type models (although the determina- tion of the eddy viscosity is significantly different). Overall, the performance of these two models is poor when assessed based on the simulated idealized wind profiles and energy spectra, and similar to their per- formance in other codes. New-generation models being implemented in new versions of WRF (Mirocha et al. 2010; Kirkil et al. 2012) have a significantly improved performance, especially in matching the expect log- arithmic wind profile. 
+	.	4)  The most important controls on model results were the meteorological forcing data. We used two prod- ucts, NARR and GCIP, that use the same model (the Eta model from NCEP) to assimilate data and pro- duce reanalysis products. The two datasets, however, produced differences in the forcing that were non- negligible. Moreover, the forcings they provided did not match soundings or ground measurements of sur- face conditions. Some of these forcing biases are slightly reduced by the nested WRF simulations (profile of specific humidity or near-surface wind speed in do- main d6), but the biases have been largely downscaled 
+by WRF and their impact on the smaller domains re- mained significant. Tests can be performed where mesoscale simulations are started a long time before the LES. This will result in initial surface conditions for the LES dictated by the WRF–land surface model dynamics, rather than the meteorological forcings. But, there is no guarantee that such an approach will yield better initial surface conditions. Ensemble aver- ages of reanalysis products can also be potentially tested.
+Acknowledgments. This work is supported by NSF under Grant CBET-1058027 by the High Meadows Sus- tainability Fund, and by the Mid-Infrared Technology for Health and the Environment (MIRTHE) NSF center at Princeton University, Grant EEC-0540832.
+We are especially grateful to New Jersey climatologist Professor David Robinson from Rutgers University and the other members of the NJ weather and climate net- work for providing us access to and assistance in ana- lyzing the data from the Trenton and New Brunswick stations and to the lidar development team at the City College of New York, especially Professors Fred Moshary and Barry Gross.
+The simulations were performed on the supercom- puters of the National Center for Atmospheric Research (NCAR) under Project 36861019 and the TIGRESS High Performance Computing Center of Princeton University. The eddy-covariance data collection and analysis from the Princeton campus were performed by June Yeung, Yan Zang, and Mary-Lynn Baeck.
+
+From Fedorovich Book:
+The behavior of the RK3 scheme for the one-dimensional linear advection equa- tion with 5th-order advection over a range of stable Courant numbers is displayed in Fig. 6.7(a). At the higher Courant numbers the normalized phase propagation increases somewhat above unity over the lower half of the wave spectrum, and the damping increases in the higher-wavenumber regime. Because the effective dis- sipation is proportional to the Courant number as indicated in (6.8), the damping associated with the upwind differencing does not change in direct response to the Courant number; doubling the Courant number doubles the damping coefficient, but in doubling the time step, the damping terms are applied only half as many times in integrating out to a specified time. Thus, changes with Courant number are due solely to the changing truncation errors in the RK3 scheme.</Text>
+        </Document>
+        <Document ID="95">
+            <Title>8 Summary and Conclusions</Title>
+            <Text>#Summary and Conclusions[summary-8]#</Text>
+        </Document>
+        <Document ID="29">
+            <Title>3.6 Planetary Boundary Layer Schemes</Title>
+            <Text>##Planetary Boundary Layer Schemes[pbl-26]##
+
+The PBL scheme is responsible for vertical sub-grid fluxes due to eddy transports in the whole 
+atmospheric column, not just within the boundary layer. This means that explicit vertical diffusion
+is de-activated with the assumption that the PBL scheme will handle this process.  The most 
+appropriate horizontal diffusion choices are those based on horizontal deformation or with a 
+constant horizontal eddy diffusivity. The schemes are one-dimensional and assume that their is a 
+clear separation of scales between sub-grid eddies and resolved eddies. Most PBL schemes consider 
+dry mixing, but can also include saturation effects in the vertical stability that determines the 
+mixing. The surface fluxes are provided by the SL and LSM schemes. The PBL scheme then determines
+the flux profiles within the well-mixed boundary layer and the stable layer. Thus, the PBL schemes 
+provide atmospheric tendencies of temperature, moisture (including clouds), and horizontal momentum
+in the entire atmospheric column.
+</Text>
+        </Document>
+        <Document ID="52">
+            <Title>Untitled</Title>
+        </Document>
+        <Document ID="101">
+            <Title>3.6.3 MYNN</Title>
+            <Text>###MYNN[pbl-mynn-363]###
+
+Similar to [#Jan02;],  [#NN01, NN04, NN06;] implements a local, non-singular version of the [#MY82;] level 2.5 closure scheme (note: a level 3 closure is available, but known numerical instabilities preclude its use). The scheme addresses singularity problem in a convective PBL with growing turbulence. In addition, the scheme attempts to improve the [#Jan02;] approach through a redefined master length scale.
+
+The prognostic TKE equation, similar to that in [#MY82;], is given by
+
+&lt;!--  
+\be
+\underbrace{\vphantom{\pd{\widetilde{u_i} (\frac{q^2}{2})}{x_i}} \pd{\frac{q^2}{2}}{t}}_{(I)} \\
++ \underbrace{\pd{\widetilde{u_i} \left(\frac{q^2}{2}\right)}{x_i}}_{(II)}\\
+- \underbrace{\vphantom{\pd{\widetilde{u_i} (\frac{q^2}{2})}{x_i}}\pd{}{z}\left[ l q S_{\phi}\pd{}{z}\left(\frac{q^2}{2}\right)\right]
+}_{(III)} \\
+= \underbrace{\vphantom{\pd{\widetilde{u_i} \frac{q^2}{2}}{x_i}}P_s}_{(IV)} \\
++ \underbrace{\vphantom{\pd{\widetilde{u_i} \frac{q^2}{2}}{x_i}}P_b}_{(V)}\\
+- \underbrace{\vphantom{\pd{\widetilde{u_i} \frac{q^2}{2}}{x_i}}\epsilon}_{(VI)} \mbox{ ,}
+\label{equation346}
+\ee
+\noindent
+--> where (I) is the local rate of change in TKE, (II) is the advection of TKE by the resolved flow, (III) is the vertical redistribution of TKE, (IV) is shear production of TKE, (V) is buoyancy production or destruction of TKE, and  (VI) is the TKE dissipation rate. Terms (IV)-(VI) are further expressed as
+&lt;!--
+\bse \label{equation347}
+\bal
+P_s &amp;= -\left(\widetilde{u^{\prime}w^{\prime}}\right)\pd{u}{z} - \left(\widetilde{v^{\prime}w^{\prime}}\right)\pd{v}{z}\mbox{ ,} \label{equation347a}\\
+P_b &amp;= \beta g \left(\widetilde{u^{\prime}\theta_v^{\prime}}\right)\mbox{ , and} \label{equation347b} \\
+\epsilon &amp; = \frac{q^3}{l B_1} \label{equation347c} \mbox{ ,}
+\eal
+\ese
+\noindent
+--> where \\(B_1\\) is a closure constant. 
+
+The MYNN scheme attempts to better reproduce boundary layer growth as compared to that from MYJ. Accordingly, the primary difference between the schemes is the prescription of the master length scale, which directly affects the vertical redistribution of TKE  (see term (II) of Eq. ([](#equation346))). The master length scale is defined such that the the shortest among the surface layer length scale, \\(l_s\\), the turbulence length scale, \\(l_t\\), and buoyancy length scale, \\(l_b\\), will dominate. It is given by
+&lt;!--
+\be
+\frac{1}{l} = \frac{1}{l_s} + \frac{1}{l_t} + \frac{1}{l_b} \mbox{ .}\label{equation348}
+\ee
+-->
+
+The surface layer length scale is a function of the Monin-Obukhov dimensionless height and is defined as:
+&lt;!--
+\be
+l_s = 
+\begin{cases}
+ \kappa z / 3.7,&amp; \text{if } \zeta > 1 \mbox{ ,} \\
+ \kappa z \left(1 + 2.7\zeta\right)^{-1}, &amp; \text{if } 0 \geq \zeta > 1 \mbox{ ,}\\
+\kappa z \left(1 - 100\zeta\right)^{0.2}, &amp; \zeta &lt; 0 \mbox{ .}\\
+\end{cases}
+\label{equation349}
+\ee
+-->
+
+
+
+</Text>
+        </Document>
+        <Document ID="96">
+            <Title>8.1 Final Remarks</Title>
+            <Text>##Final Remarks[remarks-81]##</Text>
+        </Document>
+        <Document ID="53">
+            <Title>4.2 Verification Techniques</Title>
+            <Text>##Verification Techniques[vt-42]##</Text>
+        </Document>
+        <Document ID="10">
+            <Title>1.1 Motivation</Title>
+            <Text>##Motivation[motivation-11]##
+
+The trend in numerical weather prediction is toward the use of fine grid meshes capable of resolving atmospheric motions down to the turbulence scale. The ability to reproduce accurate turbulence statistics is appealing to both operational and research environments. For example, correctly representing small-scale flow characteristics is vital for air pollution and wave propagation applications, where the dispersive role of such motions are potentially significant.
+</Text>
+        </Document>
+        <Document ID="97">
+            <Title>8.2 Future Research</Title>
+            <Text>##Future Research[future-82]##</Text>
+        </Document>
+        <Document ID="54">
+            <Title>4.3 Synoptic Conditions</Title>
+            <Text>##Synoptic Conditions[syn-43]##</Text>
+        </Document>
+    </Documents>
+</SearchIndexes>
