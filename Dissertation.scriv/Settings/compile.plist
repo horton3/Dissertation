@@ -514,6 +514,12 @@ p.shot {text-align:left; text-indent:0; margin: 12pt 0pt 0pt 0pt; text-transform
 			<key>variable</key>
 			<string>\def\myauthor{}</string>
 		</dict>
+		<dict>
+			<key>replacement</key>
+			<string>~\ref</string>
+			<key>variable</key>
+			<string>\autoref</string>
+		</dict>
 	</array>
 	<key>SCRCompileRTFColumnsStartLocationKey</key>
 	<integer>0</integer>
