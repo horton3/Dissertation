@@ -54,7 +54,7 @@
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>830,0</TextSelection>
+                                <TextSelection>963,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
@@ -69,24 +69,24 @@
                         <TextSelection>54,0</TextSelection>
                     </TextSettings>
                     <Children>
-                        <BinderItem ID="32" Type="Text" Created="2012-04-21 17:47:14 -0500" Modified="2012-12-04 14:04:37 -0600">
+                        <BinderItem ID="32" Type="Text" Created="2012-04-21 17:47:14 -0500" Modified="2012-12-11 22:34:31 -0600">
                             <Title>2.1 Governing Equations</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>2112,0</TextSelection>
+                                <TextSelection>7228,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem ID="35" Type="Text" Created="2012-04-21 17:47:14 -0500" Modified="2012-10-01 21:27:20 -0500">
+                        <BinderItem ID="35" Type="Text" Created="2012-04-21 17:47:14 -0500" Modified="2012-12-11 22:44:16 -0600">
                             <Title>2.2 Subgrid Closure</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>2455,9</TextSelection>
+                                <TextSelection>1973,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
@@ -101,14 +101,14 @@
                         <TextSelection>44,5</TextSelection>
                     </TextSettings>
                     <Children>
-                        <BinderItem ID="22" Type="Text" Created="2012-04-21 17:47:14 -0500" Modified="2012-11-12 23:56:20 -0600">
+                        <BinderItem ID="22" Type="Text" Created="2012-04-21 17:47:14 -0500" Modified="2012-12-11 21:49:27 -0600">
                             <Title>3.1 Governing Equations</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>2624,12</TextSelection>
+                                <TextSelection>7784,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem ID="110" Type="Text" Created="2012-11-01 09:54:34 -0500" Modified="2012-11-07 23:08:58 -0600">
@@ -1481,7 +1481,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2012-04-21 16:59:00 -0500" IgnoreDeadline="Yes">50000</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="4" Characters="95" Date="2012-12-11 16:24:28 -0600"></PreviousSession>
+        <PreviousSession Words="14" Characters="198" Date="2012-12-11 21:28:43 -0600"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

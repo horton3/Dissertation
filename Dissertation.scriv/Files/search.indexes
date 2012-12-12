@@ -1501,7 +1501,7 @@ Q_m &amp;= \mu_d q_m \mbox{ ,} \label{equation302d}
 \eal
 \ese
 \noindent
---> In Eq. ([](#equation302)), \\(\vec{v} = (u,v,w)\\) are the covariant velocity components in Cartesian space, \\(\dot{\eta} = \pd{\eta}{t}\\) is the contravariant vertical velocity in \\(\eta\\)-coordinate space, \\(\theta\\) is covariant potential temperature, and \\(q_m\\) is covariant mixing ratio for any of the considered moisture sources (water vapor, rain, clouds, ice, etc.). Additional variables include specific volume for dry air (\\( \alpha_d = \rho_d^{-1}\\)), specific volume of the full parcel (\\(\alpha = \alpha_d[1 + q_v + q_r + q_c + q_i + \ldots]^{-1}\\)), pressure (\\(p\\)), and geopotential height (\\(\phi = gz\\)), all of which are non-conservative. 
+--> In &lt;!--Eq.~\eqref{equation302}-->, \\(\vec{v} = (u,v,w)\\) are the covariant velocity components in Cartesian space, \\(\dot{\eta} = \pd{\eta}{t}\\) is the contravariant vertical velocity in \\(\eta\\)-coordinate space, \\(\theta\\) is covariant potential temperature, and \\(q_m\\) is covariant mixing ratio for any of the considered moisture sources (water vapor, rain, clouds, ice, etc.). Additional variables include specific volume for dry air (\\( \alpha_d = \rho_d^{-1}\\)), specific volume of the full parcel (\\(\alpha = \alpha_d[1 + q_v + q_r + q_c + q_i + \ldots]^{-1}\\)), pressure (\\(p\\)), and geopotential height (\\(\phi = gz\\)), all of which are non-conservative. 
 
 The flux-form Euler equations are written using these defined variables:
 &lt;!--
@@ -1532,7 +1532,7 @@ In order to reduce truncation errors in the horizontal pressure gradient and num
 + \hat{\alpha}  \left[ \vphantom{\pd{p^{\prime}}{\eta}}\mu_d \nabla_{\eta} \phi^{\prime} + \mu_d \alpha_d \nabla_{\eta} p^{\prime} \right.\\+ \left.\mu_d \alpha_d^{\prime} \nabla_{\eta} \widetilde{p} + \left( \nabla_{\eta} \phi\right) \left(\pd{p^{\prime}}{\eta} - \mu_d^{\prime} \right) \right] &amp;= F_H \mbox{ ,} \label{equation310}\\
 \left(\pd{W}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h w\right) + \pd{\Omega w}{\eta} - g\hat{\alpha}\left(\pd{p^{\prime}}{\eta} - \widetilde{\mu_d}q_{m}\right) + g\mu_d^{\prime} &amp;= F_W \mbox{ .}\label{equation311}
 \eea
-\noindent --> Similarly, the mass conservation equation Eq. ([](#equation307)) and geopotential equation ([](#equation308)) become
+\noindent --> Similarly, the mass conservation equation &lt;!--\eqref{equation307}--> and geopotential equation (&lt;!--\eqref{equation308}--> become
 
 &lt;!--
 \bea
@@ -1540,7 +1540,7 @@ In order to reduce truncation errors in the horizontal pressure gradient and num
 \left(\pd{\phi^{\prime}}{t}\right)_{\eta} + \mu_d^{-1} \left[ \left( \vec{V}_h \cdot \nabla_{\eta} \phi \right) + \Omega \pd{\phi}{\eta} - gW\right] = 0 \mbox{ ,}\label{equation313}
 \eea
 \noindent
---> The conservation equations for potential temperature (Eq. [](#equation305)) and scalars (Eq. [](#equation306)) remain unchanged. Finally, the hydrostatic relation (Eq. [](#equation309a)) is redefined as
+--> The conservation equations for potential temperature (&lt;!--Eq.~\ref{equation305}-->) and scalars (&lt;!--Eq.~\ref{equation306}-->) remain unchanged. Finally, the hydrostatic relation (&lt;!--Eq.~\ref{equation309a}-->) is redefined as
 
 &lt;!--
 \be
@@ -1548,7 +1548,7 @@ In order to reduce truncation errors in the horizontal pressure gradient and num
 \ee
 -->
 
-The equation of state (Eq. ([](#equation309b))) is non-linear and cannot be recast in perturbation form without approximation. Accordingly, Eq. ([](#equation309b)), together with Eqs. ([](#equation310)) - ([](#equation313)) and  Eqs. ([](#equation305)) - ([](#equation306)) form the fully compressible governing equations that are solved in the ARW dynamical core.
+The equation of state (&lt;!--Eq.~\ref{equation309b}-->) is non-linear and cannot be recast in perturbation form without approximation. Accordingly, &lt;!--Eq.~\eqref{equation305}-->, together with &lt;!--Eqs.~\eqref{equation310}-\eqref{equation313}--> and &lt;!--Eqs.~\eqref{equation305}-\eqref{equation306}--> form the fully compressible governing equations that are solved in the ARW dynamical core.
 
 
 </Text>
@@ -1764,34 +1764,34 @@ Similarity theory, however, is not perfect in representing the flux-profile rela
             <Title>2.1 Governing Equations</Title>
             <Text>##Governing Equations[ge-21]##
 
-The OU-LES governing equations are described here, building upon those contained in [#Conzemius2004;] and [#Wilson2012a;]. The equations are derived from the general form of the Navier-Stokes equations (following &lt;!--\citealt{Kundu}-->) for fluid in a rotating reference frame:
+The OU-LES governing equations are described here, building upon those outlined in [#Conzemius2004;] and [#Wilson2012a;]. The equations are derived from the general form of the Navier-Stokes equations (following &lt;!--\citealt{Kundu}-->) for fluid in a rotating reference frame:
 
 &lt;!--
 \be
-\rho \frac{Du_i}{Dt} = - \rho g \delta_{i3} - \pd{p}{x_i} + 2 \rho \Omega_k u_j \epsilon_{ijk} - \frac{2}{3}\pd{}{x_i}(\mu \nabla \cdot \vec{u}) + 2 \pd{}{x_j}(\mu S_{ij}) \mbox{ ,}
+\rho \frac{Du_i}{Dt} = - \rho g \delta_{i3} - \pd{p}{x_i} + 2 \rho \Omega_k u_j \epsilon_{ijk} - \frac{2}{3}\pd{}{x_i}(\mu \nabla \cdot \vec{u}) + 2 \pd{}{x_j}(\mu S_{ij}) \, ,
 \label{equation201}
 \ee
 
 \be
-\frac{1}{\rho} \frac{D\rho}{Dt} + \pd{u_i}{x_i} = 0 \mbox{ ,}
+\frac{1}{\rho} \frac{D\rho}{Dt} + \pd{u_i}{x_i} = 0 \, ,
 \label{equation202}
 \ee
 -->
 &lt;!--\noindent--> where \\(\rho\\) is fluid density, \\(g\\) is the acceleration due to gravity, \\(\delta_{i3}\\) is the Kronecker delta, \\(p\\) is fluid pressure, \\(\Omega_k\\) is the vertical component of Earth’s angular velocity, \\(\epsilon_{ijk}\\) is Levi-Civita’s permutation tensor, \\(\mu\\) is dynamic viscosity, and \\(S_{ij} = \frac{1}{2}\left(\pd{u_i}{x_j} + \pd{u_j}{x_i}\right)\\) is the strain rate tensor.
 
-To simply the equations, the Boussinesq approximation is applied, such that the continuity equation is replaced by the incompressibility condition (\\(\nabla \cdot \vec{u} = 0\\)), density is assumed constant \\(\rho_o\\), except when coupled with gravitational acceleration, and the fluid’s viscosity, thermal diffusivity, and specific heat are assumed constant. Dividing by constant density, excluding Coriolis terms, specifically those involving vertical velocity in the horizontal equations of motion and all terms in the vertical equation of motion, and defining the Coriolis parameter as \\(f = 2 \left|\vec{\Omega}\right|\sin (\theta)\\), the equations are further reduced to the following form:
+To simply the equations, the Boussinesq approximation is applied, such that the continuity equation is replaced by the incompressibility condition (\\(\nabla \cdot \vec{u} = 0\\)), density is assumed constant (\\(\rho_o\\)) except when coupled with gravitational acceleration, and the fluid’s viscosity, thermal diffusivity, and specific heat are assumed constant. Dividing by constant density, excluding Coriolis terms, specifically those involving vertical velocity in the horizontal equations of motion and all terms in the vertical equation of motion, and defining the Coriolis parameter as \\(f = 2 \left|\vec{\Omega}\right|\sin (\theta)\\), the equations are further reduced to the following form:
 
 &lt;!--
 \be
-\pd{u_i}{t} = -\pd{u_i u_j}{x_j} - \frac{\rho}{\rho_o} g \delta_{i3} - \frac{1}{\rho_o} \pd{p}{x_i} + f u_j \epsilon_{ij3} + 2 \nu \pd{S_{ij}}{x_j} \mbox{ ,}
+\pd{u_i}{t} = -\pd{u_i u_j}{x_j} - \frac{\rho}{\rho_o} g \delta_{i3} - \frac{1}{\rho_o} \pd{p}{x_i} + f u_j \epsilon_{ij3} + 2 \nu \pd{S_{ij}}{x_j} \, ,
 \label{equation203}
 \ee
 -->
-&lt;!--\noindent--> where \\(\nu = \frac{\mu}{\rho_o}\\) is the kinematic viscosity. When considering the vertical equation of motion, the third and fourth terms in Eq. ([](#equation203)) are expressed  as functions of reference pressure and density, \\(p_r\\) and \\(\rho_r\\), respectively, yielding:
+&lt;!--\noindent--> where \\(\nu = \frac{\mu}{\rho_o}\\) is the kinematic viscosity. When considering the vertical equation of motion, the third and fourth terms in &lt;!--Eq.~\eqref{equation203}--> are expressed  as functions of reference pressure and density, \\(p_r\\) and \\(\rho_r\\), respectively, yielding:
 
 &lt;!--
 \be
-- \frac{1}{\rho_o} \pd{p}{z} - \frac{\rho}{\rho_o} g = - \frac{1}{\rho_o} \pd{p - p_r}{z} - \frac{1}{\rho_o} \pd{p_r}{z} -  \frac{\rho - \rho_r}{\rho_o} g - \frac{\rho_r}{\rho_o} g \mbox{ .}
+- \frac{1}{\rho_o} \pd{p}{z} - \frac{\rho}{\rho_o} g = - \frac{1}{\rho_o} \pd{p - p_r}{z} - \frac{1}{\rho_o} \pd{p_r}{z} -  \frac{\rho - \rho_r}{\rho_o} g - \frac{\rho_r}{\rho_o} g \, .
 \label{equation204}
 \ee
 -->
@@ -1800,15 +1800,15 @@ To simply the equations, the Boussinesq approximation is applied, such that the 
 &lt;!--
 \bse \label{equation205}
 \bal
-\pd{p_r}{z} &amp;= -\rho_r g \mbox{ ,} \label{equation205a}\\
-u_{g,j} &amp;= \epsilon_{ij3} \frac{1}{\rho_o f} \pd{p_r}{x_i}  \label{equation205b} \mbox{ ,}
+\pd{p_r}{z} &amp;= -\rho_r g \, , \label{equation205a}\\
+u_{g,j} &amp;= \epsilon_{ij3} \frac{1}{\rho_o f} \pd{p_r}{x_i}  \label{equation205b} \, ,
 \eal
 \ese
 -->
 &lt;!--\noindent--> defining mechanical pressure as
 &lt;!--
 \be
-\pi = \frac{p - p_r}{\rho_o} \mbox{ ,}
+\pi = \frac{p - p_r}{\rho_o} \, ,
 \label{equation206}
 \ee
 -->
@@ -1816,7 +1816,7 @@ u_{g,j} &amp;= \epsilon_{ij3} \frac{1}{\rho_o f} \pd{p_r}{x_i}  \label{equation2
 
 &lt;!--
 \be
--\frac{\rho - \rho_r}{\rho_o} \approx \frac{(\theta_v - \theta_{vr})}{\theta_{vo}} \mbox{ ,}
+-\frac{\rho - \rho_r}{\rho_o} \approx \frac{(\theta_v - \theta_{vr})}{\theta_{vo}} \, ,
 \label{equation207}
 \ee
 -->
@@ -1824,16 +1824,16 @@ u_{g,j} &amp;= \epsilon_{ij3} \frac{1}{\rho_o f} \pd{p_r}{x_i}  \label{equation2
 
 &lt;!-- 
 \be
-\pd{u_i}{t} = -\pd{u_i u_j}{x_j} + g \frac{(\theta_v - \theta_{vr})}{\theta_{vo}} \delta_{i3} - \pd{\pi}{x_i} + f(u_j - u_{g,j}) \epsilon_{ij3} + 2 \nu \pd{S_{ij}}{x_j} \mbox{ .}
+\pd{u_i}{t} = -\pd{u_i u_j}{x_j} + g \frac{(\theta_v - \theta_{vr})}{\theta_{vo}} \delta_{i3} - \pd{\pi}{x_i} + f(u_j - u_{g,j}) \epsilon_{ij3} + 2 \nu \pd{S_{ij}}{x_j} \, .
 \label{equation208}
 \ee
 -->
 
-The large eddy simulation approach lacks proper resolution to explicitly solve this system of equations, meaning Eq. ([](#equation208)) must be filtered. In other words, the terms must be represented as a sum of resolvable and subfilter-scale components. For purposes of a discretized numerical grid, the resolvable terms correspond to values at each computational node, while subfilter-scale terms represent unknown quantities.  Accordingly, a box filter consistent with grid spacing is applied because it provides the simplest interpretation in physical space and is computed implicitly. The filter has the following form in one dimension:
+The large eddy simulation approach lacks proper resolution to explicitly solve this system of equations, meaning &lt;!--Eq.~\eqref{equation208}--> must be filtered. In other words, the terms must be represented as a sum of resolvable and subfilter-scale components. For purposes of a discretized numerical grid, the resolvable terms correspond to values at each computational node, while subfilter-scale terms represent unknown quantities.  Accordingly, a box filter consistent with grid spacing is applied because it provides the simplest interpretation in physical space and is computed implicitly. The filter has the following form in one dimension:
 
 &lt;!--
 \be
-\widetilde{u_i}(x) = \int_{-\infty}^{\infty} u_i(x^{\prime}) B_{\Delta x} (x - x^{\prime}) dx^{\prime} \mbox{ ,}
+\widetilde{u_i}(x) = \int_{-\infty}^{\infty} u_i(x^{\prime}) B_{\Delta x} (x - x^{\prime}) dx^{\prime} \, ,
 \label{equation209}
 \ee
 -->
@@ -1846,7 +1846,7 @@ B_{\Delta x} =
  \frac{1}{\Delta x},&amp; \text{if } x - \frac{\Delta x}{2}  \leq x^{\prime} \leq x + \frac{\Delta x}{2}\\
  0,              &amp; \text{otherwise}
 \end{cases}
-\mbox{ .}
+\, .
 \label{equation210}
 \ee
 -->
@@ -1854,7 +1854,7 @@ B_{\Delta x} =
 
 &lt;!--
 \be
-\widetilde{\pd{u_i}{x_i}} = \pd{\widetilde{u_i}}{x_i} = 0 \mbox{ ,}
+\widetilde{\pd{u_i}{x_i}} = \pd{\widetilde{u_i}}{x_i} = 0 \, ,
 \label{equation211}
 \ee
 -->
@@ -1862,26 +1862,26 @@ B_{\Delta x} =
 
 &lt;!--
 \be
-\pd{\widetilde{u_i}}{t} = - \pd{\widetilde{u_i u_j}}{x_j} + g \frac{\widetilde{\theta_v} - \theta_{vr}}{\theta_{vo}} \delta_{i3} + \\ 
-f(\widetilde{u_j} - u_{g,j})\epsilon_{ij3} + \pd{}{x_j} \left[\nu\left( \pd{\widetilde{u_i}}{x_j} + \frac{\widetilde{u_j}}{x_i} \right) \right] \mbox{ .}
+\pd{\widetilde{u_i}}{t} = - \pd{\widetilde{u_i u_j}}{x_j} + g \frac{\widetilde{\theta_v} - \theta_{vr}}{\theta_{vo}} \delta_{i3} - \pd{\widetilde{\pi}}{x_i} + \\ 
+f(\widetilde{u_j} - u_{g,j})\epsilon_{ij3} + \pd{}{x_j} \left[\nu\left( \pd{\widetilde{u_i}}{x_j} + \pd{\widetilde{u_j}}{x_i} \right) \right] \, .
 \label{equation212}
 \ee
 -->
 
-The nonlinear term on the right hand side of Eq. ([](#equation212)) poses a problem because it is a filtered product of two unfiltered variables. In order to alleviate the problem, the filtered product is divided into a product of filtered variables and a subgrid stress term, taking the form \\(\widetilde{u_i u_j} = \widetilde{u_i} \widetilde{u_j} - \tau_{ij}\\). Here, \\(\tau_{ij} = -\frac{2}{3} E \delta_{ij} + \sigma_{ij}\\) is the subgrid stress tensor, where \\(E = \frac{1}{2}(\widetilde{u_i u_j} - \widetilde{u_i} \widetilde{u_j}\\)) is the subgrid turbulence kinetic energy (STKE) and \\(\sigma_{ij}\\) is the subgrid deviatoric stress tensor. Noting that \\(E\\) is analogous to pressure, it is grouped with the mechanical pressure term in Eq. ([](#equation212})) to redefine pressure as \\(\Pi = \widetilde{\pi} + \frac{2}{3}E\\). Furthermore, the subgrid deviatoric stress tensor is assumed to take the form \\(\sigma_{ij} = K_m \left( \pd{\widetilde{u_i}}{x_j} + \pd{\widetilde{u_j}}{x_i} \right)\\), where \\(K_m\\) is the subgrid momentum exchange coefficient. The result is the filtered LES momentum equations:
+The nonlinear term on the right hand side of &lt;!--Eq.~\eqref{equation212}--> poses a problem because it is a filtered product of two unfiltered variables. In order to alleviate the problem, the filtered product is divided into a product of filtered variables and a subgrid stress term, taking the form \\(\widetilde{u_i u_j} = \widetilde{u_i} \widetilde{u_j} - \tau_{ij}\\). Here, \\(\tau_{ij} = -\frac{2}{3} E \delta_{ij} + \sigma_{ij}\\) is the subgrid stress tensor, where \\(E = \frac{1}{2}(\widetilde{u_i u_j} - \widetilde{u_i} \widetilde{u_j}\\)) is the subgrid turbulence kinetic energy (STKE) and \\(\sigma_{ij}\\) is the subgrid deviatoric stress tensor. Noting that \\(E\\) is analogous to pressure, it is grouped with the mechanical pressure term in &lt;!--Eq.~\eqref{equation212}--> to redefine pressure as \\(\Pi = \widetilde{\pi} + \frac{2}{3}E\\). Furthermore, the subgrid deviatoric stress tensor is assumed to take the form \\(\sigma_{ij} = K_m \left( \pd{\widetilde{u_i}}{x_j} + \pd{\widetilde{u_j}}{x_i} \right)\\), where \\(K_m\\) is the subgrid momentum exchange coefficient. The filtered LES momentum equations become:
 
 &lt;!--
 \bea
 \pd{\widetilde{u_i}}{t} = -\pd{\widetilde{u_i}\widetilde{u_j}}{x_j} + g \frac{(\widetilde{\theta_v} - \theta_{vr})}{\theta_{vo}}\delta_{i3} - \pd{\Pi}{x_i}+ f(\widetilde{u_j} - u_{g,j})\epsilon_{ij3} 
-\nonumber \\ + \pd{}{x_j} \left[(K_m + \nu) \left( \pd{\widetilde{u_i}}{x_j} + \frac{\widetilde{u_j}}{x_i} \right) \right] \mbox{ .}
+\nonumber \\ + \pd{}{x_j} \left[(K_m + \nu) \left( \pd{\widetilde{u_i}}{x_j} + \pd{\widetilde{u_j}}{x_i} \right) \right] \, .
 \label{equation213}
 \eea
 -->
-&lt;!--\noindent--> Although practically speaking, \\(K_m \gg \nu\\), the viscosity is retained for modeling small-scale flows. The derivation of the thermodynamic equation is left to the reader but follows a similar procedure. The result is the filtered LES thermodynamic equation:
+&lt;!--\noindent--> Although practically speaking, \\(K_m \gg \nu\\), the viscosity is retained for modeling small-scale flows. The derivation of the thermodynamic equation is left as an exercise for the reader, but follows a similar procedure. The filtered LES thermodynamic equation is given by:
 
 &lt;!--
 \be
-\pd{\widetilde{\theta_v}}{t} = - \pd{\widetilde{u_i}\widetilde{\theta_v}}{x_i} + \pd{}{x_i} \left[ (K_h + \nu_h) \pd{\widetilde{\theta_v}}{x_i} \right] \mbox{ ,}
+\pd{\widetilde{\theta_v}}{t} = - \pd{\widetilde{\vphantom{\theta_v}u_i}\widetilde{\theta_v}}{x_i} + \pd{}{x_i} \left[ (K_h + \nu_h) \pd{\widetilde{\theta_v}}{x_i} \right] \, ,
 \label{equation214}
 \ee
 -->
@@ -2081,7 +2081,7 @@ Subgrid closure follows [#Deardorff1980;] and is based on the balance of STKE, c
 &lt;!--  
 \be
 \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}\pd{E}{t}}_{(I)}\\
-+ \underbrace{\pd{\widetilde{u_i} E}{x_i}}_{(II)}\\
++ \underbrace{\pd{\widetilde{\vphantom{E}u_i} E}{x_i}}_{(II)}\\
 = \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}2K_m\widetilde{S_{ij}} \widetilde{S_{ij}}}_{(III)} \\
 - \underbrace{\beta K_h \pd{\widetilde{\theta_v}}{x_3}}_{(IV)} \\
 + \underbrace{\pd{}{x_i}2K_m\pd{E}{x_i}}_{(V)}\\
@@ -2103,7 +2103,7 @@ K_h &amp;= \left( 1 + \frac{2l}{\Delta} \right)K_m \mbox{ ,}
 \eal
 \ese
 \noindent
---> where \\(C_k = 0.12\\) is the Deardorff coefficient, \\(l\\) is the characteristic length scale, and \\(\Delta\\) is grid spacing. Stratification effects are considered when relating the length scale with grid cell size:
+--> where \\(C_k = 0.12\\) is the Deardorff turbulence coefficient, \\(l\\) is the characteristic length scale, and \\(\Delta\\) is grid spacing. Stratification effects are considered when relating the length scale with grid cell size:
 
 &lt;!--
 \be
@@ -2126,7 +2126,7 @@ Finally, the STKE dissipation rate is defined as
 \label{equation218}
 \ee
 \noindent
---> where \\(C_e\\) is the Deardorff dissipation parameter, given by
+--> where \\(C_e\\) is the Deardorff dissipation coefficient, given by
 
 &lt;!--
 \be

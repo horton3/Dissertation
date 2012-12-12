@@ -62,11 +62,12 @@ Chapter [](#les-2) describes the OU-LES code, including its governing equations 
 <li>
 <p class="binderItem"><strong>2.1 Governing Equations</strong><br/>##Governing Equations[ge-21]##<br/>
 <br/>
-The OU-LES governing equations are described here, building upon those contained in [#Conzemius2004;] and [#Wilson2012a;]. The equations are derived from the general form of the Navier-Stokes equations (following <!--\citealt{Kundu}-->) for fluid in a rotating reference frame:<br/>
+The OU-LES governing equations are described here, building upon those outlined in [#Conzemius2004;] and [#Wilson2012a;]. The equations are derived from the general form of the Navier-Stokes equations (following <!--\citealt{Kundu}-->) for fluid in a rotating reference frame:<br/>
 <br/>
 <!--<br/>
 \be<br/>
-\rho \frac{Du_i}{Dt} = - \rho g \delta_{i3} - \pd{p}{x_i} + 2 \rho \Omega_k u_j \epsilon_{ijk} - \frac{2}{3}\pd{}{x_i}(\mu \nabla \cdot \vec{u}) + 2 \pd{}{x_j}(\mu S_{ij}) \mbox{ ,...</p>
+\rho \frac{Du_i}{Dt} = - \rho g \delta_{i3} - \pd{p}{x_i} + 2 \rho \Omega_k u_j \epsilon_{ijk} - \frac{2}{3}\pd{}{x_i}(\mu \nabla \cdot \vec{u}) + 2 \pd{}{x_j}(\mu S_{ij}) \, ,<br/>
+\lab...</p>
 </li>
 <li>
 <p class="binderItem"><strong>2.2 Subgrid Closure</strong><br/>##Subgrid Closure[sg-close-22]##<br/>
@@ -76,10 +77,10 @@ Subgrid closure follows [#Deardorff1980;] and is based on the balance of STKE, c
 <!--  <br/>
 \be<br/>
 \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}\pd{E}{t}}_{(I)}\\<br/>
-+ \underbrace{\pd{\widetilde{u_i} E}{x_i}}_{(II)}\\<br/>
++ \underbrace{\pd{\widetilde{\vphantom{E}u_i} E}{x_i}}_{(II)}\\<br/>
 = \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}2K_m\widetilde{S_{ij}} \widetilde{S_{ij}}}_{(III)} \\<br/>
 - \underbrace{\beta K_h \pd{\widetilde{\theta_v}}{x_3}}_{(IV)} \\<br/>
-+ \underbrace{\pd{}{x_i}2K_m\pd...</p>
++ \underbrace{\pd{}...</p>
 </li>
 </ul>
 <hr/>
