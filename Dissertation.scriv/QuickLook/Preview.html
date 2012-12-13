@@ -62,7 +62,7 @@ Chapter [](#les-2) describes the OU-LES code, including its governing equations 
 <li>
 <p class="binderItem"><strong>2.1 Governing Equations</strong><br/>##Governing Equations[ge-21]##<br/>
 <br/>
-The OU-LES governing equations are described here, building upon those outlined in [#Conzemius2004;] and [#Wilson2012a;]. The equations are derived from the general form of the Navier-Stokes equations (following <!--\citealt{Kundu}-->) for fluid in a rotating reference frame:<br/>
+The OU-LES governing equations are described here, building upon those outlined by [#Conzemius2004;] and [#Wilson2012a;]. The equations are derived from the general form of the Navier-Stokes equations (following <!--\citealt{Kundu}-->) for fluid in a rotating reference frame:<br/>
 <br/>
 <!--<br/>
 \be<br/>
@@ -92,7 +92,7 @@ Subgrid closure follows [#Deardorff1980;] and is based on the balance of STKE, c
 <li>
 <p class="binderItem"><strong>3.1 Governing Equations</strong><br/>##Governing Equations[ge-31]##<br/>
 <br/>
-The WRF model’s governing equations are described here, building upon those contained in [#Skamarock;] and [#Lund2010;]. The equations are derived from the inviscid, compressible form of the Navier-Stokes equations. Those equations are recast into flux-form with conservative variables in Cartesian space, transformed to use a terrain-following vertical mass coordinate following [#Laprise;], modified to include moisture effects, extended to project onto the Earth’s ...</p>
+The WRF model governing equations are described here, building upon those outlined by [#Skamarock;] and [#Lund2010;]. The equations are derived from the inviscid, compressible form of the Navier-Stokes equations. The equations are recast into flux-form with conservative variables in Cartesian space, transformed to employ a terrain-following vertical mass coordinate following [#Laprise;], modified to include moisture effects, extended to project onto the Earth’s sp...</p>
 </li>
 <li>
 <p class="binderItem"><strong>3.2 Microphysics</strong><br/>##Microphysics[mp-32]##<br/>
@@ -104,17 +104,17 @@ The WRF Single Moment 6-class (WSM6) mixed-phase sc...</p>
 <li>
 <p class="binderItem"><strong>3.3 Atmospheric Radiation</strong><br/>##Atmospheric Radiation[ar-33]##<br/>
 <br/>
-Atmospheric radiation schemes account for atmospheric heating due to radiative flux divergence and surface downward longwave and shortwave radiation for the ground heat budget.  Every radiation scheme is a one-dimensional column model, where each column is treated independently and the associated fluxes correspond to those in infinitely horizontally uniform planes.  Longwave radiation includes infrared radiation absorbed and emitted by gases and surfaces. Upward...</p>
+Atmospheric radiation schemes account for atmospheric heating due to radiative flux divergence and surface downward longwave and shortwave radiation for the ground heat budget.  Every radiation scheme acts as a one-dimensional column model, where each column is treated independently and the associated fluxes correspond to those in infinitely horizontally-uniform planes.  Longwave radiation includes infrared radiation absorbed and emitted by gases and surfaces. U...</p>
 </li>
 <li>
 <p class="binderItem"><strong>3.4 Land Surface Model</strong><br/>##Land-Surface Model[lsm-34]##<br/>
 <br/>
-Land-surface models (LSMs) use atmospheric information from the surface layer scheme, radiative forcing from the radiation scheme, and precipitation forcing from the microphysics and convective schemes, together with internal information on the land's state variables and surface properties, to provide heat and moisture fluxes over land and sea-ice points. These fluxes provide a lower boundary condition for vertical transport done in the PBL schemes, or in the vert...</p>
+Land-surface models (LSMs) use atmospheric information from the surface layer scheme, radiative forcing from the radiation scheme, and precipitation forcing from the microphysics and convection schemes, together with internal information of the land's state variables and surface properties, to provide heat and moisture fluxes over land and sea-ice grid points. These fluxes serve as the lower boundary condition for vertical turbulent exchange in the PBL schemes, or...</p>
 </li>
 <li>
 <p class="binderItem"><strong>3.5 Surface Layer Schemes</strong><br/>##Surface Layer Schemes[surface-layer-35]##<br/>
 <br/>
-The surface layer schemes provide friction velocities and exchange coefficients that enable the calculation of surface heat and moisture fluxes by the land-surface model and surface stress in the planetary boundary layer (PBL) scheme. Over water, the surface fluxes and diagnostic fields are computed in the surface layer scheme itself. Each surface layer option is tied to a particular PBL scheme. The schemes provide no tendencies, rather only the stabi...</p>
+The surface layer scheme provides friction velocities and exchange coefficients that enable the calculation of surface heat and moisture fluxes by the land-surface model and surface stress in the planetary boundary layer (PBL) scheme. Over water, the surface fluxes and diagnostic fields are computed in the surface layer scheme itself. Each surface layer option is tied to a particular PBL scheme. The schemes provide no tendencies, rather only the stabi...</p>
 </li>
 <hr/>
 <ul>
@@ -124,102 +124,94 @@ The surface layer schemes provide friction velocities and exchange coefficients 
 Relations between \\(\phi\\) functions and \\(\zeta\\) were experimentally estimated by [#Dyer;] for the three major stability regimes discussed in [#Zhang;]. The regimes are classified as: stable (\\(\mathrm{Ri} > 0.2\\)), damped mechanical turbulence (\\(0.2 > \mathrm{Ri} > 0\\)), and forced convection (\\(\mathrm{Ri} \leq 0\\)). Here, \\(\mathrm{Ri}\\) is the Richardson number, which is the ratio of buoyancy forces to inertial forces. For the stable regime, it assumed t...</p>
 </li>
 <li>
-<p class="binderItem"><strong>3.5.2 Janjic</strong><br/>###Janjic[sl-janjic-352]###<br/>
+<p class="binderItem"><strong>3.5.2 Janjic</strong><br/>###Janji<!--\'{c}-->[sl-janjic-352]###<br/>
 <br/>
-This surface layer scheme is also based on [#MO;] similarity theory, with adjustments following [#Jan94,Jan96,Jan02;].  The scheme assumes that turbulent fluxes are constant with height and that boundary conditions are to be prescribed at two levels, \\(z_1\\) and \\(z_2\\).  After following a similar path described in the previous section, Janjic reaches a relation in the form<br/>
+The Janji<!--\'{c}--> surface layer scheme is also based on [#MO;] similarity theory, with adjustments following [#Jan94,Jan96,Jan02;].  The scheme assumes that turbulent fluxes are constant with height and that boundary conditions are to be prescribed at two levels, \\(z_1\\) and \\(z_2\\).  After following a similar path described in the previous section, Janji<!--\'{c}--> reaches a relation in the form:<br/>
 <!--<br/>
 \be<br/>
-S_2 - S_1 = \left[\frac{F}{u_* \kappa}\right] \Phi_f, \label{equation324}<br/>
-\ee<br/>
-\no...</p>
+S_2 - S_1 = \left[\frac{F}{u_* \kappa}\ri...</p>
 </li>
 <li>
 <p class="binderItem"><strong>3.5.3 MYNN</strong><br/>###MYNN[sl-mynn-353]###<br/>
 <br/>
-The Mellor-Yamada-Nakanishi-Niino (MYNN) surface layer scheme [#NN01, NN04, NN06] also makes use of the [#Dyer;] approximations given by Eqs. ([](#equation321)) and ([](#equation322)). Three major stability regimes are considered based on the bulk Richardson number, given by<br/>
+The Mellor-Yamada-Nakanishi-Niino (MYNN) surface layer scheme [#NN01, NN04, NN06] also makes use of the [#Dyer;] approximations given by <!--Eqs.~\eqref{equation321} and \eqref{equation322}-->. Three major stability regimes are considered based on the bulk Richardson number, given by:<br/>
 <!--<br/>
 \be<br/>
-Ri_B = \frac{g z_1 (\theta_1 - \theta_g)}{\theta_r (U^2_1 + V^2_1)} \mbox{ ,} <br/>
+\mathrm{Ri_b} = \frac{g z_1 (\theta_1 - \theta_g)}{\theta_r (U^2_1 + V^2_1)} \, , <br/>
 \label{equation327}<br/>
 \ee<br/>
 \noindent<br/>
---> where \\(\theta_g\\) is the skin potential temperature, \\(\theta_r\\) is...</p>
+--> where \\(\theta_g\\) is the skin potential temperature, \\(...</p>
 </li>
 <li>
 <p class="binderItem"><strong>3.5.4 TEMF</strong><br/>###TEMF[sl-temf-354]###<br/>
 <br/>
-Similar to other surface layer schemes, the Total Energy-Mass Flux (TEMF; <!--\citealt{Angevine2010}-->) scheme specifies fluxes that act as the lower boundary condition in the WRF model. Generally, these schemes assume a constant flux layer in order to apply similarity theory. The TEMF scheme, however, considers that the first model level may comprise a relatively large fraction of a shallow boundary layer. Thus, such a circumstance would likely invalidate the assumptio...</p>
+Similar to other considered surface layer schemes, the Total Energy-Mass Flux (TEMF; <!--\citealt{Angevine2010}-->) scheme specifies fluxes that act as the lower boundary condition in the WRF model. Generally, these schemes assume a constant flux layer in order to apply similarity theory. The TEMF scheme, however, considers that the first model level may comprise a relatively large fraction of a shallow boundary layer. Thus, such a circumstance would likely invalidate th...</p>
 </li>
 </ul>
 <hr/>
 <li>
 <p class="binderItem"><strong>3.6 Planetary Boundary Layer Schemes</strong><br/>##Planetary Boundary Layer Schemes[pbl-26]##<br/>
 <br/>
-The PBL scheme is responsible for vertical sub-grid fluxes due to eddy transports in the whole <br/>
-atmospheric column, not just within the boundary layer. This means that explicit vertical diffusion<br/>
-is de-activated with the assumption that the PBL scheme will handle this process.  The most <br/>
-appropriate horizontal diffusion choices are those based on horizontal deformation or with a <br/>
-constant horizontal eddy diffusivity. The schemes are one-dimensional a...</p>
+The PBL scheme is responsible for vertical subgrid fluxes due to eddy transports in the whole atmospheric column, not just within the boundary layer. This means that explicit vertical diffusion is deactivated with the assumption that the PBL scheme will handle this process.  Accordingly, the most appropriate horizontal diffusion choices are either those based on horizontal deformation or those that prescribe a constant horizontal eddy diffusivity. Th...</p>
 </li>
 <hr/>
 <ul>
 <li>
 <p class="binderItem"><strong>3.6.1 YSU</strong><br/>###YSU[pbl-ysu-361]###<br/>
 <br/>
-[#Hong06;] proposed a next generation PBL scheme to that in the Medium Range Forecast (MRF) model.  This scheme is called the YSU scheme, named so because of its development at Yonsei University.  Given are the algorithms for both mixed-layer diffusion and for free-atmosphere diffusion.<br/>
+[#Hong06;] proposed a next generation PBL scheme to improve upon that used in the Medium Range Forecast (MRF) model.  The scheme is called the YSU scheme, named so because of its development at Yonsei University.  Given are the algorithms for both mixed-layer diffusion and for free-atmosphere diffusion.<br/>
 <br/>
-For the mixed-layer (\\(z \leq h\\)), where \\(h=\\) the boundary layer depth, the turbulence diffusion equation for any prognostic variable, a, is given by<br/>
-<!--<br/>
-\bea<br/>
-\pd{a}{t} = \pd{}{z}...</p>
+For the mixed layer (\\(z \leq z_i\\)), where \\(z_i\\) is the boundary layer depth, the turbulence diffusion equation for any prognostic variable, \\(a\\), is given by:<br/>
+...</p>
 </li>
 <li>
 <p class="binderItem"><strong>3.6.2 MYJ</strong><br/>###MYJ[pbl-myj-362]###<br/>
 <br/>
-[#Jan02;] implements a non-singular version of the [#MY82;] level 2.5 closure scheme. Problems have become apparent in the original version of the closure scheme which this scheme attempted to address.  One main problem was the singularity problem in a convective PBL with growing turbulence.<br/>
+[#Jan02;] implements a non-singular version of the [#MY82;] level 2.5 closure scheme. Problems have become apparent in the original version of the closure scheme which Janji<!--\'{c}--> attempts to address.  One such issue is the singularity problem in a convective PBL with growing turbulence.<br/>
 <br/>
-The turbulence kinetic energy, TKE, production and dissipation term in the [#MY82;] scheme can be expressed as<br/>
+The turbulence kinetic energy (TKE) production and dissipation term in the [#MY82;] scheme is expressed as:<br/>
 <!--<br/>
 \bea<br/>
-l\frac{d\left(\frac{1}{q}\right)}{dt} = \frac{\alpha\left(\fr...</p>
+l\frac{d\left(\frac{1}{q}\right)}{dt} = \frac{\alpha\left(\fra...</p>
 </li>
 <li>
 <p class="binderItem"><strong>3.6.3 MYNN</strong><br/>###MYNN[pbl-mynn-363]###<br/>
 <br/>
-Similar to [#Jan02;],  [#NN01, NN04, NN06;] implement a local, non-singular version of the [#MY82;] level 2.5 closure scheme (note: a level 3 closure is available, but known numerical instabilities preclude its use). The scheme addresses singularity problem in a convective PBL with growing turbulence. In addition, the scheme attempts to improve the [#Jan02;] approach through a redefined master length scale. All coefficients of proportionality in the scheme are tuned fro...</p>
+Similar to [#Jan02;],  [#NN01, NN04, NN06;] implement a local, non-singular version of the [#MY82;] level 2.5 closure scheme (note: a level 3 closure is available, but known numerical instabilities preclude its use). The scheme addresses the singularity problem in a convective PBL with growing turbulence. In addition, the scheme attempts to improve the [#Jan02;] approach through a redefined master length scale. All coefficients of proportionality in the scheme are based...</p>
 </li>
 <li>
 <p class="binderItem"><strong>3.6.4 TEMF</strong><br/>###TEMF[pbl-temf-364]###<br/>
 <br/>
-The TEMF scheme was formulated with the goal of serving as an integrated boundary layer solution, with the ability to adequately parameterize atmospheric motions across a range of stability regimes. This study will focus on the convective approach as outlined by [#Angevine2010;]. For the convective boundary layer, mixing is accomplished through two mechanisms: eddy diffusivity and mass flux (with the procedure often referred to as EDMF). Unlike previous schemes, the edd...</p>
+The TEMF scheme is formulated with the goal of serving as an integrated boundary layer solution, with the ability to adequately parameterize atmospheric motions across a range of stability regimes. This study will focus on the convective approach as outlined by [#Angevine2010;]. For the convective boundary layer, turbulent exchange is accomplished through two primary mechanisms: eddy diffusivity and mass flux (with the procedure often referred to as EDMF). Unlike previo...</p>
 </li>
 </ul>
 <hr/>
 <li>
 <p class="binderItem"><strong>3.7 Subgrid Closure</strong><br/>##Subgrid Closure[sg-close-37]##<br/>
 <br/>
-As stated in Section ([](#pbl-26)), the PBL scheme in the WRF model is tasked to parameterize the vertical diffusion within a grid column. Subsequently, horizontal diffusion must be separately considered when a PBL scheme is implemented. When the WRF model is run for real-data cases, the recommended subgrid closure is a two-dimensional, first-order approach. If, however, the WRF model is run in LES mode (WRF-LES), the subgrid closure is responsible for diffusion...</p>
+As stated in Section [](#pbl-26), the PBL scheme in the WRF model is tasked to parameterize the vertical diffusion within a model grid column. Subsequently, horizontal diffusion must be separately considered when a PBL scheme is implemented. When the WRF model is run for real-world cases, the recommended subgrid closure is a two-dimensional, first-order approach. If, however, the WRF model is run in LES mode (WRF-LES), the subgrid closure is responsible for diff...</p>
 </li>
 <hr/>
 <ul>
 <li>
 <p class="binderItem"><strong>3.7.1 Two-Dimensional Mixing</strong><br/>###Two-Dimensional Mixing[twod-mix-371]###<br/>
 <br/>
-For purposes of real-data cases, when the WRF model employs a PBL scheme the preferred subgrid closure scheme is a first-order closure approach following that from [#Smag;]. This scheme was formulated for large-scale atmospheric flows, and therefore eddy viscosities are assumed proportional to horizontal deformation. For momentum, the horizontal eddy viscosity is defined as<br/>
+For purposes of real-world cases, when the WRF model employs a PBL parameterization the preferred subgrid closure scheme is a first-order closure approach following that from [#Smag;]. This scheme was formulated for large-scale atmospheric flows, and therefore eddy viscosities are assumed proportional to horizontal deformation. For momentum, the horizontal eddy viscosity is defined as:<br/>
 <!--<br/>
 \be<br/>
-K_{m_{h}}=C_s^2l^2[0.25(S_{11} - S_{22})^2 + S_{12}^2]^{\frac{1}{2}} \...</p>
+K_{m_{h}}=C_s^2l^2[0.25(S_{11} - S_{22})^2 + S_{12}^2]^{\f...</p>
 </li>
 <li>
 <p class="binderItem"><strong>3.7.2 Three-Dimensional Mixing copy</strong><br/>###Three-Dimensional Mixing[threed-mix-372]###<br/>
 <br/>
-The preferred subgrid closure for WRF-LES also follows [#Deardorff1980;]. Here, the eddy viscosities for momentum are computed using<br/>
+The ideal subgrid closure for WRF-LES applications, similar to OU-LES, follows [#Deardorff1980;]. Here, the eddy viscosities for momentum are computed as:<br/>
 <!--<br/>
 \be<br/>
-K_{m_{h,v}} = C_kl_{h,v} \sqrt{E} \mbox{ ,} \label{equation373}<br/>
+K_{m_{h,v}} = C_kl_{h,v} \sqrt{E} \, , \label{equation373}<br/>
 \noindent<br/>
 \ee<br/>
---> where \\(C_k = 0.12\\) is the Deardorff coefficient, \\(l\\) is the characteristic length scale, \\(E\\) is STKE, and subscripts \\(h\\) and \\(v\\) correspond to values in the horizontal and vertical, respectively.  The main di...</p>
+--> where \\(C_k = 0.12\\) is the Deardorff turbulence coefficient, \\(l\\) is the characteristic length scale, \\(E\\) is STKE, and subscripts \\(h\\) and \\(v\\) correspond to values in the horizontal and vertical...</p>
 </li>
 </ul>
 </ul>

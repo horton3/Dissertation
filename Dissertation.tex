@@ -35,7 +35,7 @@ Chapter \autoref{les-2} describes the OU-LES code, including its governing equat
 \section{Governing Equations}
 \label{ge-21}
 
-The OU-LES governing equations are described here, building upon those outlined in  \citet{Conzemius2004} and  \citet{Wilson2012a}. The equations are derived from the general form of the Navier-Stokes equations (following \citealt{Kundu}) for fluid in a rotating reference frame:
+The OU-LES governing equations are described here, building upon those outlined by  \citet{Conzemius2004} and  \citet{Wilson2012a}. The equations are derived from the general form of the Navier-Stokes equations (following \citealt{Kundu}) for fluid in a rotating reference frame:
 
 
 \be
@@ -198,7 +198,7 @@ K_h &= \left( 1 + \frac{2l}{\Delta} \right)K_m \mbox{ ,}
 \eal
 \ese
 \noindent
- where $C_k = 0.12$ is the Deardorff turbulence coefficient, $l$ is the characteristic length scale, and $\Delta$ is grid spacing. Stratification effects are considered when relating the length scale with grid cell size:
+ where $C_k = 0.12$ is the Deardorff turbulence coefficient, $l$ is the characteristic length scale, and $\Delta$ is grid spacing. Stratification effects are considered when relating the length scale to grid cell size:
 
 
 \be
@@ -245,200 +245,199 @@ f_c = 1 + \frac{2}{\left(\frac{z_w}{\Delta z_w} + 1.5\right)^2 - 3.3} \mbox{ ,}
 \section{Governing Equations}
 \label{ge-31}
 
-The WRF model's governing equations are described here, building upon those contained in  \citet{Skamarock} and  \citet{Lund2010}. The equations are derived from the inviscid, compressible form of the Navier-Stokes equations. Those equations are recast into flux-form with conservative variables in Cartesian space, transformed to use a terrain-following vertical mass coordinate following  \citet{Laprise}, modified to include moisture effects, extended to project onto the Earth's spherical surface (not discussed here), and finally rewritten in perturbation form.
+The WRF model governing equations are described here, building upon those outlined by  \citet{Skamarock} and  \citet{Lund2010}. The equations are derived from the inviscid, compressible form of the Navier-Stokes equations. The equations are recast into flux-form with conservative variables in Cartesian space, transformed to employ a terrain-following vertical mass coordinate following  \citet{Laprise}, modified to include moisture effects, extended to project onto the Earth's spherical surface (not discussed here), and finally rewritten in perturbation form.
 
 For this study, the WRF model (version 3.4.1) was employed using the Advanced Research WRF (ARW) dynamical solver. The ARW core solves moist equations, but couples prognostic variables to dry-air mass in order to maintain the mass conservation equation for dry air, thus avoiding the inclusion of source terms. The vertical $\eta$-coordinate used in the ARW core is defined with respect to dry air as:
 
 
 \be
-\eta = \frac{(p_{dh} - p_{dht})}{(p_{dhs} - p_{dht})} \mbox { .}
+\eta = \frac{(p_{dh} - p_{dht})}{(p_{dhs} - p_{dht})} \, .
 \label{equation301}
 \ee
 \noindent
- Here, $p_{dh}$ is the hydrostatic pressure of the dry atmosphere at any considered model level, while $p_{dhs}$ and $p_{dht}$ represent the hydrostatic pressure of dry air at the surface and top boundary, respectively. The $\eta$-coordinate ranges from unity at the surface to zero at the upper bounds of the model domain, and is thusly considered a normalized, terrain-following pressure coordinate. The denominator in Eq. (\autoref{equation301}), $\mu_d(x,y) = p_{dhs} - p_{dht}$, is the mass of dry air per unit area of a given column in the computational domain and is used to cast variables in flux form:
+ Here, $p_{dh}$ is the hydrostatic pressure of the dry atmosphere at any considered model level, while $p_{dhs}$ and $p_{dht}$ represent the hydrostatic pressure of dry air at the surface and top boundary, respectively. The $\eta$-coordinate ranges from unity at the surface to zero at the upper bounds of the model domain, and is thusly considered a normalized, terrain-following, pressure coordinate. The denominator in Eq.~\eqref{equation301}, denoted $\mu_d(x,y) = p_{dhs} - p_{dht}$, is the mass of dry air per unit area of a given column in the computational domain and is used to cast variables in flux form:
 
 \bse \label{equation302}
 \bal
-\vec{V} &= \mu_d \vec{v} = (U,V,W) \mbox{ ,} \label{equation302a} \\
-\Omega &= \mu_d \dot{\eta} \mbox{ ,} \label{equation302b} \\
-\Theta &= \mu_d \theta \mbox{ ,} \label{equation302c} \\
-Q_m &= \mu_d q_m \mbox{ ,} \label{equation302d}
+\vec{V} &= \mu_d \vec{v} = (U,V,W) \, , \label{equation302a} \\
+\Omega &= \mu_d \dot{\eta} \, , \label{equation302b} \\
+\Theta &= \mu_d \theta \, , \label{equation302c} \\
+Q_m &= \mu_d q_m \, . \label{equation302d}
 \eal
 \ese
 \noindent
  In Eq.~\eqref{equation302}, $\vec{v} = (u,v,w)$ are the covariant velocity components in Cartesian space, $\dot{\eta} = \pd{\eta}{t}$ is the contravariant vertical velocity in $\eta$-coordinate space, $\theta$ is covariant potential temperature, and $q_m$ is covariant mixing ratio for any of the considered moisture sources (water vapor, rain, clouds, ice, etc.). Additional variables include specific volume for dry air ($ \alpha_d = \rho_d^{-1}$), specific volume of the full parcel ($\alpha = \alpha_d[1 + q_v + q_r + q_c + q_i + \ldots]^{-1}$), pressure ($p$), and geopotential height ($\phi = gz$), all of which are non-conservative. 
 
-The flux-form Euler equations are written using these defined variables:
+The flux-form Euler equations are written using these definitions:
 
-\bea
-\left(\pd{\vec{V}_h}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h \otimes \vec{v}_h\right) + \pd{\Omega \vec{v}_h}{\eta} + \mu_d \alpha \nabla_{\eta}p + \hat{\alpha} \pd{p}{\eta} \nabla_{\eta}\phi &= F_H \label{equation303}\\
+\bal
+\left(\pd{\vec{V}_h}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h \otimes \vec{v}_h\right) + \pd{\Omega \vec{v}_h}{\eta} + \mu_d \alpha \nabla_{\eta}p + \hat{\alpha} \pd{p}{\eta} \nabla_{\eta}\phi &= F_H \label{equation303} \\
 \left(\pd{W}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h w\right) + \pd{\Omega w}{\eta} - g\left(\hat{\alpha}\pd{p}{\eta} - \mu_d \right) &= F_W \label{equation304} \\
 \left(\pd{\Theta}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h\theta\right) + \pd{\Omega \theta}{\eta} &= F_{\Theta} \label{equation305} \\
 \left(\pd{Q_m}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h q_m\right) + \pd{\Omega q_m}{\eta} &= F_{Q_m} \label{equation306} \\
-\left(\pd{\mu_d}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h\right) + \pd{\Omega}{\eta} = 0 \label{equation307} \\
-\left(\pd{\phi}{t}\right)_{\eta} + \mu_d^{-1} \left[ \left( \vec{V}_h \cdot \nabla_{\eta} \phi \right) + \Omega \pd{\phi}{\eta} - gW\right] = 0 \label{equation308}
-\eea
+\left(\pd{\mu_d}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h\right) + \pd{\Omega}{\eta} &= 0 \label{equation307} \\
+\left(\pd{\phi}{t}\right)_{\eta} + \mu_d^{-1} \left[ \left( \vec{V}_h \cdot \nabla_{\eta} \phi \right) + \Omega \pd{\phi}{\eta} - gW\right] &= 0 \label{equation308}
+\eal
 \noindent
- where subscript $h$ denotes horizontal components of the respective vectors, subscript $\eta$ denotes the vertical coordinate held constant during the respective vector operation, $\hat{\alpha} = \frac{\alpha}{\alpha_d}$ acts as a modifier based on density effects associated with moisture, and $F_*$ are catch-all forcing terms that encompass the combined effects from spherical projection techniques, Coriolis, model physics, and turbulent transport. Additionally, diagnostic relations are defined for dry specific volume and full pressure as
+ where subscript $h$ denotes horizontal components of the respective vectors, subscript $\eta$ denotes the vertical coordinate held constant during the respective vector operation, $\hat{\alpha} = \frac{\alpha}{\alpha_d}$ is a modifier based on density effects associated with moisture, and $F_*$ are catch-all forcing terms that encompass the combined effects from spherical projection techniques, Coriolis, model physics, and turbulent exchange. Additionally, diagnostic relations are defined for dry specific volume and full pressure as:
 
 \bse \label{equation309}
 \bal
-\alpha_d &= -\mu_d^{-1} \left( \pd{\phi}{\eta} \right) \mbox{ ,} \label{equation309a} \\
-p &= p_o \left( \frac{R_d \theta_m}{p_o \alpha_d}\right)^{\gamma} \mbox{ ,} \label{equation309b}
+\alpha_d &= -\mu_d^{-1} \left( \pd{\phi}{\eta} \right) \, , \label{equation309a} \\
+p &= p_o \left( \frac{R_d \theta_m}{p_o \alpha_d}\right)^{\gamma} \, , \label{equation309b}
 \eal
 \ese
-\noindent where $R_d$ is the universal gas constant for dry air, $\gamma = 1.4$ is the ratio of atmospheric heat capacities at constant pressure and constant volume, and $\theta_m \approx \theta \left(1 + 1.61 q_v\right)$ is full potential temperature. 
+\noindent where $R_d = 287\, \joule \kilo\reciprocal\gram\reciprocal\kelvin$ is the universal gas constant for dry air, $\gamma = 1.4$ is the ratio of atmospheric heat capacities at constant pressure and constant volume, and $\theta_m \approx \theta \left(1 + 1.61 q_v\right)$ is full potential temperature. 
 
-In order to reduce truncation errors in the horizontal pressure gradient and numerical errors associated with the vertical pressure gradient and buoyancy calculations, the flux-form equations are recast into perturbation form. Variables are redefined in terms of their departure (denoted by primes) from their hydrostatically-balanced reference state (denoted by tildes), which are strictly functions of $\widetilde{z}$. For this state, $u_d = \widetilde{u_d} - u_d^{\prime}$, $\alpha_d = \widetilde{\alpha_d} - \alpha_d^{\prime}$, $\phi = \widetilde{\phi} - \phi^{\prime}$, and $p = \widetilde{p} - p^{\prime}$. However, given that $\eta$-coordinate surfaces are not perfectly horizontal, the reference profiles are functions of ($x,y,\eta$). Following substitution of the mean and perturbation quantities, the reference state ($\widetilde{\alpha} \nabla_{\eta}\widetilde{p} = \nabla_{\eta} \widetilde{\phi}$) is subtracted. The momentum equations (Eqs. \autoref{equation303} and \autoref{equation304}) become
+In order to reduce truncation errors in the horizontal pressure gradient calculations and numerical errors associated with the vertical pressure gradient and buoyancy calculations, the flux-form equations are recast into perturbation form. Variables are redefined in terms of their departure (denoted by primes) from their hydrostatically-balanced reference state (denoted by tildes), which are strictly functions of height ($\widetilde{z}$). For this state, $u_d = \widetilde{u_d} - u_d^{\prime}$, $\alpha_d = \widetilde{\alpha_d} - \alpha_d^{\prime}$, $\phi = \widetilde{\phi} - \phi^{\prime}$, and $p = \widetilde{p} - p^{\prime}$. However, given that $\eta$-coordinate surfaces are not perfectly horizontal, the reference profiles are functions of ($x,y,\eta$). Following substitution of the mean and perturbation quantities, the reference state ($\widetilde{\alpha} \nabla_{\eta}\widetilde{p} = \nabla_{\eta} \widetilde{\phi}$) is subtracted. For momentum, Eqs.~\eqref{equation303} and \eqref{equation304} become:
 
 
 \bea
 \left(\pd{\vec{V}_h}{t}\right)_{\eta} + \left( \nabla_{\eta} \cdot \vec{V}_h \otimes \vec{v}_h\right) + \pd{\Omega \vec{v}_h}{\eta} \nonumber 
-+ \hat{\alpha}  \left[ \vphantom{\pd{p^{\prime}}{\eta}}\mu_d \nabla_{\eta} \phi^{\prime} + \mu_d \alpha_d \nabla_{\eta} p^{\prime} \right.\\+ \left.\mu_d \alpha_d^{\prime} \nabla_{\eta} \widetilde{p} + \left( \nabla_{\eta} \phi\right) \left(\pd{p^{\prime}}{\eta} - \mu_d^{\prime} \right) \right] &= F_H \mbox{ ,} \label{equation310}\\
-\left(\pd{W}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h w\right) + \pd{\Omega w}{\eta} - g\hat{\alpha}\left(\pd{p^{\prime}}{\eta} - \widetilde{\mu_d}q_{m}\right) + g\mu_d^{\prime} &= F_W \mbox{ .}\label{equation311}
++ \hat{\alpha}  \left[ \vphantom{\pd{p^{\prime}}{\eta}}\mu_d \nabla_{\eta} \phi^{\prime} + \mu_d \alpha_d \nabla_{\eta} p^{\prime} \right.\\+ \left.\mu_d \alpha_d^{\prime} \nabla_{\eta} \widetilde{p} + \left( \nabla_{\eta} \phi\right) \left(\pd{p^{\prime}}{\eta} - \mu_d^{\prime} \right) \right] &= F_H \, , \label{equation310}\\
+\left(\pd{W}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h w\right) + \pd{\Omega w}{\eta} - g\hat{\alpha}\left(\pd{p^{\prime}}{\eta} - \widetilde{\mu_d}q_{m}\right) + g\mu_d^{\prime} &= F_W \, .\label{equation311}
 \eea
-\noindent  Similarly, the mass conservation equation \eqref{equation307} and geopotential equation (\eqref{equation308} become
+\noindent  Similarly, mass conservation and geopotential, Eqs.~\eqref{equation307} and \eqref{equation308}, become:
 
 
 \bea
-\left(\pd{\mu^{\prime}_d}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h\right) + \pd{\Omega}{\eta} = 0 \mbox{ ,} \label{equation312} \\
-\left(\pd{\phi^{\prime}}{t}\right)_{\eta} + \mu_d^{-1} \left[ \left( \vec{V}_h \cdot \nabla_{\eta} \phi \right) + \Omega \pd{\phi}{\eta} - gW\right] = 0 \mbox{ ,}\label{equation313}
+\left(\pd{\mu^{\prime}_d}{t}\right)_{\eta} + \left(\nabla_{\eta} \cdot \vec{V}_h\right) + \pd{\Omega}{\eta} = 0 \, , \label{equation312} \\
+\left(\pd{\phi^{\prime}}{t}\right)_{\eta} + \mu_d^{-1} \left[ \left( \vec{V}_h \cdot \nabla_{\eta} \phi \right) + \Omega \pd{\phi}{\eta} - gW\right] = 0 \, ,\label{equation313}
 \eea
 \noindent
- The conservation equations for potential temperature (Eq.~\ref{equation305}) and scalars (Eq.~\ref{equation306}) remain unchanged. Finally, the hydrostatic relation (Eq.~\ref{equation309a}) is redefined as
+ Conservation of potential temperature and scalars, Eqs.~\eqref{equation305} and ~\eqref{equation306}, are unchanged. Finally, the hydrostatic relation, Eq.~\ref{equation309a}, is redefined as:
 
 
 \be
-\pd{\phi^{\prime}}{\eta} = -\widetilde{\mu_d} \alpha^{\prime}_d - \alpha_d \mu^{\prime}_d \mbox{ .} \label{equation314}
+\pd{\phi^{\prime}}{\eta} = -\widetilde{\mu_d} \alpha^{\prime}_d - \alpha_d \mu^{\prime}_d \, . \label{equation314}
 \ee
 
 
-The equation of state (Eq.~\ref{equation309b}) is non-linear and cannot be recast in perturbation form without approximation. Accordingly, Eq.~\eqref{equation305}, together with Eqs.~\eqref{equation310}-\eqref{equation313} and Eqs.~\eqref{equation305}-\eqref{equation306} form the fully compressible governing equations that are solved in the ARW dynamical core.
+The equation of state is non-linear and cannot be recast in perturbation form without approximation. Accordingly, Eq.~\eqref{equation305}, together with Eqs.~\eqref{equation310} - \eqref{equation313} and Eqs.~\eqref{equation305} - \eqref{equation306} form the fully compressible governing equations that are solved in the ARW dynamical core.
 
 \section{Microphysics}
 \label{mp-32}
 
 The microphysics package includes explicitly resolved water vapor, cloud, and precipitation processes. In the WRF model, the microphysics scheme is employed at the end of each time-step as an adjustment process. This guarantees that the final saturation balance is accurate for the updated temperature and moisture fields. In this respect, the microphysics schemes do not provide tendencies of such atmospheric quantities.
 
-The WRF Single Moment 6-class (WSM6) mixed-phase scheme was used as the microphysics option. According to  \citet{Skamarock}, as a general rule, grids with horizontal spacing of $10\kilo\metre$ or less, where updrafts may be resolved, should implement a mixed-phase scheme. Mixed-phase processes are those that result from the interaction of ice and water particles. An example of such a process is riming, which produces graupel or hail. The six considered classes include vapor, rain, snow, cloud ice, cloud water, and graupel. The WSM6 parameterization uses a diagnostic relation for ice number concentration based on ice mass content rather than temperature, unlike many other microphysics schemes. The freezing\slash melting processes are computed during the fall-term sub-steps to increase accuracy in the vertical heating profile of these processes. The order of the processes is also optimized to decrease the sensitivity of the scheme to the model time-step. Saturation adjustment in WSM6 follows  \citet{Dud89} and  \citet{Hong98} in separately treating ice and water processes. This differs directly with the \citet{Lin} scheme, which handles them as a combined process. The efficiency and theoretical backgrounds of the WSM6 scheme provide adequate reasoning for its use as the microphysics scheme.
+The WRF Single Moment 6-class (WSM6) mixed-phase scheme is employed as the microphysics option. According to  \citet{Skamarock}, as a general rule, grids with horizontal spacing of $10\, \kilo\metre$ or less, where updrafts may be resolved, should implement a mixed-phase scheme. Mixed-phase processes are those that result from the interaction of ice and water particles. An example is riming, which produces graupel or hail. The six considered classes include vapor, rain, snow, cloud ice, cloud water, and graupel. The WSM6 parameterization uses a diagnostic relation for ice number concentration based on ice mass content rather than temperature, unlike several alternative microphysics schemes. The freezing and melting processes are computed during the fall-term sub-steps to increase accuracy in the vertical heating profile of these processes. The order of the processes is also optimized to decrease the sensitivity of the scheme to the model time-step. Saturation adjustment in WSM6 follows  \citet{Dud89} and  \citet{Hong98} in separately treating ice and water processes. This differs directly with the \citet{Lin} scheme, which handles them as a combined process. The efficiency and theoretical backgrounds of the WSM6 scheme provide adequate reasoning for its use as the microphysics scheme.
 
 \section{Atmospheric Radiation}
 \label{ar-33}
 
-Atmospheric radiation schemes account for atmospheric heating due to radiative flux divergence and surface downward longwave and shortwave radiation for the ground heat budget. Every radiation scheme is a one-dimensional column model, where each column is treated independently and the associated fluxes correspond to those in infinitely horizontally uniform planes. Longwave radiation includes infrared radiation absorbed and emitted by gases and surfaces. Upward longwave radiation flux from the ground is determined by the surface emissivity that in turn depends on land use type, as well as the ground temperature. Shortwave radiation includes visible and surrounding wavelengths that make up the solar spectrum. In this regard, the only source of shortwave radiation is the sun. However, processes include absorption, reflection, and scattering in the atmosphere and at surfaces. For shortwave radiation, the upward flux is the reflection due to surface albedo. Within the atmosphere the radiation responds to model-predicted cloud and water vapor distributions, as well as specified carbon dioxide, ozone, and trace gas concentrations. Atmospheric radiation schemes provide potential temperature tendencies.
+Atmospheric radiation schemes account for atmospheric heating due to radiative flux divergence and surface downward longwave and shortwave radiation for the ground heat budget. Every radiation scheme acts as a one-dimensional column model, where each column is treated independently and the associated fluxes correspond to those in infinitely horizontally-uniform planes. Longwave radiation includes infrared radiation absorbed and emitted by gases and surfaces. Upward longwave radiation flux from the ground is determined by the surface emissivity that in turn depends on land use type, as well as the ground temperature. Shortwave radiation includes visible and surrounding wavelengths that make up the solar spectrum. In this regard, the only source of shortwave radiation is the sun. However, considered processes include absorption, reflection, and scattering within the atmosphere and at the surface. For shortwave radiation, the upward flux is the reflection due to surface albedo. Within the atmosphere, radiation responds to model-predicted cloud and water vapor distributions, as well as specified carbon dioxide, ozone, and trace gas concentrations. Accordingly, atmospheric radiation schemes provide potential temperature tendencies.
 
-The shortwave radiation scheme used was the  \citet{Dud89} parameterization. Originally in The Pennsylvania State University (PSU) 5th-Generation Mesoscale Model (MM5), the scheme has simple downward integration of solar flux, accounting for clear-air scattering, water vapor absorption, and cloud albedo and absorption.
+The employed shortwave radiation scheme is the  \citet{Dud89} parameterization. Originally in The Pennsylvania State University (PSU) 5th-Generation Mesoscale Model (MM5), the scheme has simple downward integration of solar flux, accounting for clear-air scattering, water vapor absorption, and cloud albedo and absorption.
 
-The longwave radiation scheme employed was the rapid radiative transfer model (RRTM)  \citet{Mlawer97}. Taken from MM5, RRTM is a spectral-band scheme using the correlated-k method. The scheme utilizes pre-set tables to accurately represent longwave processes due to water vapor, ozone, carbon dioxide, and trace gases, as well as accounting for cloud optical depth.
+The implemented longwave radiation scheme is the rapid radiative transfer model (RRTM; \citealt{Mlawer97}). Originally included with MM5, RRTM is a spectral-band scheme that uses the correlated-k method. The scheme utilizes pre-set tables to accurately represent longwave processes due to water vapor, ozone, carbon dioxide, and trace gases. Cloud optical depth is additionally considered.
 
 \section{Land-Surface Model}
 \label{lsm-34}
 
-Land-surface models (LSMs) use atmospheric information from the surface layer scheme, radiative forcing from the radiation scheme, and precipitation forcing from the microphysics and convective schemes, together with internal information on the land's state variables and surface properties, to provide heat and moisture fluxes over land and sea-ice points. These fluxes provide a lower boundary condition for vertical transport done in the PBL schemes, or in the vertical diffusion scheme in which a PBL option is not employed, such as in LES mode. The LSMs offer various degrees of sophistication in dealing with thermal and moisture fluxes in multiple soil layers and also may handle vegetation, root, and canopy effects along with snow-cover prediction. There is no horizontal interaction between neighboring points, so the LSM may be considered a one-dimensional column model. The LSM provides no tendencies, but does update the land's state variables which include the ground (skin) temperature, soil temperature profile, soil moisture profile, snow cover, and canopy properties.
+Land-surface models (LSMs) use atmospheric information from the surface layer scheme, radiative forcing from the radiation scheme, and precipitation forcing from the microphysics and convection schemes, together with internal information of the land's state variables and surface properties, to provide heat and moisture fluxes over land and sea-ice grid points. These fluxes serve as the lower boundary condition for vertical turbulent exchange in the PBL schemes, or in the three-dimensional diffusion scheme when a PBL option is not employed (e.g.$\backslash$ in LES mode). The LSM offers various degrees of sophistication in dealing with thermal and moisture fluxes across multiple soil layers and may also consider vegetation, root, and canopy effects along with snow cover prediction. There is no horizontal interaction between neighboring grid points, so the LSM may be considered a one-dimensional column model. The LSM provides no tendencies, but does update the land's state variables which include the ground (skin) temperature, soil temperature profile, soil moisture profile, snow cover, and canopy properties.
 
-The Noah LSM is the successor to the OSU LSM described in  \citet{ChenDud}. The LSM was developed by both the National Center for Environmental Prediction (NCEP) and the National Center for Atmospheric Research (NCAR) and is almost identical to NCEP's operational North American Model (NAM). It was designed to be mutually beneficial to research and operational objectives. Noah is a 4-layer soil temperature and moisture model with canopy moisture and snow cover prediction. It includes root zone, evapotranspiration, soil drainage, and runoff, taking into account vegetation categories, monthly vegetation fraction, and soil texture. The scheme provides sensible and latent heat fluxes to the planetary boundary layer scheme. Noah LSM improves upon the OSU LSM urban treatment and now considers surface emission properties. The sophistication of the Noah LSM as compared to the other LSM schemes made it an ideal candidate for the experiments contained in this study.
+The Noah LSM is the successor to the OSU LSM described in  \citet{ChenDud}. The LSM was developed by both the National Center for Environmental Prediction (NCEP) and the National Center for Atmospheric Research (NCAR). Nearly identical to NCEP's operational North American Model (NAM), the Noah LSM was designed to be mutually beneficial to research and operational objectives. Noah is a 4-layer soil temperature and moisture model with canopy moisture and snow cover prediction. It includes root zone, evapotranspiration, soil drainage, and runoff, taking into account vegetation categories, monthly vegetation fraction, and soil texture. The scheme provides sensible and latent heat fluxes to the planetary boundary layer scheme. Noah LSM improves upon the OSU LSM urban treatment and now considers surface emission properties. The sophistication of the Noah LSM, when compared to alternative LSM schemes, makes it an ideal candidate for the experiments contained in this study.
 
 \section{Surface Layer Schemes}
 \label{surface-layer-35}
 
-The surface layer schemes provide friction velocities and exchange coefficients that enable the calculation of surface heat and moisture fluxes by the land-surface model and surface stress in the planetary boundary layer (PBL) scheme. Over water, the surface fluxes and diagnostic fields are computed in the surface layer scheme itself. Each surface layer option is tied to a particular PBL scheme. The schemes provide no tendencies, rather only the stability-dependent information about the surface layer for the land-surface models and PBL schemes.
+The surface layer scheme provides friction velocities and exchange coefficients that enable the calculation of surface heat and moisture fluxes by the land-surface model and surface stress in the planetary boundary layer (PBL) scheme. Over water, the surface fluxes and diagnostic fields are computed in the surface layer scheme itself. Each surface layer option is tied to a particular PBL scheme. The schemes provide no tendencies, rather only the stability-dependent information about the surface layer for the land-surface models and PBL schemes.
 
-This study implemented four surface layer parameterization options contained in the latest release of the WRF model, including the MM5, Janjic, MYNN, and TEMF schemes. The WRF model, as in most typical atmospheric models, implements surface-layer similarity theory to characterize the flux-profile relationships.  \citet{MO} hypothesized that in the atmospheric surface layer flow, where the considered level is greater than that of the so-called roughness length $z_0$, the vertical gradients of Reynolds-averaged meteorological fields $U$, $\theta$, $q$, and their associated turbulence moments are universal functions of a dimensionless height $\zeta=z/L$ when normalized by the corresponding surface-layer turbulence scales and length scale $L$. Here $U$ represents velocity ($\metre\reciprocal\second$), $\theta$ is potential temperature ($\kelvin$), and $q$ is water vapor mixing ratio ($\gram\reciprocal\kilogram$). The turbulence scales are given by
+This study implements four surface layer parameterization options contained in the latest release of the WRF model, including the MM5, Janji\'{c}, MYNN, and TEMF schemes. The WRF model, as in most typical atmospheric models, implements surface-layer similarity theory to characterize the flux-profile relationships.  \citet{MO} hypothesized that in the atmospheric surface layer flow, where the considered level is greater than that of the so-called roughness length ($z_0$), the vertical gradients of Reynolds-averaged meteorological fields ($U$, $\theta$, $q$), and their associated turbulence moments are universal functions of a dimensionless height ($\zeta=z/L$) when normalized by the corresponding surface-layer turbulence scales and length scale $L$. Here, $U$ represents velocity ($\metre\reciprocal\second$), $\theta$ is potential temperature ($\kelvin$), and $q$ is water vapor mixing ratio ($\gram\reciprocal\kilogram$). The associated turbulence scales are given by:
 
 
 \bse \label{equation315}
 \bal
-u_* &= (\widetilde{w^{'}u^{'}}^2 + \widetilde{w^{'}v^{'}}^2)^{\frac{1}{4}} \mbox{ ,} \label{equation315a} \\
-\theta_* &= \frac{-\widetilde{w^{'}\theta^{'}}}{u_*} \mbox{ , \quad and} \label{equation315b}\\
-q_* &= \frac{-\widetilde{w^{'}q^{'}}}{u_*} \mbox{ ,} \label{equation315c}
+u_* &= (\widetilde{w^{'}u^{'}}^2 + \widetilde{w^{'}v^{'}}^2)^{\frac{1}{4}} \, , \label{equation315a} \\
+\theta_* &= \frac{-\widetilde{w^{'}\theta^{'}}}{u_*} \, , \quad and \label{equation315b}\\
+q_* &= \frac{-\widetilde{w^{'}q^{'}}}{u_*} \, , \label{equation315c}
 \eal
 \ese
 \noindent
- with the Obukhov stability length scale given by
+ with the Obukhov stability length scale given by:
 
 \bse \label{equation316}
 \bal
-L &= -\frac{\theta_r(\widetilde{w^{'}u^{'}}^2 + \widetilde{w^{'}v^{'}}^2)^{\frac{3}{4}}}{g \kappa \widetilde{w^{'}\theta_v^{'}}} \mbox{ ,} 
+L &= -\frac{\theta_r(\widetilde{w^{'}u^{'}}^2 + \widetilde{w^{'}v^{'}}^2)^{\frac{3}{4}}}{g \kappa \widetilde{w^{'}\theta_v^{'}}} \, , 
 \eal
 \ese
 \noindent
-
-where $\theta_r$ designates some reference temperature, $g$ is gravity, $\kappa$ is von K\'{a}rm\'{a}n's constant. Additionally, $u^{'},v^{'}$, and $w^{'}$ represent perturbations of the $x$-component, $y$-component, and $z$-component of velocity, $\theta^{'}$ and $\theta_v^{'}$ are the perturbations of potential and virtual potential temperature, respectively, and $q^{'}$ represents the perturbation of water vapor mixing ratio. Accordingly, $\widetilde{w^{'}u^{'}}$ and $\widetilde{w^{'}v^{'}}$ are kinematic momentum fluxes, $\widetilde{w^{'}\theta{'}}$ and $\widetilde{w^{'}\theta_v^{'}}$ are kinematic heat and virtual heat fluxes, and $\widetilde{w^{'}q^{'}}$ is the kinematic moisture flux. Reynolds averaging is denoted by $\widetilde{()}$. $L$ is assumed constant throughout the surface layer since surface-layer turbulent momentum and heat fluxes are assumed constant with height. For a neutrally stratified surface layer, $L$ goes to infinity, the sign of $L$ is undefined, and the integral flux-gradient relation follows the logarithmic profile law. In the stably stratified surface layer, with no turbulent shear stress, $L$ tends to zero. If there exists non-zero turbulent shear stress, $L$ is positive. For the unstably stratified surface layer with non-zero turbulent shear stress, $L$ is negative. Following the Monin-Obukhov similarity theory, profiles are defined for heat and momentum, respectively, for the non-neutral atmospheric surface layer as
+where $\theta_r$ designates some reference temperature, $g$ is gravity, $\kappa$ is von K\'{a}rm\'{a}n's constant. Additionally, $u^{'},v^{'}$, and $w^{'}$ represent perturbations of the $x$-component, $y$-component, and $z$-component of velocity, $\theta^{'}$ and $\theta_v^{'}$ are the perturbations of potential and virtual potential temperature, respectively, and $q^{'}$ represents the perturbation of water vapor mixing ratio. Accordingly, $\widetilde{w^{'}u^{'}}$ and $\widetilde{w^{'}v^{'}}$ are kinematic momentum fluxes, $\widetilde{w^{'}\theta{'}}$ and $\widetilde{w^{'}\theta_v^{'}}$ are kinematic heat and virtual heat fluxes, and $\widetilde{w^{'}q^{'}}$ is the kinematic moisture flux. Reynolds averaging is denoted by $\widetilde{()}$, and $L$ is assumed constant throughout the surface layer since turbulent momentum and heat fluxes are assumed constant with height. For a neutrally-stratified surface layer, $L$ goes to infinity, the sign of $L$ is undefined, and the integral flux-gradient relation follows the logarithmic profile law. In the stably-stratified surface layer, with no turbulent shear stress, $L$ tends to zero. If there exists non-zero turbulent shear stress, $L$ is positive. For the unstably-stratified surface layer with non-zero turbulent shear stress, $L$ is negative. Following the Monin-Obukhov similarity theory, profiles are defined for heat and momentum, respectively, for the non-neutral atmospheric surface layer as:
  
 \bse \label{equation317}
 \bal
-\frac{\kappa z}{u_*} \pd{U}{z} &= \phi_m\left(\zeta \right) \mbox{ ,} \label{equation317a}\\
-\frac{\kappa z}{\theta_*} \pd{\theta}{z} &= \phi_h\left(\zeta \right) \mbox{ , \quad and} \label{equation317b}\\ 
+\frac{\kappa z}{u_*} \pd{U}{z} &= \phi_m\left(\zeta \right) \, , \label{equation317a}\\
+\frac{\kappa z}{\theta_*} \pd{\theta}{z} &= \phi_h\left(\zeta \right) \, , \quad and \label{equation317b}\\ 
 \frac{\kappa z}{q_*} \pd{q}{z} &= \phi_q\left(\zeta \right) \mbox{ .} \label{equation317c} 
 \eal
 \ese
 \noindent
  Here, $\phi_m$, $\phi_h$, and $\phi_q$ are empirically derived universal functions of dimensionless height $\zeta$. It is often assumed that $\phi_h$ and $\phi_q$ are equivalent.
 
-Next, kinematic fluxes of momentum, heat, and moisture are defined in terms of the turbulence scales ($u_*$, $\theta_*$, and $q_*$ respectively) as
+Next, kinematic fluxes of momentum, heat, and moisture are defined in terms of the turbulence scales ($u_*$, $\theta_*$, and $q_*$ respectively) as:
 
 \bse \label{equation318}
 \bal
-F_m &= -u_*^2 \mbox{ ,}\label{equation318a} \\
-F_h &= -u_*\theta_* \mbox{ , \quad and} \label{equation318b}\\
+F_m &= -u_*^2 \, ,\label{equation318a} \\
+F_h &= -u_*\theta_* \, , \quad and \label{equation318b}\\
 F_q &= -u_*q_* \mbox{ .} \label{equation318c}
 \eal
 \ese
 \noindent
 
 
-Finally, the kinematic fluxes are described in terms of state variables by integrating Eq. (\autoref{equation317}) from the roughness height $z_0$ to height $z$ and combining with Eq. (\autoref{equation318}). These relationships are given by
+Finally, the kinematic fluxes are described in terms of state variables by integrating Eq.~\eqref{equation317} from the roughness height $z_0$ to the considered height $z$, and subsequently combining with Eq.~\eqref{equation318}. The resulting relationships are given by:
 
 \bse \label{equation319}
 \bal
-U &= \frac{u_*}{\kappa}\left[\ln\left({\frac{z}{z_0}}\right) - \psi_m\left(\zeta,\zeta_0 \right)\right] \mbox{\quad and} \label{equation319a}\\
-(\theta - \theta_0) &= \frac{\theta_*}{\kappa}\left[\ln\left({\frac{z}{z_0}}\right) - \psi_h\left(\zeta,\zeta_0\right)\right] \label{equation319b} \mbox{ ,}\\
-(q - q_0) &= \frac{q_*}{\kappa}\left[\ln\left({\frac{z}{z_0}}\right) - \psi_h\left(\zeta,\zeta_0\right)\right] \label{equation319c} \mbox{ ,}
+U &= \frac{u_*}{\kappa}\left[\ln\left({\frac{z}{z_0}}\right) - \psi_m\left(\zeta,\zeta_0 \right)\right] \, , \label{equation319a}\\
+(\theta - \theta_0) &= \frac{\theta_*}{\kappa}\left[\ln\left({\frac{z}{z_0}}\right) - \psi_h\left(\zeta,\zeta_0\right)\right] \label{equation319b} \, , \quad and\\
+(q - q_0) &= \frac{q_*}{\kappa}\left[\ln\left({\frac{z}{z_0}}\right) - \psi_h\left(\zeta,\zeta_0\right)\right] \label{equation319c} \, ,
 \eal
 \ese
 \noindent
- where $\zeta_0 = z_0/L$. Additionally, $\theta_0$ and $q_0$ are the potential temperature and moisture values at the roughness height $z_0$. $\psi_m$ and $\psi_h$ are stability correction functions given by
+ where $\zeta_0 = z_0/L$. Additionally, $\theta_0$ and $q_0$ are the potential temperature and moisture values at the roughness height $z_0$. The stability correction functions, $\psi_m$ and $\psi_h$, are given by:
 
 \bse \label{equation320}
 \bal 
-\psi_m &= \int_{\zeta_0}^{\zeta} \frac{1 - \phi_m(\zeta^{'})}{\zeta^{'}} d\zeta^{'} \mbox{ ,} \label{equation320a} \\ 
+\psi_m &= \int_{\zeta_0}^{\zeta} \frac{1 - \phi_m(\zeta^{'})}{\zeta^{'}} d\zeta^{'} \, , \label{equation320a} \\ 
 \psi_h &= \int_{\zeta_0}^{\zeta} \frac{1 - \phi_h(\zeta^{'})}{\zeta^{'}} d\zeta^{'} \mbox{ .} \label{equation320b}
 \eal
 \ese
 
 
-Similarity theory, however, is not perfect in representing the flux-profile relationship. The main quandary is that potential temperature and moisture values at roughness height $z_0$ are not generally known in numerical models. Alternatively, $\theta_0$ and $q_0$ are approximated by the surface skin potential temperature ($\theta_g$) and moisture ($q_g$)values. Consequently, momentum flux is defined from the gradient down to the roughness height $z_0$, while heat and moisture fluxes are defined from the gradient down to the surface. This results in an inconsistency between fluxes. This inconsistency is exacerbated on the extreme ends of the meteorological spectrum. For instance, under very stable or very unstable conditions, $\theta_g$ and $\theta_0$ can differ by a large margin. Another problem of similarity theory lies in the need to solve the complex stability correction functions. Each surface layer scheme in the WRF model attempts to alleviate at least one of these dilemmas, if not both.
+Similarity theory, however, is imperfect in representing the flux-profile relationship. The main quandary is that potential temperature and moisture values at roughness height $z_0$ are not generally known in numerical models. Alternatively, $\theta_0$ and $q_0$ are approximated by the surface skin potential temperature ($\theta_g$) and moisture ($q_g$) values. Consequently, momentum flux is defined from the gradient down to the roughness height $z_0$, while heat and moisture fluxes are defined from the gradient down to the surface. This results in an inconsistency between fluxes. This inconsistency is exacerbated on the extreme ends of the meteorological spectrum. For instance, under very stable or very unstable conditions, $\theta_g$ and $\theta_0$ can differ by a large margin. Another problem of similarity theory lies in the need to solve the complex stability correction functions. Each surface layer scheme in the WRF model attempts to alleviate at least one of these dilemmas, if not both.
 
 \subsection{MM5}
 \label{sl-mm5-351}
 
-Relations between $\phi$ functions and $\zeta$ were experimentally estimated by  \citet{Dyer} for the three major stability regimes discussed in  \citet{Zhang}. The regimes are classified as: stable ($\mathrm{Ri} > 0.2$), damped mechanical turbulence ($0.2 > \mathrm{Ri} > 0$), and forced convection ($\mathrm{Ri} \leq 0$). Here, $\mathrm{Ri}$ is the Richardson number, which is the ratio of buoyancy forces to inertial forces. For the stable regime, it assumed that no turbulence exists. Subsequently, based on this premise, the damped mechanical regime is described as stable in nature and the forced convection regime is considered to be unstable.
+Relations between $\phi$ functions and $\zeta$ were experimentally estimated by  \citet{Dyer} for the three major stability regimes discussed in  \citet{Zhang}. The regimes are classified as: stable ($\mathrm{Ri} > 0.2$), damped mechanical turbulence ($0.2 > \mathrm{Ri} > 0$), and forced convection ($\mathrm{Ri} \leq 0$). Here, $\mathrm{Ri}$ is the Richardson number, which is the ratio of buoyancy forces to inertial forces. For the stable regime, it assumed that turbulence does not exist. Subsequently, based on this premise, the damped mechanical regime is described as stable in nature and the forced convection regime is considered to be unstable.
 
-For unstable conditions ($\zeta < 0$), when the gradient Richardson number is approximated as $\mathrm{Ri} = \zeta$, the $\phi$ functions are given by
+For unstable conditions ($\zeta < 0$), when the gradient Richardson number is approximated as $\mathrm{Ri} = \zeta$, the $\phi$ functions are given by:
 
 \bse \label{equation321}
 \bal
-\phi_m &= \left[1 - 16\zeta\right]^{-\frac{1}{4}} \mbox{\quad and} \label{equation321a} \\
-\phi_h &= \left[1 - 16\zeta\right]^{-\frac{1}{2}} \mbox{ .} \label{equation321b}
+\phi_m &= \left[1 - 16\zeta\right]^{-\frac{1}{4}} \, , \label{equation321a} \\
+\phi_h &= \left[1 - 16\zeta\right]^{-\frac{1}{2}} \, . \label{equation321b}
 \eal
 \ese
 
 
-For stable conditions ($\zeta > 0$), with $\frac{\mathrm{Ri}}{1-5\mathrm{Ri}} = \zeta$,
+For stable conditions ($\zeta > 0$), with $\frac{\mathrm{Ri}}{1-5\mathrm{Ri}} = \zeta$:
 
 \bse \label{equation322}
 \bal
-\phi_m &= 1 + 5\zeta \mbox{\quad and} \label{equation322a}\\
-\phi_h &= 1 + 5\zeta \mbox{ .} \label{equation322b}
+\phi_m &= 1 + 5\zeta \, , \label{equation322a}\\
+\phi_h &= 1 + 5\zeta \, . \label{equation322b}
 \eal
 \ese
 
 
-Fluxes can then be found using the ``flux-gradient relationship" as described in Section (\autoref{surface-layer-35}). Since gradients are defined and the profiles are approximated by the  \citet{Dyer} functions, SL turbulence velocity and temperature scales can be prescribed following Eq. (\autoref{equation317}). Once the surface layer scales are known, turbulent fluxes of heat and momentum are calculated according to Eq. (\autoref{equation318}).
+Fluxes are then found using the ``flux-gradient relationship" as described in Section \autoref{surface-layer-35}. Since gradients are defined and the profiles are approximated by the  \citet{Dyer} functions, surface layer turbulence velocity and temperature scales can be prescribed following Eq.~\eqref{equation317}. Once the surface layer scales are known, turbulent fluxes of heat and momentum are calculated according to Eq.~\eqref{equation318}.
 
- \citet{Paulson} found that the relationships given by  \citet{Dyer} performed better compared with those from either a log-linear approximation or those from  \citet{Pan63}. The reasoning for this conclusion is that the Dyer approximation sets $\alpha = 1/\phi_m$, where $\alpha = K_h/K_m$ is the inverse turbulent Prandtl number, while other calculations assumed $\alpha$ to be unity. Here $K_h$ and $K_m$ refer the heat and momentum eddy diffusivities, respectively. The Dyer and Panofsky formulations faired similarly in wind profiles, but the Dyer formulation produced more realistic temperature profiles. This is a direct result of Dyer allowing $\alpha$ to vary as a function of stability.
+ \citet{Paulson} found that the relationships given by  \citet{Dyer} performed better compared with those from either a log-linear approximation or those from  \citet{Pan63}. The reasoning for this conclusion is that the Dyer approximation prescribes $\alpha = 1/\phi_m$, where $\alpha = K_h/K_m$ is the inverse turbulent Prandtl number, while other calculations assumed $\alpha$ to be unity. Here $K_h$ and $K_m$ refer the heat and momentum eddy diffusivities, respectively. The Dyer and Panofsky formulations fared similarly in wind profiles, but the Dyer formulation produced more realistic temperature profiles. This is a direct result of Dyer allowing $\alpha$ to vary as a function of stability.
 
-For water surfaces, surface roughness height must be separately considered from that over land, in which $z_0$ is defined from the land use category. With small capillary waves, the surface may be considered smooth and the Reynolds number is approximated as $\mathrm{Re} = z_0 u_*/\nu \ll 1 \simeq 0.1 $. Here, $\nu$ represents the kinematic molecular viscosity. The water surface is considered fully rough when $\mathrm{Re} \gg 1$. Here, the MM5 surface layer scheme implements a Charnock relation, which links the roughness length to friction velocity over water points:
+For water surfaces, surface roughness height must be separately considered from that over land, in which $z_0$ is defined from the land use category. With small capillary waves, the surface may be considered smooth and the Reynolds number is approximated as $\mathrm{Re} = z_0 u_*/\nu \ll 1 \simeq 0.1 $. Here, $\nu$ represents the kinematic molecular viscosity. The water surface is considered fully rough when $\mathrm{Re} \gg 1$. Here, the MM5 surface layer scheme implements a Charnock relation, which links the roughness length to friction velocity over water grid points:
 
 \be
 z_0 = \frac{\alpha_c u_*^2}{g} \mbox{ ,} \label{equation323}
@@ -446,26 +445,26 @@ z_0 = \frac{\alpha_c u_*^2}{g} \mbox{ ,} \label{equation323}
 \noindent
  where $\alpha_c = 0.14$ is the Charnock constant.
 
-No thermal roughness length parameterization is included to address the flux consistency dilemma detailed in (\autoref{surface-layer-35}). A convective velocity accounting for the free convection regime following  \citet{Beljaars} is used to ensure non-vanishing surface fluxes of heat and moisture. This is needed because under free convection conditions, surface stresses approach zero and thusly so do surface fluxes. The convective velocity is simply a correction term added to the velocity, which guarantees a non-zero surface stress. The MM5 SL parameterization must be implemented juxtaposed with the Yonsei University (YSU) PBL scheme.
+No thermal roughness length parameterization is included to address the flux consistency dilemma detailed in Section \autoref{surface-layer-35}. A convective velocity accounting for the free convection regime following  \citet{Beljaars} is used to ensure non-vanishing surface fluxes of heat and moisture. This is needed because under free convection conditions, surface stresses approach zero and thusly so do surface fluxes. The convective velocity is simply a correction term added to the velocity, which guarantees a non-zero surface stress. The MM5 SL parameterization must be implemented juxtaposed with the Yonsei University (YSU) PBL scheme.
 
-\subsection{Janjic}
+\subsection{Janji\'{c}}
 \label{sl-janjic-352}
 
-This surface layer scheme is also based on  \citet{MO} similarity theory, with adjustments following  \citet{Jan94,Jan96,Jan02}. The scheme assumes that turbulent fluxes are constant with height and that boundary conditions are to be prescribed at two levels, $z_1$ and $z_2$. After following a similar path described in the previous section, Janjic reaches a relation in the form
+The Janji\'{c} surface layer scheme is also based on  \citet{MO} similarity theory, with adjustments following  \citet{Jan94,Jan96,Jan02}. The scheme assumes that turbulent fluxes are constant with height and that boundary conditions are to be prescribed at two levels, $z_1$ and $z_2$. After following a similar path described in the previous section, Janji\'{c} reaches a relation in the form:
 
 \be
 S_2 - S_1 = \left[\frac{F}{u_* \kappa}\right] \Phi_f, \label{equation324}
 \ee
 \noindent
- where $S_{1,2}$ are prognostic variables at height $z_{1,2}$, $F$ is the corresponding kinematic flux, $\kappa$ is von K\'{a}rm\'{a}n constant, and $\Phi_f$ is a function comprised of integral and stability functions. As an example, if $S=u$, and $F=\overline{w^{\prime}u^{\prime}}$, from Eq. (\autoref{equation324})
+ where $S_{1,2}$ are prognostic variables at height $z_{1,2}$, $F$ is the corresponding kinematic flux, $\kappa$ is von K\'{a}rm\'{a}n constant, and $\Phi_f$ is a function comprised of integral and stability functions. As an example, if $S=u$, and $F=\widetilde{w^{\prime}u^{\prime}}$, from Eq.~\eqref{equation324}:
 
 \bse \label{equation325}
 \bal
-u_2 - u_1 &= \left[\frac{\overline{w^{\prime}u^{\prime}}}{u_* \kappa}\right]\Phi_m \mbox{ .}
+u_2 - u_1 &= \left[\frac{\widetilde{w^{\prime}u^{\prime}}}{u_* \kappa}\right]\Phi_m \, .
 \eal
 \ese
 \noindent
- The turbulence velocity scale, $u_*$, is often approximated as $(-\overline{w^{'}u^{'}}^\frac{1}{2})$, which leads to
+ The turbulence velocity scale, $u_*$, is often approximated as $(-\widetilde{w^{'}u^{'}}^\frac{1}{2})$, which leads to:
 
 \bse
 \bal
@@ -474,49 +473,49 @@ u_2 - u_1 &= \left(\frac{u_*}{\kappa}\right) \Phi_m. \label{equation326}
 \ese
 
 
-If $z_1$, $z_2$, $u_1$, $u_2$, and the Obukhov length $L$ are known, both $u_*$ and $\overline{w^{\prime}u^{\prime}}$ can be found. The issue is that $L$ is generally unknown along with the fact that Eq. (\autoref{equation324}) is highly implicit. Accordingly, $L$ is often times approximated as a function of $\mathrm{Ri_b}$, the bulk Richardson number, which approximates $\mathrm{Ri}$ by estimating local gradients through finite differences of meteorological variables across layers. An iterative approach is then employed to solve for the bulk exchange coefficients in which Janjic claims convergence with no more than three iterations, as a general rule. Over land however, the scheme replaced $\Phi_f$ stability functions with those from  \citet{Dyer} and  \citet{Paulson}. Under stable conditions, $\overline{w^{'}\theta_v^{'}}$ becomes very large and negative, meaning that $L$ goes towards zero. An upper limit is placed on $\zeta$ to ensure that in such cases, surface fluxes are non-vanishing. At the unstable regime, the  \citet{Beljaars} correction is applied to prevent the singularity in the case of an unstable surface layer with vanishing winds. In this case, $L$ goes to zero due to the vanishing winds. The correction prevents such behavior by converting a fraction of the surface buoyancy flux to kinetic energy of the near-surface winds. 
+If $z_1$, $z_2$, $u_1$, $u_2$, and the Obukhov length $L$ are known, both $u_*$ and $\widetilde{w^{\prime}u^{\prime}}$ may be computed. Two issues are that $L$ is generally unknown and the fact that Eq.~\eqref{equation324} is highly implicit. Accordingly, $L$ is often times approximated as a function of $\mathrm{Ri_b}$, the bulk Richardson number, which approximates $\mathrm{Ri}$ by estimating local gradients through finite differences of meteorological variables across layers. An iterative approach is then employed to solve for the bulk exchange coefficients in which Janji\'{c} claims convergence with no more than three iterations, as a general rule. Over land however, the scheme replaced $\Phi_f$ stability functions with those from  \citet{Dyer} and  \citet{Paulson}. Under stable conditions, $\widetilde{w^{'}\theta_v^{'}}$ becomes very large and negative, meaning that $L$ tends toward zero. An upper limit is placed on $\zeta$ to ensure that in such cases, surface fluxes are non-vanishing. At the unstable regime, the  \citet{Beljaars} correction is applied to prevent a singularity in the case of an unstable surface layer with vanishing winds. In this case, $L$ goes to zero due to the vanishing winds. The correction prevents such behavior by converting a fraction of the surface buoyancy flux to kinetic energy of the near-surface winds. 
 
 As stated previously, appreciation of the similarity theory requires specification of upper and lower boundary limits, $\zeta = z/L$ and $\zeta_0 = z_0/L$. The upper limit is taken at the first model level. It is assumed that the considered flow variables follow a logarithmic form as the lower boundary is approached and take their lower boundary values at the roughness height $z_0$.
 
-The Janjic version of similarity theory states that the processes near the surface are not that straightforward. Within the thin layer of air next to the surface there is not enough space for turbulent eddies to develop such that molecular transport dominates. In reality, this molecular transport can significantly affect the surface fluxes and thusly the PBL evolution. To account for this, an implicit viscous sub-layer following  \citet{Zilit} is employed over land and an explicit viscous sub-layer is implemented according to  \citet{Jan94} over water.
+The Janji\'{c} version of similarity theory states that the processes near the surface are not so straightforward. Within the thin layer of air next to the surface there is not enough space for turbulent eddies to develop, meaning that molecular transport dominates. In reality, this molecular transport can significantly affect the surface fluxes and thusly the PBL evolution. To account for this, an implicit viscous sublayer following  \citet{Zilit} is employed over land, while an explicit viscous sublayer is implemented according to  \citet{Jan94} over water.
 
-The  \citet{Zilit} method defines different roughness heights for different variables, possibly dependent on flow regimes. The basic concept in this method is to relate the roughness height for momentum to the roughness height for mass. For example, the equation for potential temperature in the SL may be given by $\theta(z) = \theta_0 + f(z_0)$. The problem is that in this case, $\theta_0$ is not necessarily the surface value of potential temperature, but rather an integration constant. Thus the need to relate the two roughness heights. This method improves the surface flux representation not accounted for in the previous methods.
+The  \citet{Zilit} method defines different roughness heights for different variables, all possibly dependent on the dominant flow regime. The basic concept in this method is to relate the roughness height for momentum to the roughness height for mass. For example, the equation for potential temperature in the surface layer may be given by $\theta(z) = \theta_0 + f(z_0)$. The problem is that in this case, $\theta_0$ is not necessarily the surface value of potential temperature, but rather an integration constant. Thus, there is a need to relate the two roughness heights. This method improves the surface flux representation neglected in the previous methods.
 
-Over water, the  \citet{Jan94} method explicitly defines a viscous sub-layer. This method assumes that there are two distinct layers: a thin viscous sub-layer where vertical transports are only defined by molecular diffusion, and a turbulent layer on top of the sub-layer where vertical transports are only defined by turbulent fluxes. The method also assumes that the fluxes are continuous across these layers. A set of equations used to compute the height of the viscous sub-layer, along with fluxes at the sub-layer interface, allow for the lower boundary conditions to be taken at the computed heights as a weighted mean of the values at the surface and at the upper boundary. This viscous sub-layer over water is assumed to operate in three distinct regimes: smooth and transitional, rough, and rough with spray. When the Reynolds number reaches a prescribed threshold, the flow ceases to be smooth and the rough regime is entered. Here, the viscous sub-layer is turned off for momentum, but is left for moisture and heat. When the Reynolds number reaches another prescribed level, the regime is rough with spray and the whole viscous sub-layer collapses. In this regime, spray and breaking waves are assumed to provide a much more efficient method of exchange of heat and moisture between the water and air than could be accomplished from molecular diffusion alone. This surface layer scheme must run in conjunction with the Mellor-Yamada (Janjic) PBL scheme.
+Over water, the  \citet{Jan94} method explicitly defines a viscous sublayer. This method assumes that there are two distinct layers: a thin viscous sublayer where vertical transports are only defined by molecular diffusion, and a turbulent layer on top of the sublayer where vertical transports are only defined by turbulent fluxes. The method also assumes that the fluxes are continuous across these layers. A set of equations used to compute the height of the viscous sublayer, along with fluxes at the sublayer interface, allow for the lower boundary conditions to be taken at the computed heights as a weighted mean of the values at the surface and at the upper boundary. This viscous sublayer over water is assumed to operate in three distinct regimes: smooth and transitional, rough, and rough with spray. When the Reynolds number reaches a prescribed threshold, the flow is no longer smooth and the rough regime is entered. Here, the viscous sublayer is turned off for momentum, but is retained for moisture and heat. When the Reynolds number reaches another prescribed level, the regime is considered rough with spray and the whole viscous sublayer collapses. In this regime, spray and breaking waves are assumed to provide a much more efficient method of exchange for heat and moisture between the water and air than could be accomplished from molecular diffusion alone. This surface layer scheme must operate in conjunction with the Mellor-Yamada (Janji\'{c}) PBL scheme.
 
 \subsection{MYNN}
 \label{sl-mynn-353}
 
-The Mellor-Yamada-Nakanishi-Niino (MYNN) surface layer scheme ~\citep{NN01, NN04, NN06} also makes use of the  \citet{Dyer} approximations given by Eqs. (\autoref{equation321}) and (\autoref{equation322}). Three major stability regimes are considered based on the bulk Richardson number, given by
+The Mellor-Yamada-Nakanishi-Niino (MYNN) surface layer scheme ~\citep{NN01, NN04, NN06} also makes use of the  \citet{Dyer} approximations given by Eqs.~\eqref{equation321} and \eqref{equation322}. Three major stability regimes are considered based on the bulk Richardson number, given by:
 
 \be
-Ri_B = \frac{g z_1 (\theta_1 - \theta_g)}{\theta_r (U^2_1 + V^2_1)} \mbox{ ,} 
+\mathrm{Ri_b} = \frac{g z_1 (\theta_1 - \theta_g)}{\theta_r (U^2_1 + V^2_1)} \, , 
 \label{equation327}
 \ee
 \noindent
  where $\theta_g$ is the skin potential temperature, $\theta_r$ is a surface layer reference potential temperature, and $()_1$ terms refer to atmospheric variables at the lowest explicit model level. The classifications are categorized exactly as described in Section \autoref{sl-mm5-351}.
 
-The procedure to calculate $\zeta$ follows that of  \citet{Li2010}. For unstable conditions ($Ri_B < 0$):
+The procedure to calculate $\zeta$ follows that of  \citet{Li2010}. For unstable conditions ($\mathrm{Ri_b} < 0$):
 
 \bal
-\zeta  =&  \mbox{ } a_{u11}\alpha Ri_B^2 \nonumber \\
-&+ \left[\left(b_{u11}\beta + b_{u12}\right) \alpha^2 + \left(b_{u21}\beta + b_{u22}\right)\alpha + \left(b_{u31}\beta^2 + b_{u32}\beta + b_{u33}\right)\right] Ri_B \mbox{ ,}\label{equation328}
+\zeta  =&  \mbox{ } a_{u11}\alpha \mathrm{Ri_b}^2 \nonumber \\
+&+ \left[\left(b_{u11}\beta + b_{u12}\right) \alpha^2 + \left(b_{u21}\beta + b_{u22}\right)\alpha + \left(b_{u31}\beta^2 + b_{u32}\beta + b_{u33}\right)\right] \mathrm{Ri_b} \, ,\label{equation328}
 \eal
 \noindent
- where $\alpha = \ln(z/z_o)$, $\beta = \ln(z_o/z_{oh})$, and the coefficients $a_{u11} = 0.0450$, $b_{u11} = 0.0030$, $b_{u12} = 0.0059$, $b_{u21} = -0.0828$, $b_{u22} = 0.8845$, $b_{u31} = 0.1739$, $b_{u32} = -0.9213$, and $b_{u33} = -0.1057$. 
+ where $\alpha = \ln(z/z_0)$, $\beta = \ln(z_0/z_{0h})$, and the coefficients $a_{u11} = 0.0450$, $b_{u11} = 0.0030$, $b_{u12} = 0.0059$, $b_{u21} = -0.0828$, $b_{u22} = 0.8845$, $b_{u31} = 0.1739$, $b_{u32} = -0.9213$, and $b_{u33} = -0.1057$. 
 
-For damped mechanical turbulence ($Ri_B < 0$):
+For damped mechanical turbulence ($\mathrm{Ri_b} < 0$):
 
 \bal
-\zeta =& \mbox{ } \left[\left(a_{w11}\beta + a_{w12}\right) \alpha + \left(a_{w21}\beta + a_{w22}\right)\right] Ri_B^2 \nonumber\\ &+ \left[\left(b_{w11}\beta + b_{w12}\right)\alpha + \left(b_{w21}\beta + b_{w22}\right)\right] Ri_B  \mbox{ ,}\label{equation329}
+\zeta =& \mbox{ } \left[\left(a_{w11}\beta + a_{w12}\right) \alpha + \left(a_{w21}\beta + a_{w22}\right)\right] \mathrm{Ri_b}^2 \nonumber\\ &+ \left[\left(b_{w11}\beta + b_{w12}\right)\alpha + \left(b_{w21}\beta + b_{w22}\right)\right] \mathrm{Ri_b}  \, ,\label{equation329}
 \eal
 \noindent
  where $a_{w11} = 0.5378$, $a_{w12} = -0.4399$, $a_{w21} = -4.901$, $a_{w22} = 52.50$, $b_{w11} = -0.0539$, $b_{w12} = 1.540$, $b_{w21} = -0.6690$, and $b_{w22} = -3.282$. 
 
-Finally, for stable conditions ($Ri_B < 0$):
+Finally, for stable conditions ($\mathrm{Ri_b} < 0$):
 
 \be
-\zeta = \left(a_{s11}\alpha + a_{s21}\right)Ri_B + b_{s11}\alpha b_{s21}\beta + b_{s22} \mbox{ ,} \label{equation330}
+\zeta = \left(a_{s11}\alpha + a_{s21}\right)\mathrm{Ri_b} + b_{s11}\alpha b_{s21}\beta + b_{s22} \, , \label{equation330}
 \ee
 \noindent
  where $a_{s11} = 0.7529$, $a_{s21} = 14.94$, $b_{s11} = 0.1569$, $b_{s21} = -0.3091$, $b_{s22} = -1.303$.
@@ -524,33 +523,32 @@ Finally, for stable conditions ($Ri_B < 0$):
 The thermal and moisture roughness lengths over land are calculated following that from  \citet{Zilit}:
 
 \be
-z_T = z_q = z_o \exp \left(-\kappa C_z \sqrt{Re}\right) \mbox{ ,} \label{equation331}
+z_{0h} = z_{0q} = z_0 \exp \left(-\kappa C_z \sqrt{\mathrm{Re}}\right) \, , \label{equation331}
 \ee
 \noindent
  where $\kappa = 0.4$ is von K\'{a}rm\'{a}n constant and $C_z = 0.1$ is the Zilitinkevich constant. Similarly, thermal and moisture roughness lengths are calculated over water following that from  \citet{Fairall2003}:
 
 \be
-z_T = z_q = \min \left(1.1\times10^{-4}, 5.5\times10^{-5} Re^{-0.6}\right) \mbox{.} \label{332}
+z_{0h} = z_{0q} = \min \left(1.1\times10^{-4}, 5.5\times10^{-5} \mathrm{Re}^{-0.6}\right) \, . \label{332}
 \ee
 \noindent
- Similar to the MM5 scheme, a convective velocity accounting for the free convection regime following  \citet{Beljaars} is used. In addition, a lower limit is placed on the turbulence velocity scale. Both are invoked in order to ensure non-vanishing surface fluxes of heat and moisture. 
+ Similar to the MM5 scheme, a convective velocity accounting for the free convection regime following  \citet{Beljaars} is employed. In addition, a lower limit is placed on the turbulence velocity scale. Both are invoked in order to ensure non-vanishing surface fluxes of heat and moisture. 
 
 \subsection{TEMF}
 \label{sl-temf-354}
 
-Similar to other surface layer schemes, the Total Energy-Mass Flux (TEMF; \citealt{Angevine2010}) scheme specifies fluxes that act as the lower boundary condition in the WRF model. Generally, these schemes assume a constant flux layer in order to apply similarity theory. The TEMF scheme, however, considers that the first model level may comprise a relatively large fraction of a shallow boundary layer. Thus, such a circumstance would likely invalidate the assumption that of a constant flux layer. Alternatively, the scheme calculates the lowest-level flux by linearly interpolating between the surface and the second model level. 
+Similar to other considered surface layer schemes, the Total Energy-Mass Flux (TEMF; \citealt{Angevine2010}) scheme specifies fluxes that act as the lower boundary condition in the WRF model. Generally, these schemes assume a constant flux layer in order to apply similarity theory. The TEMF scheme, however, considers that the first model level may comprise a relatively large fraction of a shallow boundary layer. Thus, such a circumstance would likely invalidate the assumption of a constant flux layer. Alternatively, the scheme calculates the lowest-level flux by linearly interpolating between the surface and the second model level. 
 
-The stability functions are parameterized using empirical data ~\citep{MS2007} and are cast in terms of the non-dimensional stress and heat flux,respectively, as
+The stability functions are parameterized using empirical data ~\citep{MS2007} and are cast in terms of the non-dimensional stress and heat flux,respectively, as:
 
 \bse \label{equation333}
 \bal
-f_{\tau} &= 0.17\left[0.25 + 0.75\left(1 + 4R_i\right)^{-1}\right] \mbox{ and} \label{equation333a} \\
-f_{\theta} &= -0.145\left(1+4Ri\right)^{-1} \label{equation333b}
+f_{\tau} &= 0.17\left[0.25 + 0.75\left(1 + 4\mathrm{Ri}\right)^{-1}\right] \, , \label{equation333a} \\
+f_{\theta} &= -0.145\left(1+4\mathrm{Ri}\right)^{-1} \, .\label{equation333b}
 \eal
 \ese
-
-
-These functions are subsequently used to compute the flux-profile relationships on the TEMF computational grid, as depicted in Fig. (\autoref{figure301}).
+\noindent
+These functions are subsequently used to compute the flux-profile relationships on the TEMF computational grid, as depicted in Fig.~\ref{figure301}.
 
 
 \begin{figure}[H]
@@ -565,19 +563,19 @@ These functions are subsequently used to compute the flux-profile relationships 
 Thermodynamic variables, $c = \theta$ and $q$, are solved using the following relation:
 
 \be
-c(1) = c(2) + \overline{w^{\prime}c^{\prime}}(1) \frac{z_t(1)}{\ln\left(\frac{z_m(2)}{z_{ot}}\right)} \frac{f_{\theta}(0)}{f_{\theta}(Ri)} \frac{Pr(0)}{l(1)w_m} \mbox{ ,} \label{equation 334}
+c(1) = c(2) + \widetilde{w^{\prime}c^{\prime}}(1) \frac{z_t(1)}{\ln\left(\frac{z_m(2)}{z_{0t}}\right)} \frac{f_{\theta}(0)}{f_{\theta}(\mathrm{Ri})} \frac{\mathrm{Pr}(0)}{l(1)w_m} \, , \label{equation 334}
 \ee
 \noindent
- where $l$ is the stability-dependent length scale and $w_m$ is the mixed velocity scale, defined as
+ where $l$ is the stability-dependent length scale and $w_m$ is the mixed velocity scale, defined as:
 
 \be
-w_m = \left[\frac{1}{5} \left(w_*^3 + 5 u_*^3 \right)\right]^{\frac{1}{3}} \mbox{ .} \label{equation335}
+w_m = \left[\frac{1}{5} \left(w_*^3 + 5 u_*^3 \right)\right]^{\frac{1}{3}} \, . \label{equation335}
 \ee
 \noindent
- Here, $w_* = \left[\left(g/\theta_v\right)z_i \overline{w^{\prime}\theta_v^{\prime}}\right]^{\frac{1}{3}}$ is the convective velocity scale. The friction velocity is defined through logarithmic interpolation and stability correction as
+ Here, $w_* = \left[\left(g/\theta_v\right)z_i \widetilde{w^{\prime}\theta_v^{\prime}}\right]^{\frac{1}{3}}$ is the convective velocity scale. The friction velocity is defined through logarithmic interpolation and stability correction as:
 
 \be
-u_* = \frac{\sqrt{U(2)^2 + V(2)^2}}{z_t(1)\ln\left(\frac{z_m(2)}{z_{ot}}\right)} \frac{f_{\tau}(Ri)}{f_{\tau}(0)} l(1) \mbox{ .}
+u_* = \frac{\sqrt{U(2)^2 + V(2)^2}}{z_t(1)\ln\left(\frac{z_m(2)}{z_{0t}}\right)} \frac{f_{\tau}(\mathrm{Ri})}{f_{\tau}(0)} l(1) \, .
 \label{equation336}
 \ee
 
@@ -585,109 +583,99 @@ u_* = \frac{\sqrt{U(2)^2 + V(2)^2}}{z_t(1)\ln\left(\frac{z_m(2)}{z_{ot}}\right)}
 \section{Planetary Boundary Layer Schemes}
 \label{pbl-26}
 
-The PBL scheme is responsible for vertical sub-grid fluxes due to eddy transports in the whole
-atmospheric column, not just within the boundary layer. This means that explicit vertical diffusion
-is de-activated with the assumption that the PBL scheme will handle this process. The most
-appropriate horizontal diffusion choices are those based on horizontal deformation or with a
-constant horizontal eddy diffusivity. The schemes are one-dimensional and assume that their is a
-clear separation of scales between sub-grid eddies and resolved eddies. Most PBL schemes consider
-dry mixing, but can also include saturation effects in the vertical stability that determines the
-mixing. The surface fluxes are provided by the surface layer and land surface model schemes. The PBL scheme then determines
-the flux profiles within the well-mixed boundary layer and the stable layer. Thus, the PBL schemes
-provide atmospheric tendencies of temperature, moisture (including clouds), and horizontal momentum
-in the entire atmospheric column.
+The PBL scheme is responsible for vertical subgrid fluxes due to eddy transports in the whole atmospheric column, not just within the boundary layer. This means that explicit vertical diffusion is deactivated with the assumption that the PBL scheme will handle this process. Accordingly, the most appropriate horizontal diffusion choices are either those based on horizontal deformation or those that prescribe a constant horizontal eddy diffusivity. The schemes are one-dimensional and assume that there is a clear separation of scales between subgrid eddies and resolved eddies. Most PBL schemes consider dry mixing, but many also include saturation effects in the vertical stability that determines the mixing. The surface fluxes are provided by the surface layer scheme and land-surface model. The PBL scheme subsequently determines the flux profiles within the well-mixed boundary layer and the stable layer. Thus, the PBL scheme provides atmospheric tendencies of temperature, moisture (including clouds), and horizontal momentum in the entire atmospheric column.
 
 \subsection{YSU}
 \label{pbl-ysu-361}
 
- \citet{Hong06} proposed a next generation PBL scheme to that in the Medium Range Forecast (MRF) model. This scheme is called the YSU scheme, named so because of its development at Yonsei University. Given are the algorithms for both mixed-layer diffusion and for free-atmosphere diffusion.
+ \citet{Hong06} proposed a next generation PBL scheme to improve upon that used in the Medium Range Forecast (MRF) model. The scheme is called the YSU scheme, named so because of its development at Yonsei University. Given are the algorithms for both mixed-layer diffusion and for free-atmosphere diffusion.
 
-For the mixed-layer ($z \leq h$), where $h=$ the boundary layer depth, the turbulence diffusion equation for any prognostic variable, a, is given by
+For the mixed layer ($z \leq z_i$), where $z_i$ is the boundary layer depth, the turbulence diffusion equation for any prognostic variable, $a$, is given by:
 
 \bea
 \pd{a}{t} = \pd{}{z}\left[K_a\left(\pd{a}{z} - \gamma_a \right) - \widetilde{(w^{\prime}
-a^{\prime})}_h \left(\frac{z}{h} \right)^3 \right], \label{equation337}
+a^{\prime})}_{z_i} \left(\frac{z}{z_i} \right)^3 \right] \, , \label{equation337}
 \eea
 \noindent
- where $K_a$ is the associated eddy diffusivity, $\gamma_a$ is the counter-gradient correction term, which incorporates the contribution of the large scale eddies to the total flux, and $\widetilde{(w^{\prime}a^{\prime})}_h$ is the flux at the inversion layer. This scheme is identical to the MRF scheme except that it now includes an asymptotic entrainment flux term at the inversion layer, $\widetilde{(w^{\prime}a^{\prime})}_h\left(\frac{z}{h} \right)^3$. In the MRF scheme, $h$ was defined as the level at which boundary layer turbulent mixing diminishes. The MRF scheme implicitly parameterized these entrainment processes by raising $h$ above the minimum flux level. The YSU scheme,however, explicitly treats the entrainment processes through the second term in Eq. (\autoref{equation337}). Thus, in the YSU scheme, $h$ is defined as the level in which minimum flux exists at the inversion level.
+ where $K_a$ is the associated eddy diffusivity, $\gamma_a$ is the counter-gradient correction term, which incorporates the contribution of the large scale eddies to the total flux, and $\widetilde{(w^{\prime}a^{\prime})}_{z_i}$ is the flux at the inversion layer. This scheme is identical to the MRF scheme except that it includes an asymptotic entrainment flux term at the inversion layer, $\widetilde{(w^{\prime}a^{\prime})}_{z_i}\left(\frac{z}{z_i} \right)^3$. In the MRF scheme, $z_i$ is defined as the level at which boundary layer turbulent mixing diminishes. The MRF scheme implicitly parameterizes these entrainment processes by raising $z_i$ above the minimum flux level. The YSU scheme, however, explicitly treats the entrainment processes through the second term in Eq.~\eqref{equation337}. Thus, in the YSU scheme, $z_i$ is defined as the level in which minimum flux exists at the inversion level.
 
-The momentum diffusivity coefficient is given by
+The momentum diffusivity coefficient is given by:
 
 \bea
-K_m = \kappa w_s z\left(1 - \frac{z}{h}\right)^p, \label{equation338}
+K_m = \kappa w_s z\left(1 - \frac{z}{z_i}\right)^p \, , \label{equation338}
 \eea
 \noindent
- where $p$ is the profile shape exponent, taken as 2, $\kappa$ is the von K\'{a}rm\'{a}n constant, $z$ is the height above the surface, $h$ is the depth of the boundary layer, and $w_s$ is the mixed layer velocity scale. The counter-gradient term, $\gamma_a$, is taken as
+ where $p = 2$ is the profile shape exponent, $\kappa$ is the von K\'{a}rm\'{a}n constant, $z$ is the height above the surface, and $w_s$ is the mixed layer velocity scale. The counter-gradient term, $\gamma_a$, is defined according to:
 
 \be
-\gamma_a = b\frac{\widetilde{(w^{\prime}a^{\prime})}_0}{w_{s0}h},\label{equation339}
+\gamma_a = b\frac{\widetilde{(w^{\prime}a^{\prime})}_0}{w_{s0}z_i} \, , \label{equation339}
 \ee
 \noindent
- where $\widetilde{(w^{\prime}a^{\prime})}_0$ is the corresponding surface flux, $b$ is a coefficient of proportionality, and $w_{s0}h$ is the mixed-layer velocity scale defined as the velocity of $w_s$ in Eq. (\autoref{equation338}) at $z=0.5h$.
+ where $\widetilde{(w^{\prime}a^{\prime})}_0$ is the corresponding surface flux, $b$ is a coefficient of proportionality, and $w_{s0}$ is the mixed-layer velocity scale in Eq.~\eqref{equation338} at $z=0.5z_i$.
 
-To ensure compatibility between the surface layer top and bottom of the boundary layer, the YSU scheme employs the same  \citet{Dyer} functions as employed in the MM5 similarity theory. The entrainment flux is taken to be $-0.15$ times the surface flux of buoyancy. Given this buoyancy flux at the inversion layer, the flux at the inversion layer for prognostic variables is proportional to the jump of each variable across the inversion layer. Thus, the fluxes are a function of the entrainment rate. Again, $h$ is determined as the first neutral level by checking the stability between the lowest model level and levels above. $K_m$ is ultimately found with $h$, $w_{s0}$, the entrainment fluxes, $\mathrm{Pr}$, and the counter-gradient correction term.
+To ensure compatibility between the surface layer top and bottom of the boundary layer, the YSU scheme employs the same  \citet{Dyer} functions as implemented in the MM5 similarity theory. The entrainment flux is taken to be $-0.15$ times the surface flux of buoyancy. Given this buoyancy flux at the inversion layer, the flux at the inversion layer for prognostic variables is proportional to the jump of each variable across the inversion layer. Thus, the fluxes are a function of the entrainment rate. Again, $z_i$ is determined as the first neutral level by checking the stability between the lowest model level and levels above. The eddy diffusivity for momentum, $K_m$, is ultimately computed with $z_i$, $w_{s0}$, the entrainment fluxes, $\mathrm{Pr}$, and the counter-gradient correction term.
 
-In the free atmosphere, YSU utilizes a local diffusion scheme, or the so-called local-K approach. Local-K theory is a method for parameterizing the effects of turbulent mixing based on how small eddies will mix quantities along a local gradient of the transported quantity. The YSU scheme also defines an entrainment zone in which penetration of the entrainment flux above $h$ is considered along with the local-K approach. Above this entrainment zone, the local-K method is considered alone.
+In the free atmosphere, YSU utilizes a local diffusion scheme, or the so-called local-K approach. Local-K theory is a method for parameterizing the effects of turbulent mixing based on how small eddies will mix quantities along a local gradient of the transported quantity. The YSU scheme also defines an entrainment zone in which penetration of the entrainment flux above $z_i$ is considered along with the local-K approach. Above this entrainment zone, the local-K method is considered alone.
 
-Momentum and mass fluxes within the entrainment zone are defined as function of $\delta^{-1}$, where $\delta$ is the entrainment zone depth. This depth can be approximated by
+Momentum and mass fluxes within the entrainment zone are defined as functions of $\delta^{-1}$, where $\delta$ is the entrainment zone depth. This depth can be approximated by:
 
 \be
-\frac{\delta}{h} = d_1 + d_2\mathrm{Ri}^{-1}, \label{equation340}
+\frac{\delta}{z_i} = d_1 + d_2\mathrm{Ri}^{-1} \, , \label{equation340}
 \ee
-
+\noindent
 where constant are set as $d_1=0.2$ and $d_2=0.5$.  \citet{Hong06} showed that the scheme is independent of $\delta$.
 
-After the entrainment diffusivities are calculated, the diffusivities from local-K theory are computed using the gradient Richardson number, $\mathrm{Ri}$, which is a function of momentum and mass fluxes. The computed $\mathrm{Ri}$ is bounded to $-100$ to prevent unrealistically unstable regimes. Stability functions are found for both unstable and stable regimes, expressed in terms of $\mathrm{Ri}$. Once the local-K theory diffusivities are calculated, the total diffusivities for the entrainment zone is found by taking the geometric mean of $K_{ent}$, the entrainment diffusivities and ${K_{loc}}$, the local-K diffusivities. Above the entrainment zone, only the local-K theory applies, or in other words, $K=K_{loc}$. A small background diffusion is introduced ($.001$ times the vertical grid length) so that the vertical eddy diffusivity, $K_v$, is bounded by this and $1000\metre^2 \second^{-1}$. Now the diffusion equations for all prognostic variables are solved by an implicit numerical method.
+After the entrainment diffusivities are calculated, the diffusivities from local-K theory are computed using the gradient Richardson number, $\mathrm{Ri}$, which is a function of momentum and mass fluxes. The computed $\mathrm{Ri}$ is bounded to $-100$ to prevent nonphysical unstable regimes. Stability functions are computed for both unstable and stable regimes, expressed in terms of $\mathrm{Ri}$. Once the local-K theory diffusivities are calculated, the total diffusivities for the entrainment zone are found by taking the geometric mean of $K_{ent}$, the entrainment diffusivities and ${K_{loc}}$, the local-K diffusivities. Above the entrainment zone, only the local-K theory applies, or in other words, $K=K_{loc}$. A small background diffusion is introduced ($.001$ times the vertical grid length) so that the vertical eddy diffusivity, $K_v$, is bounded by this and $1000\, \metre^2 \second^{-1}$. Finally, the diffusion equations for all prognostic variables are solved by an implicit numerical method.
 
 \subsection{MYJ}
 \label{pbl-myj-362}
 
- \citet{Jan02} implements a non-singular version of the  \citet{MY82} level 2.5 closure scheme. Problems have become apparent in the original version of the closure scheme which this scheme attempted to address. One main problem was the singularity problem in a convective PBL with growing turbulence.
+ \citet{Jan02} implements a non-singular version of the  \citet{MY82} level 2.5 closure scheme. Problems have become apparent in the original version of the closure scheme which Janji\'{c} attempts to address. One such issue is the singularity problem in a convective PBL with growing turbulence.
 
-The turbulence kinetic energy, TKE, production and dissipation term in the  \citet{MY82} scheme can be expressed as
+The turbulence kinetic energy (TKE) production and dissipation term in the  \citet{MY82} scheme is expressed as:
 
 \bea
 l\frac{d\left(\frac{1}{q}\right)}{dt} = \frac{\alpha\left(\frac{l}{q}\right)^4 +
 \beta\left(\frac{l}{q}\right)^2}{\gamma\left(\frac{l}{q}\right)^4 +
-\delta\left(\frac{l}{q}\right)^2 + 1} - \frac{1}{B_1},\label{equation341}
+\delta\left(\frac{l}{q}\right)^2 + 1} - \frac{1}{B_1} \, , \label{equation341}
 \eea
 \noindent
- where $l$ is the master length scale, $q$ is the square-root of twice the TKE, and $B_1$ is a constant. The coefficients denoted by Greek letters only depend on buoyancy and shear of large scale flow. In the case of growing turbulence in a convective PBL, Eq. (\autoref{equation341}) has a singularity for
+ where $l$ is the master length scale, $q=\sqrt{2\mathrm{TKE}}$, and $B_1$ is a constant. The coefficients denoted by Greek letters only depend on buoyancy and shear of the large scale flow. In the case of growing turbulence in a convective PBL, Eq.~\eqref{equation341} has a singularity when:
 
 \be
-\gamma\left(\frac{l}{q}\right)^4 + \delta\left(\frac{l}{q}\right)^2 + 1 = 0. \label{equation342}
+\gamma\left(\frac{l}{q}\right)^4 + \delta\left(\frac{l}{q}\right)^2 + 1 = 0 \, . \label{equation342}
 \ee
 
-Solving Eq. (\autoref{equation342}) yields the criterion for avoiding the singularity, given by
+Solving Eq.~\eqref{equation342} yields the criterion for avoiding the singularity, given by:
 
 \be
-l<\sqrt{\frac{1}{p_1}}q, \label{equation343}
+l<\sqrt{\frac{1}{p_1}}q \, , \label{equation343}
 \ee
 \noindent
- where $p_1$ is the relevant root from Eq. (\autoref{equation342}).
+ where $p_1$ is the relevant root from Eq.~\eqref{equation342}.
 
-In the stable regime, an upper limit is imposed on $l$ which states that the ratio $\widetilde{ww}/\text{TKE}$ cannot be smaller than that corresponding to the regime of vanishing turbulence. This requirement leads to
+In the stable regime, an upper limit is imposed on $l$, which states that the ratio $\widetilde{w^{\prime}w^{\prime}}/\mathrm{TKE}$ cannot be smaller than that corresponding to the regime of vanishing turbulence. This requirement dictates that:
 
 \be
 l<\sqrt{\frac{1}{t_1}}q, \label{equation344}
 \ee
 \noindent
- where $t_1$ is the relevant root of the bi-quadratic equation. Combining Eqs. (\autoref{equation343}) and (\autoref{equation344}) yields a unified criterion defined for the entire stability range, given by
+ where $t_1$ is the relevant root of the bi-quadratic equation. Combining Eqs.~\eqref{equation343} and \eqref{equation344} yields a unified criterion defined for the entire stability range, given by:
 
 \be
 l<f(B,S)q. \label{equation345}
 \ee
 \noindent
- Note that in Eq. (\autoref{equation345}), $f$ is a function of buoyancy and shear parameters $B$ and $S$, depending only on large scale flow.
+ Note that in Eq.~\eqref{equation345}, $f$ is a function of buoyancy and shear parameters $B$ and $S$, depending only on the large scale flow.
 
-When implemented, $l$ is first computed from diagnostic equations and then is adjusted to satisfy Eq. (\autoref{equation345}). Once the master length scale is determined, the contribution of production and dissipation are added to the TKE. This is done iteratively with convergence reached after approximately two iterations. The diffusion coefficients are computed using the updated TKE, but without re-computation of $l$. The vertical diffusion of TKE is taken after the computation of the turbulent exchange coefficients. Due to the linearization of the production\slash dissipation equation and the iterative nature, roughly the same parameters determine the TKE production\slash dissipation and vertical diffusion of the large scale variables. The fast convergence of solving the TKE equation makes this a non-issue. The boundary layer depth is defined as the lowest model level above the surface at which the equilibrium turbulent energy becomes negative, or in other words, as the height of the lowest model level at which TKE approaches its prescribed lower bound.
+Procedurally, $l$ is first computed from diagnostic equations and then is adjusted to satisfy Eq.~\eqref{equation345}. Once the master length scale is determined, the contribution of production and dissipation are added to TKE. This is done iteratively with convergence reached after approximately two attempts. The diffusion coefficients are computed using the updated TKE, but without recomputation of $l$. The vertical diffusion of TKE is taken after the computation of the turbulent exchange coefficients. Due to the linearization of the production and dissipation equation and its iterative nature, roughly the same parameters determine the production and dissipation of TKE and vertical diffusion of the large scale variables. The fast convergence in solving the TKE equation makes this a non-issue. The boundary layer depth is defined as the lowest model level above the surface at which the equilibrium turbulent energy becomes negative, or in other words, as the height of the lowest model level at which TKE approaches its prescribed lower bound.
 
 \subsection{MYNN}
 \label{pbl-mynn-363}
 
-Similar to  \citet{Jan02},  \citet{NN01, NN04, NN06} implement a local, non-singular version of the  \citet{MY82} level 2.5 closure scheme (note: a level 3 closure is available, but known numerical instabilities preclude its use). The scheme addresses singularity problem in a convective PBL with growing turbulence. In addition, the scheme attempts to improve the  \citet{Jan02} approach through a redefined master length scale. All coefficients of proportionality in the scheme are tuned from an extensive database of large eddy simulation data.
+Similar to  \citet{Jan02},  \citet{NN01, NN04, NN06} implement a local, non-singular version of the  \citet{MY82} level 2.5 closure scheme (note: a level 3 closure is available, but known numerical instabilities preclude its use). The scheme addresses the singularity problem in a convective PBL with growing turbulence. In addition, the scheme attempts to improve the  \citet{Jan02} approach through a redefined master length scale. All coefficients of proportionality in the scheme are based on an extensive database of large eddy simulation data.
 
-The prognostic TKE equation, similar to that in  \citet{MY82}, is given by
+The prognostic TKE equation, similar to that in  \citet{MY82}, is given by:
 
   
 \be
@@ -697,125 +685,125 @@ The prognostic TKE equation, similar to that in  \citet{MY82}, is given by
 }_{(III)} \\
 = \underbrace{\vphantom{\pd{\widetilde{u_i} \frac{q^2}{2}}{x_i}}P_s}_{(IV)} \\
 + \underbrace{\vphantom{\pd{\widetilde{u_i} \frac{q^2}{2}}{x_i}}P_b}_{(V)}\\
-- \underbrace{\vphantom{\pd{\widetilde{u_i} \frac{q^2}{2}}{x_i}}\epsilon}_{(VI)} \mbox{ ,}
+- \underbrace{\vphantom{\pd{\widetilde{u_i} \frac{q^2}{2}}{x_i}}\epsilon}_{(VI)} \, ,
 \label{equation346}
 \ee
 \noindent
- where $S_q = 3 S_m$ is a dimensionless eddy flux coefficient (described below), (I) is the local rate of change in TKE, (II) is the advection of TKE by the resolved flow, (III) is the vertical redistribution of TKE, (IV) is shear production of TKE, (V) is buoyancy production or destruction of TKE, and (VI) is the TKE dissipation rate. Terms (IV)-(VI) are further expressed as
+ where $S_q = 3 S_m$ is a dimensionless eddy flux coefficient (described below), (I) is the local rate of change in TKE, (II) is the advection of TKE by the resolved flow, (III) is the vertical redistribution of TKE, (IV) is shear production of TKE, (V) is buoyancy production or destruction of TKE, and (VI) is the TKE dissipation rate. Terms (IV)-(VI) are further expressed as:
 
 \bse \label{equation347}
 \bal
-P_s &= -\left(\widetilde{u^{\prime}w^{\prime}}\right)\pd{u}{z} - \left(\widetilde{v^{\prime}w^{\prime}}\right)\pd{v}{z}\mbox{ ,} \label{equation347a}\\
-P_b &= \beta_1 g \left(\widetilde{u^{\prime}\theta_v^{\prime}}\right)\mbox{ , and} \label{equation347b} \\
-\epsilon & = \frac{q^3}{l B_1} \label{equation347c} \mbox{ ,}
+P_s &= -\left(\widetilde{u^{\prime}w^{\prime}}\right)\pd{u}{z} - \left(\widetilde{v^{\prime}w^{\prime}}\right)\pd{v}{z}\, , \label{equation347a}\\
+P_b &= \beta_1 g \left(\widetilde{u^{\prime}\theta_v^{\prime}}\right)\, , \quad and \label{equation347b} \\
+\epsilon & = \frac{q^3}{l B_1} \label{equation347c} \, ,
 \eal
 \ese
 \noindent
  where $\beta_1 = 1/273$ and $B_1 = 24.0$.
 
-The MYNN scheme attempts to better reproduce boundary layer growth and TKE representation as compared to that from MYJ. Accordingly, the primary difference between the schemes is the prescription of the master length scale, which directly affects the vertical redistribution and dissipation of TKE (see terms II and VI of Eq. \autoref{equation346}). The master length scale is defined such that the the shortest among the surface layer length scale, $l_s$, the turbulence length scale, $l_t$, and buoyancy length scale, $l_b$, will dominate:
+The MYNN scheme attempts to better reproduce boundary layer growth and TKE representation as compared to that from MYJ. Accordingly, the primary difference between the schemes is the prescription of the master length scale, which directly affects the vertical redistribution and dissipation of TKE (see terms III and VI of Eq.~\ref{equation346}). The master length scale is defined such that the the shortest length among the surface layer length scale ($l_s$), the turbulence length scale ($l_t$), and buoyancy length scale ($l_b$), will dominate:
 
 \be
-\frac{1}{l} = \frac{1}{l_s} + \frac{1}{l_t} + \frac{1}{l_b} \mbox{ .}\label{equation348}
+\frac{1}{l} = \frac{1}{l_s} + \frac{1}{l_t} + \frac{1}{l_b} \, .\label{equation348}
 \ee
 
 
-The surface layer length scale is a function of the Monin-Obukhov dimensionless height, $\zeta$, and is defined as
+The surface layer length scale is a function of the Monin-Obukhov dimensionless height $\zeta$, and is defined as:
 
 \be
 l_s = 
 \begin{cases}
- \kappa z / 3.7,& \text{if } \zeta > 1 \mbox{ ,} \\
- \kappa z \left(1 + 2.7\zeta\right)^{-1}, & \text{if } 0 \geq \zeta > 1 \mbox{ ,}\\
-\kappa z \left(1 - 100\zeta\right)^{0.2}, & \zeta < 0 \mbox{ .}\\
+ \kappa z / 3.7,& \text{if } \zeta > 1 \, , \\
+ \kappa z \left(1 + 2.7\zeta\right)^{-1}, & \text{if } 0 \geq \zeta > 1 \, ,\\
+\kappa z \left(1 - 100\zeta\right)^{0.2}, & \zeta < 0 \, .\\
 \end{cases}
 \label{equation349}
 \ee
 
 
-The turbulence length scale was originally defined in  \citet{NN01} as
+The turbulence length scale was originally defined by  \citet{NN01} as:
 
 \be
-l_t = 0.23 \frac{ \int_0^\infty z q \mbox{ }dz}{ \int_0^\infty q \mbox{ }dz} \mbox{ .}
+l_t = 0.23 \frac{ \int_0^\infty z q \mbox{ }dz}{ \int_0^\infty q \mbox{ }dz} \, .
 \label{equation350}
 \ee
 \noindent
- An issue with this formulation is that the length scale is potentially affected by turbulence unrelated to the boundary layer.  \citet{OlsonBrown2011} modified the expression such that the limits of integration extend only through the boundary layer:
+ An issue with this formulation is that the length scale is potentially affected by turbulence unrelated to the boundary layer.  \citet{OlsonBrown2011} modify the expression such that the limits of integration extend only through the boundary layer:
 
 \be
-l_t =  0.23 \frac{ \int_0^{z_i + h} z q \mbox{ }dz}{ \int_0^{z_i + h} q \mbox{ }dz} \mbox{ ,}
+l_t =  0.23 \frac{ \int_0^{z_i + h} z q \mbox{ }dz}{ \int_0^{z_i + h} q \mbox{ }dz} \, ,
 \label{equation351}
 \noindent
 \ee
- where $h = 0.3*z_i$ is a translation layer ~\citep{Garratt1992}. The buoyancy length scale is defined as
+ where $h = 0.3*z_i$ is a translation layer ~\citep{Garratt1992}. The buoyancy length scale is defined as:
 
 \be
-l_b = \left[1 + 5\left(\frac{q_c}{l_tN}\right)^{\frac{1}{2}}\right]\frac{q}{N} \mbox{ ,}
+l_b = \left[1 + 5\left(\frac{q_c}{l_tN}\right)^{\frac{1}{2}}\right]\frac{q}{N} \, ,
 \label{equation352}
 \ee
 \noindent
- where $q_c = [(g/\theta_o) \widetilde{w^{\prime} \theta_v^{\prime}} l_t]^{\frac{1}{3}}$ is a convective velocity scale and $N = [(g/\theta_o) \partial \theta_v/\partial z]^{\frac{1}{2}}$ is the Brunt-V\"{a}is\"{a}l\"{a} frequency. Two issues remain with Eqs. (\autoref{equation351}) and (\autoref{equation352}) in their current form. First, these are only valid in the PBL, meaning a new length scale is required to treat the free atmosphere. Second, the buoyancy length scale has the potential for numerical instability under unstable atmospheric conditions. To address these issues,  \citet{OlsonBrown2011} implemented the BouLac ~\citep{BouLac} length scale for the free atmosphere, which is a measure of a parcel's vertical displacement given a particular amount of TKE:
+ where $q_c = [(g/\theta_o) \widetilde{w^{\prime} \theta_v^{\prime}} l_t]^{\frac{1}{3}}$ is a convective velocity scale and $N = [(g/\theta_o) \partial \theta_v/\partial z]^{\frac{1}{2}}$ is the Brunt-V\"{a}is\"{a}l\"{a} frequency. Two issues remain with Eqs.\eqref{equation351} and \eqref{equation352} in their current form. First, they are only valid in the PBL, meaning a new length scale is required to treat the free atmosphere. Second, the buoyancy length scale has the potential for numerical instability under unstable atmospheric conditions. To address these issues,  \citet{OlsonBrown2011} implement the BouLac ~\citep{BouLac} length scale for the free atmosphere, which is a measure of a parcel's vertical displacement given a particular amount of TKE:
  
 \bse \label{equation353}
 \bal
-l_{up} &= \int_z^{z=l_{up}} \beta\left[\theta(z) - \theta(z^{\prime})\right] \mbox{ }dz^{\prime} = TKE(z) \label{equation353a} \\
-l_{down} &=   \int_{z-l_{down}}^z \beta\left[\theta(z^{\prime}) - \theta(z)\right] \mbox{ }dz^{\prime} = TKE(z) \label{equation353b}
+l_{up} &= \int_z^{z=l_{up}} \beta\left[\theta(z) - \theta(z^{\prime})\right] \mbox{ }dz^{\prime} = \mathrm{TKE}(z) \, ,\label{equation353a} \\
+l_{down} &=   \int_{z-l_{down}}^z \beta\left[\theta(z^{\prime}) - \theta(z)\right] \mbox{ }dz^{\prime} = \mathrm{TKE}(z) \label{equation353b}
 \eal
 \ese
 \noindent
  The BouLac length scale is then defined as $l_{BL} = \min \left(l_{up}, l_{down}\right)$. 
 
-The boundary layer length scales and their free-atmosphere counterparts must be pieced together.  \citet{OlsonBrown2011} accomplishes this through a hyperbolic tangent weighting function, $W = 0.5 \tanh [ (z_i + h) / \Delta z] + 0.5$. This function requires an accurate boundary layer depth estimate, defined as $z_i = \max \left(z_{i\theta_v},z_{iTKE}\right)$, where $ z_{i\theta_v}$ is the height at which $\theta_v = \theta_{vsfc} +1$ and $z_{iTKE}$ is the height at which TKE falls below $0.08  \square\metre \rpsquare\second$. The final turbulence and buoyancy length scales are defined, respectively, as
+The boundary layer length scales and their free-atmosphere counterparts must be pieced together.  \citet{OlsonBrown2011} accomplish this through a hyperbolic tangent weighting function, $W = 0.5 \tanh [ (z_i + h) / \Delta z] + 0.5$. This function requires an accurate boundary layer depth estimate, defined as $z_i = \max \left(z_{i_{\theta_v}},z_{i_{\mathrm{TKE}}}\right)$, where $ z_{i_{\theta_v}}$ is the height at which $\theta_v = \theta_{v0} +1$ and $z_{i_{\mathrm{TKE}}}$ is the height at which TKE falls below $0.08\, \square\metre \rpsquare\second$. The final turbulence and buoyancy length scales are defined, respectively, as:
 
 
 \bse \label{equation354}
 \bal
-l_t &= l_{t(MYNN)} (1-W) + l_{BL}W \label{equation354a} \\
-l_b &= l_{b(MYNN)} (1-W) + l_{BL}W \label{equation354b} \mbox{ .}
+l_t &= l_{t(\mathrm{MYNN})} (1-W) + l_{BL}W \, ,\label{equation354a} \\
+l_b &= l_{b(\mathrm{MYNN})} (1-W) + l_{BL}W \label{equation354b} \, .
 \eal
 \ese
 \noindent
  The MYNN master length scale formulation adds numerical stability and implicit non-local mixing as compared to the MYJ scheme.
 
-Finally, diffusion coefficients for momentum and heat are defined, respectively, as
+Finally, diffusion coefficients for momentum and heat are defined, respectively, as:
 
 \bse \label{equation355}
 \bal
-K_m &= qlS_m \label{equation355a} \\
-K_h &= qlS_h \label{equation355b} \mbox{ ,}
+K_m &= qlS_m \label{equation355a} \, ,\\
+K_h &= qlS_h \label{equation355b} \, ,
 \eal
 \ese
 \noindent
  where $S_m$ and $S_h$ are empirically derived dimensionless eddy flux coefficients ~\citep{HL1988}.
 
-Procedurally, the master length scale is diagnostically computed. Next, the contribution of production and dissipation are added to the TKE. This is accomplished iteratively with fast convergence. The diffusion coefficients are computed using the updated TKE, but without re-computation of the master length scale. The vertical diffusion of TKE is then taken after the computation of the turbulent exchange coefficients. 
+Procedurally, the master length scale is diagnostically computed. Next, the contribution of production and dissipation are added to TKE. This is accomplished iteratively with relatively fast convergence. The diffusion coefficients are calculated using the updated TKE, but without recomputation of the master length scale. The vertical diffusion of TKE is then taken after the computation of the turbulent exchange coefficients. 
 
 \subsection{TEMF}
 \label{pbl-temf-364}
 
-The TEMF scheme was formulated with the goal of serving as an integrated boundary layer solution, with the ability to adequately parameterize atmospheric motions across a range of stability regimes. This study will focus on the convective approach as outlined by  \citet{Angevine2010}. For the convective boundary layer, mixing is accomplished through two mechanisms: eddy diffusivity and mass flux (with the procedure often referred to as EDMF). Unlike previous schemes, the eddy diffusivity is calculated from total energy ($E_t$) instead of TKE alone. Total energy is the sum of turbulence kinetic energy ($E_k$) and turbulence potential energy ($E_p$). Conceptually, the use of total energy favors conditions of static stability because the buoyancy destruction term (see Eq. \autoref{equation347b}) vanishes. However,  \citet{Angevine2010} reports improved atmospheric profiles for unstable conditions.
-More important to the convective boundary layer is the dual mixing approach. Physically speaking, shear and buoyancy production of turbulence in the CBL are dependent on local gradients. At the same time, large updrafts originating in shallow near-surface layers generate a large portion of turbulence. That is, turbulence in the CBL depends on both local production and nonlocal vertical transport. Accordingly, the TEMF scheme attempts to address both. 
+The TEMF scheme is formulated with the goal of serving as an integrated boundary layer solution, with the ability to adequately parameterize atmospheric motions across a range of stability regimes. This study will focus on the convective approach as outlined by  \citet{Angevine2010}. For the convective boundary layer, turbulent exchange is accomplished through two primary mechanisms: eddy diffusivity and mass flux (with the procedure often referred to as EDMF). Unlike previous schemes, the eddy diffusivity is calculated from total energy ($E_t$) instead of TKE alone. Total energy is the sum of turbulence kinetic energy ($E_k$) and turbulence potential energy ($E_p$). Conceptually, the use of total energy favors conditions of static stability because the buoyancy destruction term (see Eq. \autoref{equation347b}) vanishes. However,  \citet{Angevine2010} reports improved atmospheric profiles for unstable conditions.
+More important to the convective boundary layer is the dual mixing approach. Physically speaking, shear and buoyancy production of turbulence in the CBL are dependent on local gradients. At the same time, large updrafts originating in shallow near-surface layers generate a large portion of turbulence. That is, turbulence in the CBL depends on both local production and nonlocal vertical transport. Accordingly, the TEMF scheme attempts to address both contributions. 
 
-The flux of a variable $\phi$ is
+The flux of a variable $\phi$ is given by:
 
 \be 
-\widetilde{w^{\prime}\phi^{\prime}} = -K\pd{\phi}{z} + M(\phi_u - \phi) \mbox{ ,} \label{equation356}
+\widetilde{w^{\prime}\phi^{\prime}} = -K\pd{\phi}{z} + M(\phi_u - \phi) \, , \label{equation356}
 \ee
 \noindent
  where $K$ is eddy diffusivity, $M$ is mass flux, and subscript $u$ refers to updraft values (discussed later). The eddy diffusion portion is activated whenever surface buoyancy flux is positive, while mass flux is activated when surface heat flux is positive. 
 
-For the eddy diffusion portion of the scheme, the prognostic total energy equation is given by
+For the eddy diffusion portion of the scheme, the prognostic total energy equation is given by:
 
 \be
 \frac{DE_t}{Dt} = \vec{\tau} \cdot \vec{S} - \epsilon - \pd{F_{E_t}}{z} + B \mbox { ,} \label{equation357}
 \ee
 \noindent
- where $\vec{\tau}$ and $\vec{S}$ are the stress and shear vectors, respectively, $\epsilon$ is dissipation, $F_{E_t}$ is the turbulence energy flux, and $B$ is buoyancy. Dissipation and buoyancy are defined, respectively, as
+ where $\vec{\tau}$ and $\vec{S}$ are the stress and shear vectors, respectively, $\epsilon$ is dissipation, $F_{E_t}$ is the turbulence energy flux, and $B$ is buoyancy. Dissipation and buoyancy are defined, respectively, as:
 
 \bse \label{equation358}
 \bal
-\epsilon &= 0.07 \left(\frac{E_t^{\frac{3}{2}}}{l_c}\right) \mbox{ ,} \label{equation358a} \\
-B &= 2\frac{g}{\theta_v} \widetilde{w^{\prime}\theta_v^{\prime}} \label{equation358b} \mbox{ ,}
+\epsilon &= 0.07 \left(\frac{E_t^{\frac{3}{2}}}{l_c}\right) \, , \label{equation358a} \\
+B &= 2\frac{g}{\theta_v} \widetilde{w^{\prime}\theta_v^{\prime}} \label{equation358b} \, ,
 \eal
 \ese
 \noindent
@@ -825,92 +813,92 @@ Under convective conditions, the length scale and eddy diffusivities for momentu
 
 \bse \label{equation359}
 \bal
-\frac{1}{l_c} &= \frac{1}{\kappa z} + \frac{3}{\kappa(h_d - z)} \mbox{ ,} \label{equation359a} \\
+\frac{1}{l_c} &= \frac{1}{\kappa z} + \frac{3}{\kappa(h_d - z)} \, , \label{equation359a} \\
 K_{mc} &= \frac{f_{\tau o}^2}{f_{\tau}(0)^{\frac{3}{2}}} l_c \sqrt{E_k} \mbox{ , and } \label{equation359b} \\
-K_{hc} & = Pr(0)^{-1} K_{mc} \mbox{ ,} \label{equation359c}
+K_{hc} & = \mathrm{Pr}(0)^{-1} K_{mc} \, , \label{equation359c}
 \eal
 \ese
 \noindent
- where $f_{\tau}$ is the same stability functions used in the TEMF surface layer scheme (Eq. \autoref{equation333a}). The corresponding formulations for the free atmosphere are given by
+ where $f_{\tau}$ is the same stability function used in the TEMF surface layer scheme (Eq.~\ref{equation333a}). The corresponding formulations for the free atmosphere are given by:
 
 \bse \label{equation360}
 \bal
-\frac{1}{l} &= \frac{1}{\kappa z} + \frac{f}{0.185\sqrt{f_{\tau} E_k}} + \frac{N}{2\sqrt{f_{\tau} E_k}}  \mbox{ ,} \label{equation360a} \\
+\frac{1}{l} &= \frac{1}{\kappa z} + \frac{f}{0.185\sqrt{f_{\tau} E_k}} + \frac{N}{2\sqrt{f_{\tau} E_k}}  \, , \label{equation360a} \\
 K_m &= f_{\tau}^2 E_k^2 \left(f_{\tau}(0)^{\frac{3}{2}} \frac{E_k}{l} - \frac{g}{\theta_v}f_{\theta}\sqrt{E_k\sigma_{\theta}^2}\right)^{-1}  \mbox{ , and} \label{equation360b} \\
-K_h & = \frac{2f_{\theta}^2 E_k l}{f_{\tau}(0)^{\frac{3}{2}} \sqrt{E_t}} \mbox{ .} \label{equation360c}
+K_h & = \frac{2f_{\theta}^2 E_k l}{f_{\tau}(0)^{\frac{3}{2}} \sqrt{E_t}} \, . \label{equation360c}
 \eal
 \ese
 \noindent
- Here, $f_{\theta}$ is the same stability functions Eq. (\autoref{equation333a}) and $\sigma_{\theta}^2$ is the potential temperature variance, given by
+ Here, $f_{\theta}$ is the same stability function used in the TEMF surface layer scheme (Eq.~\ref{equation333b}) and $\sigma_{\theta}^2$ is the potential temperature variance, given by:
 
 \be
-\sigma_{\theta}^2 = 2E_t \left(\frac{E_p}{E_t}\right)N^2\left(\frac{g}{\theta_v}\right)^{-2} \mbox{ .} \label{equation361}
+\sigma_{\theta}^2 = 2E_t \left(\frac{E_p}{E_t}\right)N^2\left(\frac{g}{\theta_v}\right)^{-2} \, . \label{equation361}
 \ee
 
 
-For the mass flux portion of the scheme, the updraft is initialized at the roughness height, $z_o$ as
+For the mass flux portion of the scheme, the updraft is initialized at the roughness height $z_0$ as:
 
 \be
-w_u = 0.5 w_* \mbox{ ,} \label{equation362}
-\ee
-\noindent
- where the $w_u$ evolves as
-
-\be
-w_u \pd{w_u}{z} = -2\gamma w_u^2 + \frac{1}{3}\frac{g(\theta_{vu} - \theta)}{\theta_v} \mbox{ .} \label{equation363}
+w_u = 0.5 w_* \, , \label{equation362}
 \ee
 \noindent
- The fractional lateral entrainment and detrainment rates are defined, respectively, as
+ where the updraft evolves according to:
+
+\be
+w_u \pd{w_u}{z} = -2\gamma w_u^2 + \frac{1}{3}\frac{g(\theta_{vu} - \theta)}{\theta_v} \, . \label{equation363}
+\ee
+\noindent
+ The fractional lateral entrainment and detrainment rates are defined, respectively, as:
 
 \bse \label{equation364}
 \bal
-\gamma &= \frac{2}{\max (100,h_d)} \mbox{ and}\label{equation364a} \\
-\delta &= \gamma + 0.05\left(\frac{1}{h_d -z}\right) \mbox{ ,} \label{equation364b} 
+\gamma &= \frac{2}{\max (100,h_d)} \, ,\label{equation364a} \\
+\delta &= \gamma + 0.05\left(\frac{1}{h_d -z}\right) \, , \label{equation364b} 
 \eal
 \ese
 \noindent
- where $h_d$, again, is the top of the dry thermal, found as the level where updraft velocity first reaches zero. Subsequently, the properties of the variable $\phi$ within an updraft evolve according to
+ where $h_d$, again, is the top of the dry thermal, found as the level where updraft velocity first reaches zero. Subsequently, the properties of the variable $\phi$ within an updraft evolve according to:
 
 \be
-\pd{\phi_u}{z} = -\gamma (\phi_u - \phi) \mbox{ .} \label{equation365}
+\pd{\phi_u}{z} = -\gamma (\phi_u - \phi) \, . \label{equation365}
 \ee
 
 
-Finally, the mass flux is initialized at the surface as
+Finally, the mass flux is initialized at the surface as:
 
 \be
-M = 0.03w_* \mbox{ ,} \label{equation366}
+M = 0.03w_* \, , \label{equation366}
 \ee
 \noindent
- and evolves according to
+ and evolves according to:
 
 \be
-\pd{M}{z} = (\gamma - \delta)M \mbox{ .} \label{equation367}
+\pd{M}{z} = (\gamma - \delta)M \, . \label{equation367}
 \ee
 
 
-Procedurally, stability is first determined. If the surface buoyancy flux is positive, then eddy diffusion is activated. Energy budgets, appropriate length scales, and diffusion coefficients are calculated. Likewise, if surface heat flux is positive, then mass flux is activated. An updraft is initialized and appropriate fractional entrainment\slash detrainment rates are computed`. Finally, mass flux is calculated.
+Procedurally, stability is first determined. If the surface buoyancy flux is positive, then eddy diffusion is activated. Energy budgets, appropriate length scales, and diffusion coefficients are calculated. Likewise, if surface heat flux is positive, then mass flux is activated. An updraft is initialized and appropriate fractional lateral entrainment and detrainment rates are computed. Finally, mass flux is calculated.
 
 \section{Subgrid Closure}
 \label{sg-close-37}
 
-As stated in Section (\autoref{pbl-26}), the PBL scheme in the WRF model is tasked to parameterize the vertical diffusion within a grid column. Subsequently, horizontal diffusion must be separately considered when a PBL scheme is implemented. When the WRF model is run for real-data cases, the recommended subgrid closure is a two-dimensional, first-order approach. If, however, the WRF model is run in LES mode (WRF-LES), the subgrid closure is responsible for diffusion in all three dimensions. In the WRF-LES approach, PBL motions are explicitly calculated. The recommended subgrid closure in these scenarios is a three-dimensional, 1.5-order, prognostic TKE scheme. Each respective scheme is described here.
+As stated in Section \autoref{pbl-26}, the PBL scheme in the WRF model is tasked to parameterize the vertical diffusion within a model grid column. Subsequently, horizontal diffusion must be separately considered when a PBL scheme is implemented. When the WRF model is run for real-world cases, the recommended subgrid closure is a two-dimensional, first-order approach. If, however, the WRF model is run in LES mode (WRF-LES), the subgrid closure is responsible for diffusion in all three dimensions. In the WRF-LES approach, PBL motions are explicitly calculated. The recommended subgrid closure for these scenarios is a three-dimensional, 1.5-order, prognostic TKE scheme. Each respective scheme is described here.
 
 \subsection{Two-Dimensional Mixing}
 \label{twod-mix-371}
 
-For purposes of real-data cases, when the WRF model employs a PBL scheme the preferred subgrid closure scheme is a first-order closure approach following that from  \citet{Smag}. This scheme was formulated for large-scale atmospheric flows, and therefore eddy viscosities are assumed proportional to horizontal deformation. For momentum, the horizontal eddy viscosity is defined as
+For purposes of real-world cases, when the WRF model employs a PBL parameterization the preferred subgrid closure scheme is a first-order closure approach following that from  \citet{Smag}. This scheme was formulated for large-scale atmospheric flows, and therefore eddy viscosities are assumed proportional to horizontal deformation. For momentum, the horizontal eddy viscosity is defined as:
 
 \be
-K_{m_{h}}=C_s^2l^2[0.25(S_{11} - S_{22})^2 + S_{12}^2]^{\frac{1}{2}} \mbox{ ,} \label{equation368}
+K_{m_{h}}=C_s^2l^2[0.25(S_{11} - S_{22})^2 + S_{12}^2]^{\frac{1}{2}} \, , \label{equation368}
 \ee
 \noindent
- where $l=(\Delta x \Delta y)^{\frac{1}{2}}$ is the length scale and $C_s = 0.25$ is Smagorinsky's constant. Here, $S_{11}$, $S_{22}$, and $S_{12}$ are components of the strain rate tensor (defined in Eq. \autoref{equation201}):
+ where $l=(\Delta x \Delta y)^{\frac{1}{2}}$ is the length scale and $C_s = 0.25$ is Smagorinsky's constant. Here, $S_{11}$, $S_{22}$, and $S_{12}$ are components of the strain rate tensor (defined in Eq.~\ref{equation201}):
 
 \bse \label{equation369}
 \bal
-S_{11} &= \frac{1}{2} \left(\pd{\widetilde{u}}{x} + \pd{\widetilde{u}}{x}\right) \mbox{ ,} \label{equation369a} \\
-S_{22} &= \frac{1}{2} \left(\pd{\widetilde{v}}{y} + \pd{\widetilde{v}}{y}\right) \mbox{ , and} \label{equation369b} \\
+S_{11} &= \frac{1}{2} \left(\pd{\widetilde{u}}{x} + \pd{\widetilde{u}}{x}\right) \, , \label{equation369a} \\
+S_{22} &= \frac{1}{2} \left(\pd{\widetilde{v}}{y} + \pd{\widetilde{v}}{y}\right) \, , \quad and \label{equation369b} \\
 S_{12} &= \frac{1}{2} \left(\pd{\widetilde{u}}{y} + \pd{\widetilde{v}}{x}\right) \mbox{.} \label{equation369c}
 \eal
 \ese
@@ -918,37 +906,37 @@ S_{12} &= \frac{1}{2} \left(\pd{\widetilde{u}}{y} + \pd{\widetilde{v}}{x}\right)
  Substitution yields the final expression for momentum eddy viscosity:
 
 \be
-K_{m_{h}} = C_s^2l^2 \left[ \frac{1}{4} \left(\pd{\widetilde{u}}{x} - \pd{\widetilde{v}}{y}\right)^2 + \frac{1}{4} \left(\pd{\widetilde{u}}{y} + \pd{\widetilde{v}}{x}\right)^2 \right]^{\frac{1}{2}} \mbox{ .} \label{equation370}
+K_{m_{h}} = C_s^2l^2 \left[ \frac{1}{4} \left(\pd{\widetilde{u}}{x} - \pd{\widetilde{v}}{y}\right)^2 + \frac{1}{4} \left(\pd{\widetilde{u}}{y} + \pd{\widetilde{v}}{x}\right)^2 \right]^{\frac{1}{2}} \, . \label{equation370}
 \ee
 
 
-For scalar mixing, the horizontal eddy viscosity is defined as
+For scalar mixing, the horizontal eddy viscosity is defined as:
 
 \be
-K_{h_{h}} = \frac{K_{m_{h}}}{P_{rt}} \mbox { ,} \label{equation371} 
+K_{h_{h}} = \frac{K_{m_{h}}}{\mathrm{Pr}} \, , \label{equation371} 
 \ee
 \noindent
- where $P_{rt} = \frac{1}{3}$ is the turbulent Prandtl number.
+ where $\mathrm{Pr} = \frac{1}{3}$ is the turbulent Prandtl number.
 
 \subsection{Three-Dimensional Mixing}
 \label{threed-mix-372}
 
-The preferred subgrid closure for WRF-LES also follows  \citet{Deardorff1980}. Here, the eddy viscosities for momentum are computed using
+The ideal subgrid closure for WRF-LES applications, similar to OU-LES, follows  \citet{Deardorff1980}. Here, the eddy viscosities for momentum are computed as:
 
 \be
-K_{m_{h,v}} = C_kl_{h,v} \sqrt{E} \mbox{ ,} \label{equation373}
+K_{m_{h,v}} = C_kl_{h,v} \sqrt{E} \, , \label{equation373}
 \noindent
 \ee
- where $C_k = 0.12$ is the Deardorff coefficient, $l$ is the characteristic length scale, $E$ is STKE, and subscripts $h$ and $v$ correspond to values in the horizontal and vertical, respectively. The main difference between this scheme and that used in OU-LES is the option for two different mixing lengths. 
+ where $C_k = 0.12$ is the Deardorff turbulence coefficient, $l$ is the characteristic length scale, $E$ is STKE, and subscripts $h$ and $v$ correspond to values in the horizontal and vertical directions, respectively. The main difference between this scheme and that used in OU-LES is the option for two different mixing lengths.
 
-The isotropic option ($\Delta x, \Delta y \sim \Delta z$) is mostly used in idealized experiments with regular geometric grid. In such cases, $l_h = l_v$ which means that $K_{m_{h}} =  K_{m_{v}}$. Stratification effects are considered when relating the length scale with grid cell size:
+The isotropic option ($\Delta x, \Delta y \sim \Delta z$) is primarily used in idealized experiments with regular geometric grid. In such cases, $l_h = l_v$ which means that $K_{m_{h}} =  K_{m_{v}}$. Stratification effects are considered when relating the length scale to grid cell size:
 
 
 \be
 l_{h,v} = 
 \begin{cases}
  \left(\Delta x \Delta y \Delta z\right)^{\frac{1}{3}}, & \text{unstable conditions}\\
-\mathrm{min}\left[ \left(\Delta x \Delta y \Delta z\right)^{\frac{1}{3}},0.76\frac{\sqrt{E}}{N}\right],  & \text{stable conditions} \mbox{ ,}
+\mathrm{min}\left[ \left(\Delta x \Delta y \Delta z\right)^{\frac{1}{3}},0.76\frac{\sqrt{E}}{N}\right],  & \text{stable conditions} \, ,
 \end{cases}
 \label{equation374}
 \ee
@@ -956,44 +944,44 @@ l_{h,v} =
  where $N$ is the Brunt-V\"{a}is\"{a}l\"{a} frequency, defined as:
 
 \be
-N^2 = \beta\pd{\theta}{z}  + g\left[1.61\pd{q_v}{z} - \pd{q_w}{z}\right] \mbox{ .} \label{equation375}
+N^2 = \beta\pd{\theta}{z}  + g\left[1.61\pd{q_v}{z} - \pd{q_w}{z}\right] \, . \label{equation375}
 \ee
 \noindent
  Here $q_v$ is water vapor mixing ratio and $q_w$ is total water (vapor, ice, liquid) mixing ratio. Under the isotropic option, the eddy viscosity for scalars is defined as
 
 \be
-K_{h_{h,v}} = \left[1 + \frac{2l}{\left(\Delta x \Delta y \Delta z\right)^{\frac{1}{3}}}\right] K_{m_{h,v}} \mbox{ .}
+K_{h_{h,v}} = \left[1 + \frac{2l}{\left(\Delta x \Delta y \Delta z\right)^{\frac{1}{3}}}\right] K_{m_{h,v}} \, .
 \label{equation376}
 \ee
 
 
-The anisotropic option ($\Delta x, \Delta y \gg \Delta z$) is generally selected for real-data simulations with a stretched $\eta$-grid. In such cases, $l_h \neq l_v$ which means that $K_{m_{h}} \neq  K_{m_{v}}$. The horizontal length scale, $l=(\Delta x \Delta y)^{\frac{1}{2}}$, is used for calculation of horizontal eddy viscosities. For purposes of calculating the vertical eddy viscosities, the vertical length scale is defined as
+The anisotropic option ($\Delta x, \Delta y \gg \Delta z$) is generally selected for real-world simulations with a vertically stretched $\eta$-grid. In such cases, $l_h \neq l_v$, which means that $K_{m_{h}} \neq  K_{m_{v}}$. The horizontal length scale, $l_h=(\Delta x \Delta y)^{\frac{1}{2}}$, is used for calculation of horizontal eddy viscosities. For purposes of computing the vertical turbulent exchange, the vertical length scale is defined as:
 
 \be
 l_{v} = 
 \begin{cases}
  \Delta z, & \text{unstable conditions}\\
-\mathrm{min}\left[\Delta z,0.76\frac{\sqrt{E}}{N}\right],  & \text{stable conditions} \mbox{ .}
+\mathrm{min}\left[\Delta z,0.76\frac{\sqrt{E}}{N}\right],  & \text{stable conditions} \, .
 \end{cases}
 \label{equation377}
 \ee
 \noindent
- Under the anisotropic option, the eddy viscosity for scalars is defined as
+ Under the anisotropic option, the eddy viscosity for scalars is defined as:
 
 \be
-K_{h_{h,v}} = \left(1 + \frac{2l}{\Delta z} \right) K_{m_{h,v}} \mbox{ .}
+K_{h_{h,v}} = \left(1 + \frac{2l}{\Delta z} \right) K_{m_{h,v}} \, .
 \label{equation378}
 \ee
 
 
-The prognostic equation for STKE is similar in form to Eq. (\autoref{equation215}):
+The prognostic equation for STKE is similar in form to Eq.~\eqref{equation215}:
   
 \be
-\underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}}\pd{E}{t}}_{(I)}\\
+\underbrace{\vphantom{\pd{\widetilde{\vphantom{E}u_i} E}{x_i}}\pd{E}{t}}_{(I)}\\
 + \underbrace{\pd{\widetilde{u_i} E}{x_i}}_{(II)}\\
 = \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}} P_s}_{(III)}\\
 + \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}} P_b}_{(IV)}\\
-- \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}} \epsilon}_{(IV)} \mbox{ ,}
+- \underbrace{\vphantom{\pd{\widetilde{u_i} E}{x_i}} \epsilon}_{(IV)} \, ,
 \label{equation379}
 \ee
 \noindent
@@ -1001,16 +989,16 @@ The prognostic equation for STKE is similar in form to Eq. (\autoref{equation215
 
 \bse \label{equation380}
 \bal
-P_s &= K_{m_h} S_{11}^2 + K_{m_h}S_{22}^2 + K_{m_v}S_{33}^2 + K_{m_h}S_{12}^2+K_{m_v}S_{13}^2 + K_{m_v}S_{23}^2 \mbox{ ,} \label{equation380a} \\
-P_b & = -K_{m_v}N^2 \mbox{ , and} \label{equation380b} \\
-\epsilon &= -\frac{C_e Ee^{\frac{3}{2}}}{l} \mbox{ .} \label{equation380c}
+P_s &= K_{m_h} S_{11}^2 + K_{m_h}S_{22}^2 + K_{m_v}S_{33}^2 + K_{m_h}S_{12}^2+K_{m_v}S_{13}^2 + K_{m_v}S_{23}^2 \, , \label{equation380a} \\
+P_b & = -K_{m_v}N^2 \, , \quad and \label{equation380b} \\
+\epsilon &= -\frac{C_e Ee^{\frac{3}{2}}}{l} \, . \label{equation380c}
 \eal
 \ese
 \noindent
- Here, $C_e$ is the Deardorff dissipation parameter, given by
+ Here, $C_e$ is the Deardorff dissipation coefficient, given by:
 
 \be
-C_e = 1.9C_k + \left(0.93 - 1.9C_k\right)\frac{l}{\left(\Delta x \Delta y \Delta z\right)^{\frac{1}{3}}} \mbox{ ,} 
+C_e = 1.9C_k + \left(0.93 - 1.9C_k\right)\frac{l}{\left(\Delta x \Delta y \Delta z\right)^{\frac{1}{3}}} \, .
 \label{equation381}
 \ee
 
