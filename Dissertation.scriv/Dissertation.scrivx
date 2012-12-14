@@ -358,7 +358,7 @@
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>11701,0</TextSelection>
+                                        <TextSelection>10548,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -383,14 +383,14 @@
                                         <TextSelection>1148,39</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="123" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 18:30:19 -0600">
+                                <BinderItem ID="123" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 22:12:55 -0600">
                                     <Title>4.4.2 Results</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>10432,0</TextSelection>
+                                        <TextSelection>2056,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -415,14 +415,14 @@
                                         <TextSelection>883,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="125" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 18:04:24 -0600">
+                                <BinderItem ID="125" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 22:12:32 -0600">
                                     <Title>4.5.2 Results</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>12133,0</TextSelection>
+                                        <TextSelection>2029,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -447,14 +447,14 @@
                                         <TextSelection>1143,39</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="127" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 19:10:41 -0600">
+                                <BinderItem ID="127" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 22:13:25 -0600">
                                     <Title>4.6.2 Results</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>8712,0</TextSelection>
+                                        <TextSelection>1832,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -476,10 +476,10 @@
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>4804,0</TextSelection>
+                                        <TextSelection>2815,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="129" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 19:59:46 -0600">
+                                <BinderItem ID="129" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 22:06:20 -0600">
                                     <Title>4.7.2 Results</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -491,14 +491,14 @@
                                 </BinderItem>
                             </Children>
                         </BinderItem>
-                        <BinderItem ID="98" Type="Text" Created="2012-09-20 21:20:23 -0500" Modified="2012-11-21 17:43:34 -0600">
+                        <BinderItem ID="98" Type="Text" Created="2012-09-20 21:20:23 -0500" Modified="2012-12-13 23:02:42 -0600">
                             <Title>4.8 Discussion</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>7249,0</TextSelection>
+                                <TextSelection>8414,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
@@ -510,27 +510,27 @@
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>1076,639</TextSelection>
+                        <TextSelection>1009,0</TextSelection>
                     </TextSettings>
                     <Children>
-                        <BinderItem ID="67" Type="Text" Created="2012-09-20 21:05:35 -0500" Modified="2012-11-13 00:31:40 -0600">
+                        <BinderItem ID="67" Type="Text" Created="2012-09-20 21:05:35 -0500" Modified="2012-12-13 23:13:50 -0600">
                             <Title>5.1 Experimental Design</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>619,0</TextSelection>
+                                <TextSelection>1558,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem ID="68" Type="Text" Created="2012-09-20 21:05:51 -0500" Modified="2012-10-31 20:35:44 -0500">
+                        <BinderItem ID="68" Type="Text" Created="2012-09-20 21:05:51 -0500" Modified="2012-12-13 23:14:27 -0600">
                             <Title>5.2 Verification Techniques</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>4496,0</TextSelection>
+                                <TextSelection>4504,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem ID="69" Type="Text" Created="2012-09-20 21:06:03 -0500" Modified="2012-11-13 00:29:45 -0600">
@@ -543,37 +543,37 @@
                                 <TextSelection>882,0</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem ID="70" Type="Text" Created="2012-09-20 21:06:11 -0500" Modified="2012-11-13 00:30:33 -0600">
+                                <BinderItem ID="70" Type="Text" Created="2012-09-20 21:06:11 -0500" Modified="2012-12-13 23:15:16 -0600">
                                     <Title>5.3.1 Resolved Fields</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>1092,0</TextSelection>
+                                        <TextSelection>3087,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="71" Type="Text" Created="2012-09-20 21:06:19 -0500" Modified="2012-11-20 18:32:45 -0600">
+                                <BinderItem ID="71" Type="Text" Created="2012-09-20 21:06:19 -0500" Modified="2012-12-13 23:15:40 -0600">
                                     <Title>5.3.2 One-Dimensional Spectra</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>4079,0</TextSelection>
+                                        <TextSelection>5936,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="72" Type="Text" Created="2012-09-20 21:06:30 -0500" Modified="2012-11-13 00:34:00 -0600">
+                                <BinderItem ID="72" Type="Text" Created="2012-09-20 21:06:30 -0500" Modified="2012-12-13 23:16:08 -0600">
                                     <Title>5.3.3 Two-Dimensional Spectra</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>0,46</TextSelection>
+                                        <TextSelection>6541,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="73" Type="Text" Created="2012-09-20 21:06:41 -0500" Modified="2012-11-21 02:11:02 -0600">
+                                <BinderItem ID="73" Type="Text" Created="2012-09-20 21:06:41 -0500" Modified="2012-12-13 23:20:27 -0600">
                                     <Title>5.3.4 Additional Turbulence Statistics</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -1481,7 +1481,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2012-04-21 16:59:00 -0500" IgnoreDeadline="Yes">50000</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="-361" Characters="-2129" Date="2012-12-13 12:12:17 -0600"></PreviousSession>
+        <PreviousSession Words="-282" Characters="-1410" Date="2012-12-13 23:20:36 -0600"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

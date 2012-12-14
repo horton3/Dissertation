@@ -70,8 +70,8 @@
 	</array>
 	<key>binderSplitFrames</key>
 	<array>
-		<string>{{0, 0}, {256, 1112}}</string>
-		<string>{{257, 0}, {838, 1112}}</string>
+		<string>{{0, 0}, {256, 680}}</string>
+		<string>{{257, 0}, {838, 680}}</string>
 	</array>
 	<key>binderState</key>
 	<array>
@@ -1680,7 +1680,7 @@
 		</array>
 	</dict>
 	<key>mainDocumentEditor.scrollRect</key>
-	<string>{{0, 2161}, {823, 1040}}</string>
+	<string>{{0, 2419}, {838, 608}}</string>
 	<key>mainDocumentEditor.selectedRanges</key>
 	<string>{10483, 0}</string>
 	<key>mainDocumentEditor.textEditorState</key>
