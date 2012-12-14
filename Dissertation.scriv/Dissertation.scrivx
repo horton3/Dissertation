@@ -131,14 +131,14 @@
                                 <TextSelection>2007,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem ID="112" Type="Text" Created="2012-11-01 09:55:25 -0500" Modified="2012-12-12 16:38:45 -0600">
+                        <BinderItem ID="112" Type="Text" Created="2012-11-01 09:55:25 -0500" Modified="2012-12-13 14:37:23 -0600">
                             <Title>3.4 Land Surface Model</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>2054,0</TextSelection>
+                                <TextSelection>590,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem ID="27" Type="Text" Created="2012-04-21 17:47:14 -0500" Modified="2012-12-12 17:08:50 -0600">
@@ -279,14 +279,14 @@
                         </BinderItem>
                     </Children>
                 </BinderItem>
-                <BinderItem ID="50" Type="Text" Created="2012-09-20 20:53:55 -0500" Modified="2012-11-12 23:34:14 -0600">
+                <BinderItem ID="50" Type="Text" Created="2012-09-20 20:53:55 -0500" Modified="2012-12-13 14:34:17 -0600">
                     <Title>4 Mesoscale Experiments</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>23,11</TextSelection>
+                        <TextSelection>3062,0</TextSelection>
                     </TextSettings>
                     <Children>
                         <BinderItem ID="51" Type="Text" Created="2012-09-20 20:55:34 -0500" Modified="2012-09-21 15:57:23 -0500">
@@ -299,24 +299,24 @@
                                 <TextSelection>22,0</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem ID="45" Type="Text" Created="2012-09-20 20:49:46 -0500" Modified="2012-11-12 12:02:36 -0600">
+                                <BinderItem ID="45" Type="Text" Created="2012-09-20 20:49:46 -0500" Modified="2012-12-13 14:37:48 -0600">
                                     <Title>4.1.1 University of Oklahoma Large Eddy Simulation</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>62,264</TextSelection>
+                                        <TextSelection>1375,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="44" Type="Text" Created="2012-09-20 20:49:46 -0500" Modified="2012-11-12 12:10:42 -0600">
+                                <BinderItem ID="44" Type="Text" Created="2012-09-20 20:49:46 -0500" Modified="2012-12-13 14:39:57 -0600">
                                     <Title>4.1.2 The Weather Research and Forecasting Model</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>46,7</TextSelection>
+                                        <TextSelection>1621,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -341,24 +341,24 @@
                                 <TextSelection>23,8</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem ID="120" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-11-20 03:01:13 -0600">
+                                <BinderItem ID="120" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-12-13 16:51:36 -0600">
                                     <Title>4.3.1 Meteorological Conditions</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>1369,0</TextSelection>
+                                        <TextSelection>5020,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="121" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-11-20 11:59:44 -0600">
+                                <BinderItem ID="121" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 17:00:22 -0600">
                                     <Title>4.3.2 Results</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>10458,0</TextSelection>
+                                        <TextSelection>11701,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -373,24 +373,24 @@
                                 <TextSelection>0,41</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem ID="122" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-11-15 23:50:07 -0600">
+                                <BinderItem ID="122" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-12-13 16:51:23 -0600">
                                     <Title>4.4.1 Meteorological Conditions</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>3122,0</TextSelection>
+                                        <TextSelection>1148,39</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="123" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-11-20 12:39:26 -0600">
+                                <BinderItem ID="123" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 18:30:19 -0600">
                                     <Title>4.4.2 Results</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>11987,0</TextSelection>
+                                        <TextSelection>10432,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -405,24 +405,24 @@
                                 <TextSelection>27,8</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem ID="124" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-11-14 19:19:35 -0600">
+                                <BinderItem ID="124" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-12-13 18:05:55 -0600">
                                     <Title>4.5.1 Meteorological Conditions</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>4407,0</TextSelection>
+                                        <TextSelection>883,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="125" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-11-15 21:30:28 -0600">
+                                <BinderItem ID="125" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 18:04:24 -0600">
                                     <Title>4.5.2 Results</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>11890,959</TextSelection>
+                                        <TextSelection>12133,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -437,24 +437,24 @@
                                 <TextSelection>7,0</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem ID="126" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-11-14 19:37:40 -0600">
+                                <BinderItem ID="126" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-12-13 19:04:21 -0600">
                                     <Title>4.6.1 Meteorological Conditions</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>4326,0</TextSelection>
+                                        <TextSelection>1143,39</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="127" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-11-16 02:11:52 -0600">
+                                <BinderItem ID="127" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 19:10:41 -0600">
                                     <Title>4.6.2 Results</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>12764,0</TextSelection>
+                                        <TextSelection>8712,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -469,24 +469,24 @@
                                 <TextSelection>34,0</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem ID="128" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-11-16 02:26:35 -0600">
+                                <BinderItem ID="128" Type="Text" Created="2012-11-12 12:35:10 -0600" Modified="2012-12-13 19:40:30 -0600">
                                     <Title>4.7.1 Meteorological Conditions</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>3638,0</TextSelection>
+                                        <TextSelection>4804,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="129" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-11-16 02:21:01 -0600">
+                                <BinderItem ID="129" Type="Text" Created="2012-11-12 12:35:30 -0600" Modified="2012-12-13 19:59:46 -0600">
                                     <Title>4.7.2 Results</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>43,0</TextSelection>
+                                        <TextSelection>10483,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -604,7 +604,7 @@
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>2651,1084</TextSelection>
+                        <TextSelection>2227,0</TextSelection>
                     </TextSettings>
                     <Children>
                         <BinderItem ID="76" Type="Text" Created="2012-09-20 21:07:52 -0500" Modified="2012-11-19 19:43:24 -0600">
@@ -634,7 +634,7 @@
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>4660,0</TextSelection>
+                                        <TextSelection>4681,4</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -656,7 +656,7 @@
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>4313,0</TextSelection>
+                                        <TextSelection>5702,4</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                                 <BinderItem ID="134" Type="Text" Created="2012-11-20 02:34:38 -0600" Modified="2012-11-20 16:49:44 -0600">
@@ -686,7 +686,7 @@
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>1938,0</TextSelection>
+                                        <TextSelection>2025,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                                 <BinderItem ID="137" Type="Text" Created="2012-11-20 02:35:31 -0600" Modified="2012-11-21 12:42:22 -0600">
@@ -718,7 +718,7 @@
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>448,0</TextSelection>
+                                        <TextSelection>5947,4</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                                 <BinderItem ID="130" Type="Text" Created="2012-11-20 02:34:38 -0600" Modified="2012-11-20 17:04:08 -0600">
@@ -741,14 +741,14 @@
                                         <TextSelection>5466,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem ID="132" Type="Text" Created="2012-11-20 02:35:10 -0600" Modified="2012-11-20 22:23:12 -0600">
+                                <BinderItem ID="132" Type="Text" Created="2012-11-20 02:35:10 -0600" Modified="2012-12-13 18:32:59 -0600">
                                     <Title>6.3.4 Two-Dimensional Spectra</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>3640,0</TextSelection>
+                                        <TextSelection>901,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                                 <BinderItem ID="133" Type="Text" Created="2012-11-20 02:35:31 -0600" Modified="2012-11-21 13:20:55 -0600">
@@ -1481,7 +1481,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2012-04-21 16:59:00 -0500" IgnoreDeadline="Yes">50000</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="6" Characters="725" Date="2012-12-12 22:43:07 -0600"></PreviousSession>
+        <PreviousSession Words="-361" Characters="-2129" Date="2012-12-13 12:12:17 -0600"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
